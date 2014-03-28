@@ -5,7 +5,7 @@ window.onload = function() {
 	Crafty.init();
 
 	// Initialize everything
-	initIso(1,1);
+	initIso(20,20);
 	initSprites();
 	initControls();
 
@@ -16,6 +16,7 @@ function run() {
 	// Set zoom level
 
 	Crafty.viewport.scale(4);
+    Crafty.canvas.context.imageSmoothingEnabled = false;
 
 	fillMap();
 }
