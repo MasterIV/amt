@@ -5,7 +5,7 @@ function initControls() {
 	Crafty.addEvent(this, Crafty.stage.elem, "mousedown", function(e) {
 		// Do not use second mouse button
 		if (e.button > 1) {
-            console.log(Crafty.stage.elem);
+            console.log(e);
             testPlaceRoom();
             return;
         }
