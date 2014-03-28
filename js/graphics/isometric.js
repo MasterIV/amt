@@ -2,7 +2,7 @@ var iso;
 var map_width, map_height;
 
 function initIso(mw,mh) {
-	iso = Crafty.isometric.size(128,64);
+	iso = Crafty.isometric.size(32,16);
 	map_width = mw;
 	map_height = mh;
 }
