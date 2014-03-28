@@ -5,4 +5,11 @@ $(document).ready(function() {
     Crafty.init();
 
     initIso(100,100);
+    initSprites();
+
+    run();
 })
+
+function run() {
+    fillMap();
+}
