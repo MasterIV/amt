@@ -1,7 +1,7 @@
 /* Main game file */
 
 // Enter all init functions to call
-$(document).ready(function() {
+window.onload = function() {
 	Crafty.init();
 
 	initIso(100,100);
@@ -9,7 +9,7 @@ $(document).ready(function() {
 	initControls();
 
 	run();
-})
+}
 
 function run() {
 	fillMap();
