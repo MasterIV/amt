@@ -4,7 +4,11 @@ function initControls() {
 	// Map scrolling
 	Crafty.addEvent(this, Crafty.stage.elem, "mousedown", function(e) {
 		// Do not use second mouse button
-		if (e.button > 1) return;
+		if (e.button > 1) {
+            console.log(Crafty.stage.elem);
+            testPlaceRoom();
+            return;
+        }
 
 		var base = {x: e.clientX, y: e.clientY};
 
@@ -22,4 +26,8 @@ function initControls() {
 			Crafty.removeEvent(this, Crafty.stage.elem, "mousemove", scroll);
 		});
 	});
+}
+
+function testPlaceRoom() {
+   map.checkCollision(rooms[0], Cr);
 }

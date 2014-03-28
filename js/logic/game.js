@@ -1,13 +1,22 @@
 /* Main game file */
 
 // Enter all init functions to call
+
+var map = null;
+var mapSize = {
+    width:50,
+    height:50
+}
+
 window.onload = function() {
 	Crafty.init();
 
 	// Initialize everything
-	initIso(20,20);
+	initIso(mapSize.width,mapSize.height);
 	initSprites();
 	initControls();
+
+    map = new Map(initGrid(mapSize.width,mapSize.height))
 
 
 
