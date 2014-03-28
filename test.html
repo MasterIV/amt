@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<div id="roomlist"></div>
+<canvas id="gameScreen"></canvas>
+
+<script src="data/rooms.js"></script>
+
+<style>
+	#roomlist {
+		float: left;
+		margin: 10px;
+	}
+
+	#roomlist > div {
+		margin: 5px;
+		background-color: #eee;
+		border-radius: 5px;
+		padding: 5px;
+	}
+
+	#roomlist > div:hover {
+		background-color: #ddd;
+	}
+
+	#gameScreen {
+		position: relative;
+	}
+
+</style>
+
+<script>
+	var placeMe;
+	var size = 20;
+	var mouse = {x:0,y:0};
+
+	function initGrid( w, h ) {
+		g = [];
+
+		for( var x = 0; x < w; x++) {
+			g[x] = [];
+			for( var y = 0; y < h; y++) {
+				g[x][y] = 0;
+			}
+		}
+
+		return g;
+	}
+
+	function display(canvas, g) {
+		var ctx = canvas.getContext('2d');
+
+		canvas.width = g.length * size;
+		canvas.height = g[0].length * size;
+
+		for( var x = 0; x < g.length; x++ )
+			for( var y = 0; y < g[0].length; y++ ) {
+				ctx.fillStyle = g[x][y] == 1 ? 'grey' : 'white';
+				ctx.fillRect(x*size, y*size, size, size);
+				ctx.strokeRect(x*size, y*size, size, size);
+			}
+	}
+
+	function displayRoom(canvas, room, rx, ry) {
+		var ctx = canvas.getContext('2d');
+
+		for( var x = 0; x < room.shape.length; x++ )
+			for( var y = 0; y < room.shape[0].length; y++ )
+				if( room.shape[x][y] ) {
+					ctx.fillStyle = grid[x+rx][ry+y] ? 'red' : (room.shape[x][y] == 1 ? 'blue' : 'green');
+					ctx.fillRect((x+rx)*size, (ry+y)*size, size, size);
+					ctx.strokeRect((x+rx)*size, (ry+y)*size, size, size);
+				}
+	}
+
+	function roomlist(r) {
+		var list = document.getElementById('roomlist');
+		for( var i in r ) {
+			var ele = document.createElement('div');
+			var preview = document.createElement('canvas');
+			var caption = document.createElement('p');
+
+			caption.innerHTML = r[i].name;
+			display(preview, r[i].shape );
+
+			(function(raum, ele) {
+				ele.onclick = function() {
+					placeMe = raum;
+					console.log( raum );
+				}
+			})(r[i], ele);
+
+			ele.appendChild(caption);
+			ele.appendChild(preview);
+			list.appendChild(ele);
+		}
+	}
+
+
+	function updateMouse(evt) {
+		var x = Math.floor( evt.layerX / size );
+		var y = Math.floor( evt.layerY / size );
+
+		if( x != mouse.x || y != mouse.y ) {
+			display(gameScreen, grid);
+			if( placeMe ) displayRoom(gameScreen, placeMe, x-1, y-1);
+			mouse.x = x; mouse.y = y;
+		}
+	}
+
+
+	function placeRoom() {
+		var room = placeMe;
+
+		for( var x = 0; x < room.shape.length; x++ )
+			for( var y = 0; y < room.shape[0].length; y++ )
+				if( room.shape[x][y] == 1 ) {
+					grid[x+mouse.x-1][mouse.y+y-1] = 1;
+				}
+
+		display(gameScreen, grid);
+	}
+
+
+	// replace this by load leve
+	var grid = initGrid(50, 50);
+	var gameScreen = document.getElementById('gameScreen');
+	// replace this by isometric display
+	display(gameScreen, grid);
+	// replace this with ui generation something
+	roomlist(rooms);
+
+	gameScreen.onmousemove = updateMouse;
+	gameScreen.onclick = placeRoom;
+
+
+
+
+</script>
+
+</body>
+</html>
