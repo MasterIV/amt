@@ -30,6 +30,8 @@ window.onload = function() {
 function run() {
 	// Set zoom level
 	Crafty.viewport.scale(4);
+	// Limit scrollable area
+	//Crafty.viewport.clampToEntities = true;
 
 	fillMap();
 }
