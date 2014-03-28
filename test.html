@@ -34,25 +34,13 @@
 </style>
 
 <script src="js/logic/helper.js"></script>
+<script src="js/logic/room.js"></script>
 <script src="js/logic/map.js"></script>
 
 <script>
 	var placeMe;
 	var size = 20;
 	var mouse = {x:0,y:0};
-
-	function initGrid( w, h ) {
-		g = [];
-
-		for( var x = 0; x < w; x++) {
-			g[x] = [];
-			for( var y = 0; y < h; y++) {
-				g[x][y] = 0;
-			}
-		}
-
-		return g;
-	}
 
 	function display(canvas, g) {
 		var ctx = canvas.getContext('2d');
@@ -62,7 +50,7 @@
 
 		for( var x = 0; x < g.length; x++ )
 			for( var y = 0; y < g[0].length; y++ ) {
-				ctx.fillStyle = g[x][y] == 1 ? 'grey' : 'white';
+				ctx.fillStyle = ( g[x][y] != 0 && g[x][y] != 2 ) ? 'grey' : 'white';
 				ctx.fillRect(x*size, y*size, size, size);
 				ctx.strokeRect(x*size, y*size, size, size);
 			}
@@ -74,7 +62,7 @@
 		for( var x = 0; x < room.shape.length; x++ )
 			for( var y = 0; y < room.shape[0].length; y++ )
 				if( room.shape[x][y] ) {
-					ctx.fillStyle = grid[x+rx][ry+y] ? 'red' : (room.shape[x][y] == 1 ? 'blue' : 'green');
+					ctx.fillStyle = map.grid[x+rx][ry+y] ? 'red' : (room.shape[x][y] == 1 ? 'blue' : 'green');
 					ctx.fillRect((x+rx)*size, (ry+y)*size, size, size);
 					ctx.strokeRect((x+rx)*size, (ry+y)*size, size, size);
 				}
@@ -103,37 +91,28 @@
 		}
 	}
 
-
 	function updateMouse(evt) {
 		var x = Math.floor( evt.layerX / size );
 		var y = Math.floor( evt.layerY / size );
 
 		if( x != mouse.x || y != mouse.y ) {
-			display(gameScreen, grid);
+			display(gameScreen, map.getGrid());
 			if( placeMe ) displayRoom(gameScreen, placeMe, x-1, y-1);
 			mouse.x = x; mouse.y = y;
 		}
 	}
 
-
 	function placeRoom() {
-		var room = placeMe;
-
-		for( var x = 0; x < room.shape.length; x++ )
-			for( var y = 0; y < room.shape[0].length; y++ )
-				if( room.shape[x][y] == 1 ) {
-					grid[x+mouse.x-1][mouse.y+y-1] = 1;
-				}
-
-		display(gameScreen, grid);
+		map.placeRoom( placeMe, mouse.x, mouse.y );
+		display(gameScreen, map.getGrid());
 	}
 
 
 	// replace this by load leve
-	var grid = initGrid(50, 50);
+	var map = new Map(initGrid(50, 50))
 	var gameScreen = document.getElementById('gameScreen');
 	// replace this by isometric display
-	display(gameScreen, grid);
+	display(gameScreen, map.grid);
 	// replace this with ui generation something
 	roomlist(rooms);
 
