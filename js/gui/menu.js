@@ -1,6 +1,7 @@
 /* Menu */
 
 function initMenu() {
+return;
 	// Add main menu div
 	$('<div id="menu"></div>').insertAfter("#cr-stage");
 	// CSS
