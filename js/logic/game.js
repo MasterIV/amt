@@ -2,15 +2,15 @@
 
 // Enter all init functions to call
 $(document).ready(function() {
-    Crafty.init();
+	Crafty.init();
 
-    initIso(100,100);
-    initSprites();
-    initControls();
+	initIso(100,100);
+	initSprites();
+	initControls();
 
-    run();
+	run();
 })
 
 function run() {
-    fillMap();
+	fillMap();
 }
