@@ -6,6 +6,7 @@ $(document).ready(function() {
 
     initIso(100,100);
     initSprites();
+    initControls();
 
     run();
 })
