@@ -29,5 +29,5 @@ function initControls() {
 }
 
 function testPlaceRoom() {
-   map.checkCollision(rooms[0], Cr);
+   map.checkCollision(rooms[0], 1,1);
 }
