@@ -12,8 +12,9 @@ function initControls() {
 			var dx = base.x - e.clientX,
 				dy = base.y - e.clientY;
 			base = {x: e.clientX, y: e.clientY};
-			Crafty.viewport.x -= dx;
-			Crafty.viewport.y -= dy;
+			Crafty.viewport.x -= dx / Crafty.viewport._scale;
+			Crafty.viewport.y -= dy / Crafty.viewport._scale;
+
 		};
 
 		Crafty.addEvent(this, Crafty.stage.elem, "mousemove", scroll);
