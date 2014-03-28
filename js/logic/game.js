@@ -15,6 +15,7 @@ window.onload = function() {
 	initIso(mapSize.width,mapSize.height);
 	initSprites();
 	initControls();
+	initMenu();
 
     map = new Map(initGrid(mapSize.width,mapSize.height))
 
