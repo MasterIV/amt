@@ -9,7 +9,15 @@ window.onload = function() {
 	initSprites();
 	initControls();
 
-	run();
+
+
+    Crafty.canvas.context._clearRect=Crafty.canvas.context.clearRect;
+    Crafty.canvas.context.clearRect=function(x,y,w,h){
+        Crafty.canvas.context._clearRect(x,y,w,h);
+        Crafty.canvas.context.imageSmoothingEnabled = false;
+    };
+
+    run();
 }
 
 function run() {
@@ -17,12 +25,6 @@ function run() {
 
 	Crafty.viewport.scale(4);
 
-    window.onresize();
 
 	fillMap();
-}
-
-window.onresize = function () {
-    if (Crafty.canvas != null)
-        Crafty.canvas.context.imageSmoothingEnabled = false;
 }
