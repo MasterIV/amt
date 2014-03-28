@@ -29,5 +29,10 @@ function initControls() {
 }
 
 function testPlaceRoom() {
-   map.checkCollision(rooms[0], 1,1);
+    var result = map.checkCollision(rooms[0], hoveredTile.x,hoveredTile.y);
+    if (!result) {
+        map.placeRoom(rooms[0], hoveredTile.x,hoveredTile.y)
+    } else {
+        console.log(result);
+    }
 }
