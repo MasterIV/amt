@@ -18,6 +18,4 @@ function map( grid ) {
 		if( !this.checkCollision( room, x, y )) return false;
 
 	};
-
-
 }

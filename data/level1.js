@@ -1,0 +1,4 @@
+var level = {
+	blueprints: [],
+	grid: []
+}
