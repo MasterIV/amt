@@ -16,7 +16,13 @@ function run() {
 	// Set zoom level
 
 	Crafty.viewport.scale(4);
-    Crafty.canvas.context.imageSmoothingEnabled = false;
+
+    window.onresize();
 
 	fillMap();
+}
+
+window.onresize = function () {
+    if (Crafty.canvas != null)
+        Crafty.canvas.context.imageSmoothingEnabled = false;
 }
