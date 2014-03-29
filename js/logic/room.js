@@ -45,10 +45,10 @@ function Room( x, y, type ) {
 		return posScreem.y;
 	}
 
-	this.draw = function( ctx, ofs ) {
+	this.draw = function( ctx, ofs, viewport ) {
 		var img = g[type.image];
-		var dx = ofs.x+posScreem.x-offset.x;
-		var dy = ofs.y+posScreem.y-offset.y;
+		var dx = viewport.x+ofs.x+posScreem.x-offset.x;
+		var dy = viewport.x+ofs.y+posScreem.y-offset.y;
 		ctx.drawImage( img, 0, 0, img.width, img.height, dx, dy,  img.width, img.height );
 	}
 

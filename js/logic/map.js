@@ -66,6 +66,14 @@ function Map( grid ) {
 		return roomInstance;
 	};
 
+	this.getWalls = function() {
+		return [];
+	}
+
+	this.getZ = function() {
+		return 0;
+	}
+
 	this.update = function( delta ) {
 		var change = false;
 
