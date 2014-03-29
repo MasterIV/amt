@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title>Bureaucracy Simulator 2014</title>
+	<meta charset="UTF-8">
+	<title>Bureaucracy Simulator 2014</title>
 
-    <link href="css/main.css" rel="stylesheet" type="text/css" />
+	<link href="css/main.css" rel="stylesheet" type="text/css"/>
 
-    <script src="js/include/jquery-1.11.0.min.js"></script>
+	<script src="js/include/jquery-1.11.0.min.js"></script>
 
-    <script src="js/lib/vector.js"></script>
-    <script src="js/lib/mouse.js"></script>
-    <script src="js/lib/graphic.js"></script>
-    <script src="js/lib/sound.js"></script>
-    <script src="js/lib/util.js"></script>
+	<script src="js/lib/vector.js"></script>
+	<script src="js/lib/mouse.js"></script>
+	<script src="js/lib/graphic.js"></script>
+	<script src="js/lib/sound.js"></script>
+	<script src="js/lib/util.js"></script>
 
-    <script src="js/logic/achivements.js"></script>
-    <script src="js/logic/helper.js"></script>
-    <script src="js/logic/room.js"></script>
-    <script src="js/logic/corridor.js"></script>
-    <script src="js/logic/map.js"></script>
-    <script src="js/logic/victim.js"></script>
+	<script src="js/logic/achivements.js"></script>
+	<script src="js/logic/helper.js"></script>
+	<script src="js/logic/room.js"></script>
+	<script src="js/logic/corridor.js"></script>
+	<script src="js/logic/map.js"></script>
+	<script src="js/logic/victim.js"></script>
 
-    <script src="js/gui/background.js"></script>
+	<script src="js/gui/background.js"></script>
 
-    <script src="data/achivements.js"></script>
-    <script src="data/rooms.js"></script>
+	<script src="data/achivements.js"></script>
+	<script src="data/rooms.js"></script>
 
-    <script src="js/game.js"></script>
+	<script src="js/game.js"></script>
 
-    <script src="js/scene/map.js"></script>
+	<script src="js/scene/map.js"></script>
 
-    <script type="text/javascript">
-        $( function() {
-            g.load( function() {
-                game.scene = new mapScene();
-                mouse.init();
-                game.init();
-            });
-        });
-    </script>
+	<script type="text/javascript">
+		$(function () {
+			g.load(function () {
+				game.scene = new mapScene();
+				game.debug = true;
+				mouse.init();
+				game.init();
+			});
+		});
+	</script>
 
 </head>
 <body>

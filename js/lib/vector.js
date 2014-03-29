@@ -22,7 +22,7 @@ V2.prototype.grid = function( w, h ) { this.x = Math.floor( this.x / w ); this.y
 V2.prototype.invert = function() { this.x *= -1; this.y *= -1;};
 
 V2.prototype.clone = function() { return new V2( this.x, this.y ); }
-
+V2.prototype.equal = function( v ) { return v.x == this.x && v.y == this.y };
 
 
 function Rect( p1, p2 ) {
