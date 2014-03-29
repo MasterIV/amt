@@ -14,7 +14,7 @@ var game = {
 	scene: null,
 	lastUpdate: 0,
 	debug: false,
-	zoom: 1,
+	zoom: 2,
 
 	display: null,
 	displayCtx: null,
@@ -24,8 +24,8 @@ var game = {
 	resize: function() {
 		this.display.width = window.innerWidth;
 		this.display.height = window.innerHeight;
-		this.buffer.width = this.display.width / this.zoom;
-		this.buffer.height = this.display.height / this.zoom;
+		this.buffer.width = ( this.display.width / this.zoom ) | 0;
+		this.buffer.height = ( this.display.height / this.zoom ) | 0;
 
 		if( this.scene.resize )
 			this.scene.resize( this.buffer.width, this.buffer.height );
