@@ -14,6 +14,7 @@ function mapScene() {
 	entities.push( bg );
 	entities.push( hud );
 
+
 	function updateRooms() {
 		map.income = 0;
 		map.people = 0;
@@ -35,6 +36,10 @@ function mapScene() {
 		var my = ((y / 8 - (x / 16)) / 2 ) | 0;
 
 		return new V2( mx, my );
+	}
+
+	function getNormalCoords( point ) {
+		return new V2( point.x*16+point.y*-16 -16, point.x*8+point.y*8);
 	}
 
 	this.click = function( mouse ) {
