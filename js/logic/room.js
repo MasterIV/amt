@@ -48,8 +48,8 @@ function Room( x, y, type ) {
 	this.draw = function( ctx, ofs, viewport ) {
 		var img = g[type.image];
 		var dx = viewport.x+ofs.x+posScreem.x-offset.x;
-		var dy = viewport.x+ofs.y+posScreem.y-offset.y;
-		ctx.drawImage( img, 0, 0, img.width, img.height, dx, dy,  img.width, img.height );
+		var dy = viewport.y+ofs.y+posScreem.y-offset.y;
+		ctx.drawImage( img, 0, 0, img.width, img.height, dx, dy, img.width, img.height );
 	}
 
 	/**
