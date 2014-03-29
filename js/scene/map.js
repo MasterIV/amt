@@ -38,6 +38,19 @@ function mapScene() {
 
 	roomlist(rooms);
 
+	function updateRooms() {
+		map.income = 0;
+		map.people = 0;
+
+		for( var i in entities )
+			if( entities[i] instanceof Room ) {
+				var r = entities[i];
+				r.updateFactors();
+				map.income += r.income;
+				map.people += r.people.length;
+			}
+	}
+
 	function getCoords( point ) {
 		var x = point.x - offset.x - viewport.x;
 		var y = point.y - offset.y - viewport.y;
@@ -54,6 +67,7 @@ function mapScene() {
 		if( placeMe ) {
 			var room = map.placeRoom( placeMe, pos.x, pos.y );
 			if( room ) entities.push( room );
+			updateRooms();
 		} else if( map.roomAt( pos.x, pos.y ) instanceof Room ) {
 			// show room info
 		}
@@ -73,19 +87,6 @@ function mapScene() {
 	this.resize = function( w, h ) {
 		viewport.w = w;
 		viewport.h = h;
-	}
-
-	function updateRooms() {
-		map.income = 0;
-		map.people = 0;
-
-		for( var i in entities )
-		if( entities[i] instanceof Room ) {
-				var r = entities[i];
-				r.updateFactors();
-				map.income += r.income;
-				map.people += r.people.length;
-			}
 	}
 
 	this.update = function( delta ) {
