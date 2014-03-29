@@ -5,7 +5,8 @@ function Victim( workRoom ) {
 	this.angerLimit = 100;
 
 	this.wait = function( room ) {
-		room.queue.push( this );
+		room.people.push( this );
+		workRoom.queue.push( this );
 		waitRoom = room;
 	};
 
@@ -15,8 +16,8 @@ function Victim( workRoom ) {
 	}
 
 	this.leave = function() {
-		// aus warteraum entfernen
-		// aus amtszimmerentfernen
+		arrayRemove( workRoom.queue, this );
+		arrayRemove( waitRoom.people, this );
 	}
 
 
@@ -26,7 +27,7 @@ function Victim( workRoom ) {
 
 
 
-
+/*
 	this.enter = function() {
 		this.posScreem.x = 0; // levelstart
 		this.posScreem.y = 0;
@@ -73,4 +74,5 @@ function Victim( workRoom ) {
 
 		ctx.drawImage( this.img, 0, 0, this.img.width, this.img.height, dx, dy,  this.img.width, this.img.height );
 	}
+	*/
 }
