@@ -40,4 +40,8 @@ function RoomSelector( category, x, y, hud ) {
 				if (this.entities[i].click( mouse ))
 					return true;
 	}
+
+	this.mousedown = function ( mouse ) {
+		if (this.inArea( mouse )) return true;
+	}
 }

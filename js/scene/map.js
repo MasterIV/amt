@@ -57,7 +57,14 @@ function mapScene() {
 		}
 	}
 
-	this.mousedown = function( mouse ) { dragging = true; last = mouse.clone(); };
+	this.mousedown = function( mouse ) {
+		for (var i in entities)
+			if (entities[i].mousedown)
+				if (entities[i].mousedown( mouse ))
+					return;
+
+		dragging = true; last = mouse.clone();
+	};
 	this.mouseup = function() { dragging = false; };
 
 	this.mousemove = function( mouse ) {
