@@ -1,4 +1,4 @@
-function Room( x, y, type ) {
+function Room( x, y, type, map ) {
 	this.posGrid = new V2( x, y );
 
 	this.posScreen = new V2( x*16+y*-16, x*8+y*8 );
@@ -14,8 +14,12 @@ function Room( x, y, type ) {
 
 	// Werte für Arbeitszimmer
 	this.speed = 0;
+	this.demand = type.demand ? type.demand : 0;
 	this.worker = type.worker ? type.worker : 0;
 	this.queue = [];
+
+	this.work = 0;
+	this.gain = 0;
 
 	// Werte für Warteräume
 	this.anger = 0;
@@ -23,8 +27,19 @@ function Room( x, y, type ) {
 	this.people = [];
 
 	// Beruhigende oder Arbeitsverlangsamende Faktoren
-	this.entertainment = type.entertainment ? type.entertainment : 1;
-	this.slow = type.slow ? type.slow : 1;
+	this.enable = function() {
+		this.enabled = true;
+		this.entertainment = type.entertainment ? type.entertainment : 1;
+		this.slow = type.slow ? type.slow : 1;
+	}
+
+	this.disable = function() {
+		this.enabled = false;
+		this.entertainment = 1;
+		this.slow = 1;
+	}
+
+	this.enabled();
 
 	this.updateFactors = function() {
 		var customers = 0;
@@ -56,18 +71,35 @@ function Room( x, y, type ) {
 	 * Gibt eine person zurück wenn eine neue person in die behörde kommt
 	 */
 	this.update = function( delta ) {
+		var result = false;
+
 		if( this.anger ) {
-			for(var victim in this.people) {
-				victim.annoy(delta * 0.001)
-			}
-			// Verärgerung
+			for(var i in this.people)
+				if( this.people[i].annoy(delta)) {
+					result = true;
+					this.people[i].leave();
+					achivements.track('AngryPeople',1);
+				}
 		} else if( this.speed ) {
-			for(var victim in this.queue) {
-				// Arbeitsraum
+			this.work += delta;
+			this.gain += delta;
+
+			if( this.work > this.speed ) {
+				// warteschlange abarbeiten
+				this.queue.shift().leave();
+				map.money += type.fee;
+				this.work -= this.speed;
+				result = true;
 			}
-			// neue leute ankommen lassen
-			// warteschlange abarbeiten
+
+			if( this.gain > this.demand ) {
+				// neue leute ankommen lassen
+				this.gain -= this.demand;
+				result = new Victim(this);
+			}
 		}
+
+		return result;
 	};
 
 	this.getZ = function() {

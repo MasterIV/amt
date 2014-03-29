@@ -1,43 +1,44 @@
-function Victim(pMap, pOffset, pViewport) {
-	var map = pMap;
-	var offset = pOffset;
-	var viewport = pViewport;
-	var currentRoom = null;
-	this.anger = 0;	
+function Victim( workRoom ) {
+	var waitRoom = null;
+
+	this.anger = 0;
 	this.angerLimit = 100;
 
-	this.posScreem = new V2( 100, 200);
-	this.offset = new V2(0, 0);
+	this.wait = function( room ) {
+		room.people.push( this );
+		workRoom.queue.push( this );
+		waitRoom = room;
+	};
 
-	this.currentPath = [];
-	this.movementSpeed = 0.02;
+	this.annoy = function( anger ) {
+		this.anger += anger;
+		return this.anger > this.angerLimit;
+	}
 
+	this.leave = function() {
+		arrayRemove( workRoom.queue, this );
+		arrayRemove( waitRoom.people, this );
+	}
+
+
+
+
+
+
+
+
+/*
 	this.enter = function() {
 		this.posScreem.x = 0; // levelstart
 		this.posScreem.y = 0;
 	}
 
 	this.img = g['img/testvictim.png'];
+	this.posScreem = new V2( 100, 200);
+	this.offset = new V2(0, 0);
 
-	this.wait = function( room ) {
-		room.addWaiter( this );
-		currentRoom = room;
-	};
-
-	this.getWorked = function( room ) {
-		room.addPeople( this );
-		currentRoom = room;
-	};
-
-	this.annoy = function( anger ) {
-		this.anger += anger;
-
-		if (this.anger > this.angerLimit) {
-
-			achivements.track('AngryPeople',1);
-			this.leave();
-		}
-	}
+	this.currentPath = [];
+	this.movementSpeed = 0.02;
 
 	this.goTo = function(posX, posY) {
 		this.currentPath = a_star(this.getTileCoord(), [posX,posY],map.grid, map.grid.length, map.grid[0].length, false);
@@ -73,9 +74,5 @@ function Victim(pMap, pOffset, pViewport) {
 
 		ctx.drawImage( this.img, 0, 0, this.img.width, this.img.height, dx, dy,  this.img.width, this.img.height );
 	}
-
-
-	this.leave = function() {
-		// goto ausgang? oder löschen
-	}
+	*/
 }
