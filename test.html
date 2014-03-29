@@ -5,10 +5,9 @@
 </head>
 <body>
 
-<div id="roomlist"></div>
+<div id="roomlist"><button onclick="placeMe = null">reset</button></div>
 <canvas id="gameScreen"></canvas>
 
-<script src="data/rooms.js"></script>
 
 <style>
 	#roomlist {
@@ -35,7 +34,10 @@
 
 <script src="js/logic/helper.js"></script>
 <script src="js/logic/room.js"></script>
+<script src="js/logic/corridor.js"></script>
 <script src="js/logic/map.js"></script>
+
+<script src="data/rooms.js"></script>
 
 <script>
 	var placeMe;
@@ -50,7 +52,10 @@
 
 		for( var x = 0; x < g.length; x++ )
 			for( var y = 0; y < g[0].length; y++ ) {
-				ctx.fillStyle = ( g[x][y] != 0 && g[x][y] != 2 ) ? 'grey' : 'white';
+				if( g[x][y] instanceof Room ) ctx.fillStyle = g[x][y].hl ? ( g[x][y].hl == 2 ? '#99CCFF' : '#00CCFF' ) : 'grey';
+				else if ( g[x][y] instanceof Corridor ) ctx.fillStyle = '#99FF99';
+				else ctx.fillStyle = g[x][y] == 1 ? 'grey' : 'white';
+
 				ctx.fillRect(x*size, y*size, size, size);
 				ctx.strokeRect(x*size, y*size, size, size);
 			}
@@ -62,7 +67,7 @@
 		for( var x = 0; x < room.shape.length; x++ )
 			for( var y = 0; y < room.shape[0].length; y++ )
 				if( room.shape[x][y] ) {
-					ctx.fillStyle = map.grid[x+rx][ry+y] ? 'red' : (room.shape[x][y] == 1 ? 'blue' : 'green');
+					ctx.fillStyle = map.grid[x+rx][ry+y] instanceof Room ? 'red' : (room.shape[x][y] == 1 ? 'blue' : 'green');
 					ctx.fillRect((x+rx)*size, (ry+y)*size, size, size);
 					ctx.strokeRect((x+rx)*size, (ry+y)*size, size, size);
 				}
@@ -96,15 +101,22 @@
 		var y = Math.floor( evt.layerY / size );
 
 		if( x != mouse.x || y != mouse.y ) {
-			display(gameScreen, map.getGrid());
+			if( !placeMe && map.grid[x][y] instanceof Room ) {
+				for( var i in map.rooms ) map.rooms[i].hl = false;
+				map.grid[x][y].hl = 1;
+				for( var i in map.grid[x][y].neighbors ) map.grid[x][y].neighbors[i].hl = 2;
+			}
+
+			display(gameScreen, map.grid);
 			if( placeMe ) displayRoom(gameScreen, placeMe, x-1, y-1);
+
 			mouse.x = x; mouse.y = y;
 		}
 	}
 
 	function placeRoom() {
 		map.placeRoom( placeMe, mouse.x, mouse.y );
-		display(gameScreen, map.getGrid());
+		display(gameScreen, map.grid);
 	}
 
 

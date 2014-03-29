@@ -15,6 +15,7 @@ window.onload = function() {
 	initIso(mapSize.width,mapSize.height);
 	initSprites();
 	initControls();
+	initMenu();
 
     map = new Map(initGrid(mapSize.width,mapSize.height))
 
@@ -30,6 +31,8 @@ window.onload = function() {
 function run() {
 	// Set zoom level
 	Crafty.viewport.scale(4);
+	// Limit scrollable area
+	//Crafty.viewport.clampToEntities = true;
 
 	fillMap();
 }
