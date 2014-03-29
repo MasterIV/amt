@@ -94,7 +94,8 @@ function mapScene() {
 						var dx = offset.x+(x+pos.x)*16+(y+pos.y)*-16;
 						var dy = offset.y+(x+pos.x)*8+(y+pos.y)*8;
 
-						if( map.grid[x+pos.x] && map.grid[x+pos.x][y+pos.y] && map.grid[x+pos.x][y+pos.y] instanceof Room )
+						if( typeof map.grid[x+pos.x] == 'undefined' || typeof map.grid[x+pos.x][y+pos.y] == 'undefined' ||
+							map.grid[x+pos.x][y+pos.y] == 1 || map.grid[x+pos.x][y+pos.y] instanceof Room )
 							var img =  'img/place_invalid.png';
 						else var img = placeMe.shape[x][y] == 1 ? 'img/place_room.png' : 'img/place_corridor.png';
 
