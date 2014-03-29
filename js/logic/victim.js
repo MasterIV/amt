@@ -41,9 +41,9 @@ function Victim(workRoom) {
 		}
 	}
 	
-	this.draw = function(ctx, viewport) {
-		var dx = viewport.x+this.offset.x+this.posScreem.x-this.offset.x;
-		var dy = viewport.y+this.offset.y+this.posScreem.y-this.offset.y;
+	this.draw = function(ctx, offset,viewport) {
+		var dx = viewport.x+offset.x+this.posScreem.x-this.offset.x;
+		var dy = viewport.y+offset.y+this.posScreem.y-this.offset.y;
 		ctx.drawImage( this.img, 0, 0, this.img.width, this.img.height, dx, dy,  this.img.width, this.img.height );
 	}
 
