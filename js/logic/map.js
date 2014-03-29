@@ -44,13 +44,13 @@ function Map( grid ) {
 	 * @param roomType
 	 * @param x
 	 * @param y
-	 * @returns {boolean}
+	 * @returns {*}
 	 */
 	this.placeRoom = function( roomType, x, y ) {
 		if( self.checkCollision( roomType, x, y )) return false;
 		if( self.money < roomType.price ) return false;
 
-		var roomInstance = new Room( x, y, roomType );
+		var roomInstance = new Room( x, y, roomType, this );
 		self.money -= roomType.price;
 		x -= 1; y -= 1;
 
@@ -72,12 +72,9 @@ function Map( grid ) {
 	}
 
 	this.update = function( delta ) {
-		var change = false;
-
 		// add income
 		self.money += self.income * delta;
 		// budget cooldown
 		if( self.cooldown > 0 ) this.cooldown -= delta;
-
 	}
 }
