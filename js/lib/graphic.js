@@ -1,5 +1,9 @@
 var g = {
-	urls: [],
+	urls: [
+		'img/floor.png',
+		'img/wall_x.png',
+		'img/wall_y.png'
+	],
 
 	add: function( url ) {
 		this.urls.push( url );

@@ -6,7 +6,7 @@
 <body>
 
 <script src="js/include/jquery-1.11.0.min.js"></script>
-<script src="js/graphics/graphic.js"></script>
+<script src="js/lib/graphic.js"></script>
 
 <script src="js/logic/helper.js"></script>
 <script src="js/logic/room.js"></script>
@@ -28,7 +28,7 @@
 	var root = h*16;
 
 	g.urls = [
-		'img/floor_snacks.png',
+		'img/floor.png',
 		'img/wall_x.png',
 		'img/wall_y.png'
 	];
@@ -67,7 +67,7 @@
 					if( x == 0 || grid[x-1][y] != 0 ) ctx.drawImage(g['img/wall_y.png'], 0, 0, 16, 39, dx-16, dy-31, 16, 39); // draw right wall
 					if( y == 0 || grid[x][y-1] != 0  ) ctx.drawImage(g['img/wall_x.png'], 0, 0, 16, 39, dx, dy-31, 16, 39); // draw left wall
 
-					ctx.drawImage(g['img/floor_snacks.png'], 0, 0, 32, 16, dx-16, dy, 32, 16);
+					ctx.drawImage(g['img/floor.png'], 0, 0, 32, 16, dx-16, dy, 32, 16);
 				}
 
 		stx.imageSmoothingEnabled = false;
