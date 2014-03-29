@@ -1,16 +1,19 @@
-function Victim(workRoom) {
+function Victim(pMap, pOffset, pViewport) {
+	var map = pMap;
+	var offset = pOffset;
+	var viewport = pViewport;
 	var waitRoom;
 	this.anger = 0;	
 	
-	this.posScreem = new V2( x*16+y*-16, x*8+y*8 );
+	this.posScreem = new V2( 50,200);
 	this.offset = new V2(0, 0);
 
-	this.currentPath = null;
-	this.movementSpeed = 1;
+	this.currentPath = [];
+	this.movementSpeed = 0.02;
 
 	this.enter = function() {
-		this.x = 0; // levelstart
-		this.y = 0;
+		this.posScreem.x = 0; // levelstart
+		this.posScreem.y = 0;
 	}
 
 	this.img = g['img/testvictim.png'];
@@ -25,22 +28,28 @@ function Victim(workRoom) {
 	}
 
 	this.goTo = function(posX, posY) {
-		this.currentPath = a_star([this.posScreem.x, this.posScreem.y], [posX,posY], map.grid, map.grid.length, map.grid[0].length, false);
-		
+		var start = getIsoCoords({x:this.posScreem.x,y:this.posScreem.y},offset,viewport);
+
+		this.currentPath = a_star([start.x, start.y], [posX,posY],map.grid, map.grid.length, map.grid[0].length, false);
 	}
-	
+
 	this.update = function(delta) {
 		if (this.currentPath.length) {
 			 if (this.currentPath[0].x != this.posScreem.x) {
-				 this.posScreem.x = this.posScreem.x + (this.currentPath[0].x>this.posScreem.x)?(-1*this.movementSpeed*delta):(this.movementSpeed*delta);
+				 this.posScreem.x = this.posScreem.x + ((this.currentPath[0].x*32>this.posScreem.x)?(0.3):(-0.3)); // offset? viewport? speed?
 			 }
 			 if (this.currentPath[0].y != this.posScreem.y) {
-				 this.posScreem.y = this.posScreem.y + (this.currentPath[0].y>this.posScreem.y)?(-1*this.movementSpeed*delta):(this.movementSpeed*delta);
+				 this.posScreem.y = this.posScreem.y + ((this.currentPath[0].y*16>this.posScreem.y)?(0.3):(-0.3));// offset? viewport? speed?
 			 }
-			if (this.currentPath[0].x == this.posScreem.x && this.currentPath[0].y == this.posScreem.y) {
+			if (this.currentPath[0].x*32 == parseInt(this.posScreem.x) && this.currentPath[0].y*16 == parseInt(this.posScreem.y)) {
 				this.currentPath.splice(0,1);
 			}
 		}
+
+	}
+
+	this.getZ = function() {
+		return this.posScreem.y;
 	}
 	
 	this.draw = function(ctx, offset,viewport) {

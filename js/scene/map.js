@@ -13,6 +13,10 @@ function mapScene() {
 	entities.push( map );
 	entities.push( bg );
 
+
+	entities.push( new Victim(map,offset,viewport) );
+
+
 	function roomlist(r) {
 		var list = document.getElementById('roomlist');
 		for( var i in r ) {
