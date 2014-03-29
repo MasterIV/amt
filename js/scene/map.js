@@ -76,6 +76,9 @@ function mapScene() {
 	this.update = function( delta ) {
 		var changed = false;
 
+		// Eins zeiteinheit ist 10 sekunden ?
+		delta /= 1000 * 10;
+
 		for( var i = 0; i < entities.length; i++ )
 			if( entities[i].update ) {
 				var result = entities[i].update( delta );

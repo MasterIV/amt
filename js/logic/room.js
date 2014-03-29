@@ -39,7 +39,7 @@ function Room( x, y, type, map ) {
 		this.slow = 1;
 	}
 
-	this.enabled();
+	this.enable();
 
 	this.updateFactors = function() {
 		var customers = 0;
@@ -86,8 +86,11 @@ function Room( x, y, type, map ) {
 
 			if( this.work > this.speed ) {
 				// warteschlange abarbeiten
-				this.queue.shift().leave();
-				map.money += type.fee;
+				if( this.queue.length ) {
+					this.queue.shift().leave();
+					map.money += type.fee;
+				}
+
 				this.work -= this.speed;
 				result = true;
 			}
