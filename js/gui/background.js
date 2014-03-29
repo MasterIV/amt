@@ -5,7 +5,7 @@ function Background( grid, offset ) {
 	var w = grid.length;
 	var h = grid[0].length;
 
-	this.canvas.width = (w+h)*16;
+	this.canvas.width = (w+h)*16 + offset.x;
 	this.canvas.height = (w+h)*8 + offset.y;
 
 	for( var x = 0; x < w; x++ )
