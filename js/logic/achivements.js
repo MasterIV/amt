@@ -2,12 +2,14 @@ function Achivement(pMessage, pLimit) {
     this.message = pMessage;
     this.limit = pLimit;
     this.value = 0;
+    this.finished = false;
 
     this.track = function(increaseValue) {
         this.value += increaseValue;
 
         console.log(this.value,this.limit);
-        if (this.value >= this.limit) {
+        if (this.value >= this.limit && !this.finished) {
+            this.finished = true;
             popupAchivementMessage(this);
         }
     }
@@ -20,8 +22,8 @@ function popupAchivementMessage(achivement) {
     $('#achivements').append(achivementPopup);
 
     window.setTimeout(function () {
-        //$(achivementPopup).fadeOut(function () {
-         //   $(achivementPopup).remove();
-        //});
+        $(achivementPopup).fadeOut(achivementFadeTime,function () {
+            $(achivementPopup).remove();
+        });
     },achivementPopupShowTime);
 }
