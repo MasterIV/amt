@@ -1,17 +1,16 @@
-/* Menu */
 var statsUi = {
 	stats: {},
 	initUi: function() {
-		// Add main menu div
 		$('<div id="statsUi"></div>').append("body");
 	},
-	addStat: function(name, getValue) {
+	addStat: function(name) {
 		this.stats[name] = {
 			value:0
 		};
-		$('#statsUi').append('<span class="'+name+'"></span>')
+		$('#statsUi').append('<span class="'+name+'"></span>');
 	},
 	updateStat: function(name, value) {
-		$('#statsUi').find('.'+name)
+		this.stats[name].value = value;
+		$('#statsUi').find('.'+name).html(value);
 	}
 }
