@@ -1,5 +1,5 @@
 function menuScene() {
-	game.zoom = 1;
+	game.zoom = 2;
 
 	mouse.init();
 
@@ -25,8 +25,8 @@ function menuScene() {
 	]
 
 	this.draw = function( ctx ) {
-		ctx.drawImage(g['img/startScreen_background.png'],0,0);
-		ctx.drawImage(g['img/startScreen_menu.png'],400,264);
+
+		this.drawBackground(ctx)
 
 		for(var i = 0; i < this.entities.length; i++) {
 			if(this.entities[i].draw)
@@ -34,11 +34,52 @@ function menuScene() {
 		}
 	};
 
+	this.drawBackground = function(ctx) {
+		for( var x = -1; x < $(window).width()/(32*game.zoom) ; x++ )
+			for( var y = -1; y < $(window).height()/(8*game.zoom); y++ ) {
+				ctx.drawImage(g['img/floor.png'], 0, 0, 32, 16, x*32 - ((y%2==0)?16:0), y*8, 32, 16);
+			}
+
+		var x = 0,
+			y = 4,
+			img = g[rooms[0]['image']];
+		ctx.drawImage(img, 0, 0, img.width, img.height, x*32, y*8, img.width, img.height);
+
+		var x = 8,
+			y = 12,
+			img = g[rooms[1]['image']];
+		ctx.drawImage(img, 0, 0, img.width, img.height, x*32, y*8, img.width, img.height);
+
+		var x = 16,
+			y = 2,
+			img = g[rooms[2]['image']];
+		ctx.drawImage(img, 0, 0, img.width, img.height, x*32, y*8, img.width, img.height);
+
+		var x = 0,
+			y = 20,
+			img = g[rooms[3]['image']];
+		ctx.drawImage(img, 0, 0, img.width, img.height, x*32, y*8, img.width, img.height);
+
+		var x = 15,
+			y = 22,
+			img = g[rooms[4]['image']];
+		ctx.drawImage(img, 0, 0, img.width, img.height, x*32, y*8, img.width, img.height);
+
+		var x = 10,
+			y = 29,
+			img = g[rooms[5]['image']];
+		ctx.drawImage(img, 0, 0, img.width, img.height, x*32, y*8, img.width, img.height);
+
+		var x = 10,
+			y = -4,
+			img = g[rooms[6]['image']];
+		ctx.drawImage(img, 0, 0, img.width, img.height, x*32, y*8, img.width, img.height);
+	}
+
 	this.mousedown = function (mouse) {
 		for(var i = 0; i < this.entities.length; i++)
 			if(this.entities[i].inArea(mouse))
 				this.entities[i].callback();
-		console.log(mouse);
 	};
 
 	this.update = function ( delta ) {
