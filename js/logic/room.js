@@ -64,6 +64,9 @@ function Room( x, y, type, map ) {
 		var dx = viewport.x+ofs.x+this.posScreen.x-offset.x;
 		var dy = viewport.y+ofs.y+this.posScreen.y-offset.y;
 		ctx.drawImage( img, 0, 0, img.width, img.height, dx, dy, img.width, img.height );
+
+		progressLayerRect(ctx, dx + offset.x - 25, dy - 10, 50, 5, 0.5, '#00f');
+		progressLayerRect(ctx, dx + offset.x - 25, dy - 3, 50, 5, 0.5, '#f00');
 	}
 
 	/**
