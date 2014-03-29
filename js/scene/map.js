@@ -1,12 +1,12 @@
 function mapScene() {
-	var w = 20;
-	var h = 30;
+	var w = levels[0].grid[0].length;
+	var h = levels[0].grid.length;
 
 	var placeMe;
 	var dragging = false;
 	var last;
 
-	var map = new Map( initGrid(w, h));
+	var map = new Map( levels[0].grid);
 	var offset = new V2( h*16, 31 );
 	var bg = new Background(map.grid, offset);
 	var viewport = { x: 0, y: 0, w: 0, h: 0 };

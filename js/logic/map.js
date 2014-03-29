@@ -45,7 +45,7 @@ function Map( grid ) {
 
 		for( var rx = 0; rx < roomType.shape.length; rx++ )
 			for( var ry = 0; ry < roomType.shape[0].length; ry++ )
-				if( roomType.shape[rx][ry] && grid[x+rx][ry+y] instanceof Room )
+				if( roomType.shape[rx][ry]  &&  ( grid[x+rx][ry+y]  instanceof Room  ||  grid[x+rx][ry+y] == 1))
 					collisions.push({x: x+rx, y: y+ry });
 
 		return collisions.length ? collisions : false;
