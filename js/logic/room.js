@@ -1,6 +1,9 @@
 function Room( x, y, type ) {
-	this.x = x;
-	this.y = y;
+	this.posGrid = new V2( x, y );
+
+	this.posScreem = new V2( x*16+y*-16, x*8+y*8 );
+	this.offset = new V2( type.offset.x, type.offset.y );
+	this.getImage = function() { return g[type.image]; };
 
 	// Benachbarte Räume
 	this.neighbors = [];

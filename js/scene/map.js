@@ -75,14 +75,15 @@ function mapScene() {
 	this.draw = function( ctx ) {
 		ctx.drawImage( bg.canvas, viewport.x, viewport.y );
 
-		/* Z sorting
-		map.rooms.sort(function( a, b ) {
-
-		});
-
+		/* Z sorting */
+		map.rooms.sort(function( a, b ) { return a.posScreem.y - b.posScreem.y });
 		for( var i in map.rooms ) {
-
-		}*/
+			var r = map.rooms[i];
+			var img = r.getImage();
+			var dx = viewport.x+offset.x+r.posScreem.x-r.offset.x;
+			var dy = viewport.y+offset.y+r.posScreem.y-r.offset.y;
+			ctx.drawImage( img, 0, 0, img.width, img.height, dx, dy,  img.width, img.height );
+		}
 
 		if( placeMe ) {
 			var pos = getCoords( mouse );

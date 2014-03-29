@@ -33,6 +33,9 @@
 
 	<script type="text/javascript">
 		$(function () {
+			for( var i in rooms )
+				g.add( rooms[i].image );
+
 			g.load(function () {
 				game.scene = new mapScene();
 				game.debug = true;
