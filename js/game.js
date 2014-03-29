@@ -21,6 +21,9 @@ var game = {
 	buffer: null,
 	bufferCtx: null,
 
+	gameFont: "12px Fixedsys",
+	gameFontColor: "white",
+
 	resize: function() {
 		this.display.width = window.innerWidth;
 		this.display.height = window.innerHeight;
@@ -37,6 +40,8 @@ var game = {
 
 		this.buffer = document.createElement('canvas');
 		this.bufferCtx = this.buffer.getContext('2d');
+
+		this.display.font = this.gameFont;
 
 		this.resize();
 

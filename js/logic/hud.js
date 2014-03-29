@@ -5,7 +5,10 @@ function Hud( map, rooms, mapscene ) {
 	this.rooms = rooms;
 
 	this.moneybarwidth = 307;
-	this.personsbarwidth = 191;
+	this.personsbarwidth = 190;
+	this.bariconwidth = 27;
+	this.barfieldwidth = 94;
+	this.textoffsety = 13;
 	this.constructionmenuheight = 100;
 	this.barfixed = 20;
 	this.buttonsize = 20;
@@ -35,6 +38,14 @@ function Hud( map, rooms, mapscene ) {
 		ctx.drawImage(g['img/HUD/persons.png'], this.moneybarwidth,0, this.personsbarwidth,this.barfixed);
 		// Right border
 		ctx.drawImage(g['img/HUD/top_ui_bg.png'], this.moneybarwidth + this.personsbarwidth,0, game.buffer.width - (this.moneybarwidth + this.personsbarwidth),this.barfixed);
+
+		ctx.fillStyle = game.gameFontColor;
+		// Money
+		ctx.fillText(this.map.money | 0, this.bariconwidth, this.textoffsety);
+		// Income
+		ctx.fillText(this.map.income | 0, this.barfieldwidth*2 + this.bariconwidth*2, this.textoffsety);
+		// Persons
+		ctx.fillText(this.map.people, this.barfieldwidth*3 + this.bariconwidth*2, this.textoffsety);
 
 		/* Left bar */
 
