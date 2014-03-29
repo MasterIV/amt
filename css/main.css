@@ -22,6 +22,42 @@ body, html {
     padding: 10px;
 }
 
+#achivementOverlay {
+    width: 420px;
+
+    padding: 50px;
+
+
+    position: absolute;
+    top: -1000px;
+    left: 50%;
+    margin-left: -210px;
+
+    -webkit-transition: top 1s;
+    -moz-transition: top 1s;
+    -ms-transition: top 1s;
+    -o-transition: top 1s;
+    transition: top 1s;
+
+
+    background: rgba(0,0,0,0.5);
+}
+#achivementOverlay #innerWrapper {
+    overflow-y:scroll;
+    padding-right: 20px;
+}
+
+#overlayClose {
+    position: absolute;
+    right:10px;
+    top:10px;
+
+    width: 10px;
+    height: 10px;
+
+    background: red;
+}
+
 #gameScreen {
     position: relative;
     background-color: #ccc;
