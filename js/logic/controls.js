@@ -32,7 +32,13 @@ function testPlaceRoom() {
     var result = map.checkCollision(rooms[0], hoveredTile.x,hoveredTile.y);
     if (!result) {
         map.placeRoom(rooms[0], hoveredTile.x,hoveredTile.y)
+        myPlaceRoom(hoveredTile.x,hoveredTile.y);
     } else {
         console.log(result);
     }
+}
+
+function myPlaceRoom(pX, pY) {
+    var room = Crafty.e("2D, Canvas, room, Mouse");
+    iso.place(pX, pY, 0, room);
 }

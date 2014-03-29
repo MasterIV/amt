@@ -4,8 +4,8 @@
 
 var map = null;
 var mapSize = {
-    width:50,
-    height:50
+    width:6,
+    height:6
 }
 
 window.onload = function() {

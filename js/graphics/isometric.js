@@ -20,10 +20,48 @@ function fillMap() {
                             x:pX,
                             y:pY
                         };
+                        console.log([pX,pY])
+                        console.log(getIsoCoords(pX,pY));
+
                     });
             })(i,j);
 
-			iso.place(i,j, 0, tiles[i][j]);
+            var coords = getIsoCoords(i,j);
+
+            //console.log(coords);exit;
+
+			iso.place(coords.x,coords.y, 0, tiles[i][j]);
 		}
     }
+}
+
+
+function getIsoCoords(x,y) {
+    var calcX = (mapSize.width)/2 - (y) + x;
+    var calcY = y + x;
+
+    if (x<y) {
+        calcX = calcX - parseInt((x-y)/2);
+    }
+    if (x>y) {
+        calcX = calcX - parseInt((x-y)) + parseInt((x-y)/2);
+    }
+
+    return {x:calcX,y:calcY};
+}
+
+function drawTestTile(x,y) {
+    var t = Crafty.e("2D, Canvas, default, Mouse")
+        .areaMap([0,8],[16,0],[32,8],[16,8])
+        .bind('MouseOver', function (e) {
+            hoveredTile = {
+                x:pX,
+                y:pY
+            };
+            console.log([pX,pY])
+            console.log(getIsoCoords(pX,pY));
+
+        });
+
+iso.place(x,y, 0, t);
 }
