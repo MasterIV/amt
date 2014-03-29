@@ -16,8 +16,6 @@ function Achivement(pMessage, pLimit) {
 }
 
 function popupAchivementMessage(achivement) {
-    console.log(34234);
-
     var achivementPopup = $('<div class="achivementPopup"><span>'+achivement.message+'</span></div>');
     $('#achivements').append(achivementPopup);
 

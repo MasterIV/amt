@@ -24,7 +24,7 @@ function Victim(pMap, pOffset, pViewport) {
 		currentRoom = room;
 	};
 
-	this.gotoRoom = function( room ) {
+	this.getWorked = function( room ) {
 		room.addPeople( this );
 		currentRoom = room;
 	};
@@ -33,6 +33,8 @@ function Victim(pMap, pOffset, pViewport) {
 		this.anger += anger;
 
 		if (this.anger > this.angerLimit) {
+
+			achivements.track('AngryPeople',1);
 			this.leave();
 		}
 	}
@@ -53,7 +55,7 @@ function Victim(pMap, pOffset, pViewport) {
 				this.currentPath.splice(0,1);
 			}
 		} else {
-			//this.goTo(Math.random()*15|0,Math.random()*15|0);
+
 		}
 	}
 
@@ -69,20 +71,7 @@ function Victim(pMap, pOffset, pViewport) {
 		var dx = viewport.x+offset.x+this.posScreem.x-this.offset.x;
 		var dy = viewport.y+offset.y+this.posScreem.y-this.offset.y;
 
-		getCoords( {x:dx,y:dy} ,offset, viewport);
-
 		ctx.drawImage( this.img, 0, 0, this.img.width, this.img.height, dx, dy,  this.img.width, this.img.height );
-	}
-
-
-	function getCoords( point ,offset, viewport) {
-		var x = point.x - offset.x - viewport.x;
-		var y = point.y - offset.y - viewport.y;
-
-		var mx = ((x / 16 + y / 8) / 2 ) | 0;
-		var my = ((y / 8 - (x / 16)) / 2 ) | 0;
-		//console.log(mx,my)
-		return new V2( mx, my );
 	}
 
 

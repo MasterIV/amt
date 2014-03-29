@@ -63,6 +63,7 @@ function Map( grid ) {
 					else grid[x+rx][ry+y] = new Corridor( roomInstance );
 				}
 
+		achivements.track('RoomCount',1);
 		return roomInstance;
 	};
 

@@ -2,7 +2,7 @@
 
 function initMenu() {
 	// Add main menu div
-	$('<div id="menu"></div>').insertAfter("#cr-stage");
+	$('<div id="menu"></div>').append("body");
 	// CSS
 	$("#menu").attr("style",
 		'position:absolute;' +
