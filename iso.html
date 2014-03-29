@@ -34,8 +34,8 @@
 	];
 
 	function detectClick( evt ) {
-		var x = evt.layerX - root;
-		var y = evt.layerY - offsY;
+		var x = evt.layerX/2 - root;
+		var y = evt.layerY/2 - offsY;
 
 		var mx = ((x / 16 + y / 8) / 2 ) | 0;
 		var my = ((y / 8 - (x / 16)) / 2 ) | 0;
@@ -45,10 +45,17 @@
 
 	g.load(function() {
 		var gameScreen = document.getElementById('gameScreen');
-		var ctx = gameScreen.getContext('2d');
+		var ofsc = document.createElement('canvas');
 
-		gameScreen.width = (w+h)*16;
-		gameScreen.height = (w+h)*8 + offsY;
+		var stx = gameScreen.getContext('2d');
+		var ctx = ofsc.getContext('2d');
+
+		ofsc.width = (w+h)*16;
+		ofsc.height = (w+h)*8 + offsY;
+
+		gameScreen.width = ofsc.width*2;
+		gameScreen.height = ofsc.height*2;
+
 		gameScreen.onclick = detectClick;
 
 		for( var x = 0; x < w; x++ )
@@ -62,6 +69,9 @@
 
 					ctx.drawImage(g['img/floor_snacks.png'], 0, 0, 32, 16, dx-16, dy, 32, 16);
 				}
+
+		stx.imageSmoothingEnabled = false;
+		stx.drawImage( ofsc, 0, 0, ofsc.width, ofsc.height, 0, 0, gameScreen.width, gameScreen.height );
 	});
 
 
