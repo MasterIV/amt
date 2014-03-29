@@ -28,4 +28,10 @@ function cButton( x,y,width,height, category, image, hud ) {
 			return true;
 		}
 	}
+
+	this.mousedown = function ( mouse ) {
+		if (this.inArea( mouse )) {
+			return true;
+		}
+	}
 }

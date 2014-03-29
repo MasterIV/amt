@@ -52,6 +52,16 @@ function Hud( map, rooms, mapscene ) {
 					return true;
 	}
 
+	this.mousedown = function( mouse ) {
+		if ( mouse.y <= this.barfixed ) return true;
+
+		for (var i in this.entities)
+			if (this.entities[i].mousedown)
+				if (this.entities[i].mousedown( mouse ))
+					return true;
+	}
+
+
 	this.toggleRoomSelector = function( category, x, y ) {
 		if (this.roomselector) {
 			if (this.roomselector.y == y) {
