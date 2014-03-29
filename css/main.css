@@ -15,6 +15,12 @@ body, html {
     margin-left: -150px;
 }
 
+.achivementPopup {
+    background: #fff;
+    margin-bottom: 10px;
+
+    padding: 10px;
+}
 
 #gameScreen {
     position: relative;

@@ -3,6 +3,7 @@ function Victim(workRoom) {
 	this.anger = 0;	
 	
 	this.posScreem = new V2( x*16+y*-16, x*8+y*8 );
+	this.offset = new V2(0, 0);
 
 	this.currentPath = null;
 	this.movementSpeed = 1;
@@ -22,7 +23,7 @@ function Victim(workRoom) {
 	}
 
 	this.goTo = function(posX, posY) {
-		this.currentPath = a_star([this.posScreem.x, this.posScreem.y], [posX,posY], map.grid, map.grid.length, map.grid[0].length, false); // change MAP DIMENSIONS
+		this.currentPath = a_star([this.posScreem.x, this.posScreem.y], [posX,posY], map.grid, map.grid.length, map.grid[0].length, false);
 		
 	}
 	
