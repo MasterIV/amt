@@ -6,7 +6,9 @@ var g = {
 		'img/place_corridor.png',
 		'img/place_invalid.png',
 		'img/place_room.png',
-		'img/testvictim.png'
+		'img/testvictim.png',
+		'img/startScreen_background.png',
+		'img/startScreen_menu.png'
 	],
 
 	add: function( url ) {
