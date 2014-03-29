@@ -13,9 +13,6 @@ function mapScene() {
 	entities.push( map );
 	entities.push( bg );
 
-	entities.push( new Victim(map,offset,viewport) );
-
-
 	function roomlist(r) {
 		var list = document.getElementById('roomlist');
 		for( var i in r ) {
@@ -66,11 +63,14 @@ function mapScene() {
 
 	this.click = function( mouse ) {
 		var pos = getCoords( mouse );
-		console.log(pos,mouse);
+
 		if( placeMe ) {
 			var room = map.placeRoom( placeMe, pos.x, pos.y );
-			if( room ) entities.push( room );
-			updateRooms();
+			if( room ) {
+				entities.push( room );
+				updateRooms();
+				placeMe = null;
+			}
 		} else if( map.roomAt( pos.x, pos.y ) instanceof Room ) {
 			// show room info
 		}
@@ -107,7 +107,18 @@ function mapScene() {
 
 	this.draw = function( ctx ) {
 		/* Z sorting */
-		entities.sort(function( a, b ) { return a.getZ() - b.getZ() });
+		entities.sort(function( a, b ) {
+			var dif = a.getZ() - b.getZ();
+			if( dif != 0 ) return dif;
+
+			if( a instanceof Room && b instanceof Room ) {
+				if( a.posScreen.x < b.posScreen.x ) return a.posRight - b.posLeft;
+				return a.posLeft - b.posRight;
+			}
+
+			return 0;
+		});
+
 		for( var i = 0; i < entities.length; i++ )
 			if( entities[i].draw ) entities[i].draw( ctx, offset, viewport );
 

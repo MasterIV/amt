@@ -1,7 +1,10 @@
 function Room( x, y, type ) {
 	this.posGrid = new V2( x, y );
 
-	var posScreem = new V2( x*16+y*-16, x*8+y*8 );
+	this.posScreen = new V2( x*16+y*-16, x*8+y*8 );
+	this.posLeft = this.posScreen.y + ( type.shape[0].length-2 ) * 8;
+	this.posRight = this.posScreen.y + ( type.shape.length-2 ) * 8;
+
 	var offset = new V2( type.offset.x, type.offset.y );
 
 	// Benachbarte Räume
@@ -41,14 +44,10 @@ function Room( x, y, type ) {
 		if( type.upkeep ) this.income -= type.upkeep;
 	};
 
-	this.getZ = function() {
-		return posScreem.y;
-	}
-
 	this.draw = function( ctx, ofs, viewport ) {
 		var img = g[type.image];
-		var dx = viewport.x+ofs.x+posScreem.x-offset.x;
-		var dy = viewport.y+ofs.y+posScreem.y-offset.y;
+		var dx = viewport.x+ofs.x+this.posScreen.x-offset.x;
+		var dy = viewport.y+ofs.y+this.posScreen.y-offset.y;
 		ctx.drawImage( img, 0, 0, img.width, img.height, dx, dy, img.width, img.height );
 	}
 
@@ -71,11 +70,7 @@ function Room( x, y, type ) {
 		}
 	};
 
-	this.addPeople = function(victim) {
-		this.people.push(victim);
-	}
-
-	this.addWaiter = function(victim) {
-		this.queue.push(victim);
+	this.getZ = function() {
+		return this.posScreen.y;
 	}
 }
