@@ -18,4 +18,12 @@ function Background( grid, offset ) {
 				if( y == 0 || grid[x][y-1] != 0  ) ctx.drawImage(g['img/wall_x.png'], 0, 0, 16, 39, dx, dy-31, 16, 39);
 				ctx.drawImage(g['img/floor.png'], 0, 0, 32, 16, dx-16, dy, 32, 16);
 			}
+
+	this.getZ = function() {
+		return -1;
+	}
+
+	this.draw = function( ctx, offset, viewport ) {
+		ctx.drawImage( this.canvas, viewport.x, viewport.y );
+	}
 }

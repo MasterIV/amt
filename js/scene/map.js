@@ -3,12 +3,15 @@ function mapScene() {
 	var dragging = false;
 	var last;
 
-	var entities = [];
 
 	var map = new Map( levels[0].grid );
+	var entities = map.getWalls();
 	var offset = new V2( map.grid[0].length*16, 31 );
 	var bg = new Background(map.grid, offset);
 	var viewport = { x: 50, y: 50, w: 0, h: 0 };
+
+	entities.push( map );
+	entities.push( bg );
 
 	function roomlist(r) {
 		var list = document.getElementById('roomlist');
@@ -76,13 +79,10 @@ function mapScene() {
 	}
 
 	this.draw = function( ctx ) {
-		ctx.drawImage( bg.canvas, viewport.x, viewport.y );
-
 		/* Z sorting */
-		var ofs = offset.sum( viewport );
 		entities.sort(function( a, b ) { return a.getZ() - b.getZ() });
 		for( var i = 0; i < entities.length; i++ )
-			if( entities[i].draw ) entities[i].draw( ctx, ofs );
+			if( entities[i].draw ) entities[i].draw( ctx, offset, viewport );
 
 		if( placeMe ) {
 			var pos = getCoords( mouse );
