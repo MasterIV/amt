@@ -266,7 +266,7 @@ var rooms = [
 		]
 	},
 	{
-		name: "Firnessraum",
+		name: "Fitnessraum",
 		category: "other",
 
 		entertainment: 1,
@@ -276,7 +276,7 @@ var rooms = [
 		upkeep: 100,
 		price: 500,
 
-		image:'img/rooms/firnessraum.png',
+		image:'img/rooms/fitnessraum.png',
 		offset: {x: 51, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2 ],
