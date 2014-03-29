@@ -13,7 +13,7 @@ function fillMap() {
         tiles[i] = [];
 		for (var j = 0 ; j < mapSize.height ; j++) {
             (function (pX, pY) {
-                tiles[i][j] = Crafty.e("2D, Canvas, default, Mouse")
+                tiles[i][j] = Crafty.e("2D, Canvas, snacks, Mouse")
                     .areaMap([0,8],[16,0],[32,8],[16,8])
                     .bind('MouseOver', function (e) {
                         hoveredTile = {
@@ -48,20 +48,4 @@ function getIsoCoords(x,y) {
     }
 
     return {x:calcX,y:calcY};
-}
-
-function drawTestTile(x,y) {
-    var t = Crafty.e("2D, Canvas, default, Mouse")
-        .areaMap([0,8],[16,0],[32,8],[16,8])
-        .bind('MouseOver', function (e) {
-            hoveredTile = {
-                x:pX,
-                y:pY
-            };
-            console.log([pX,pY])
-            console.log(getIsoCoords(pX,pY));
-
-        });
-
-iso.place(x,y, 0, t);
 }
