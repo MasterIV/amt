@@ -81,8 +81,8 @@ function mapScene() {
 
 	this.mousemove = function( mouse ) {
 		if( dragging ) {
-			viewport.x += Math.round(mouse.x - last.x);
-			viewport.y += Math.round(mouse.y - last.y);
+			viewport.x += mouse.x - last.x;
+			viewport.y += mouse.y - last.y;
 			last = mouse.clone();
 		}
 	}

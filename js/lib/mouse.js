@@ -6,8 +6,8 @@ mouse.init = function() {
 	var start = { x: 0, y: 0 };
 
 	gameframe.onmousemove = function( ev ) {
-		self.x = ( ev.clientX - gameframe.offsetLeft ) / game.zoom;
-		self.y = ( ev.clientY - gameframe.offsetTop ) / game.zoom;
+		self.x = ( ev.clientX - gameframe.offsetLeft ) / game.zoom | 0;
+		self.y = ( ev.clientY - gameframe.offsetTop ) / game.zoom | 0;
 		if( game.scene.mousemove )
 			game.scene.mousemove( self );
 	};
