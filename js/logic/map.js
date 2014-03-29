@@ -1,6 +1,5 @@
 function Map( grid ) {
 	var self = this;
-	this.rooms = [];
 	this.grid = grid;
 
 	// Globale werte
@@ -8,18 +7,6 @@ function Map( grid ) {
 	this.income = 0;
 	this.people = 0;
 	this.cooldown = 0;
-
-	function updateRooms() {
-		self.income = 0;
-		self.people = 0;
-
-		for( var i in self.rooms ) {
-			var r = self.rooms[i];
-			r.updateFactors();
-			self.income += r.income;
-			self.people += r.people.length;
-		}
-	}
 
 	this.roomAt = function( x, y ) {
 		return self.grid[x][y];
@@ -64,7 +51,6 @@ function Map( grid ) {
 		if( self.money < roomType.price ) return false;
 
 		var roomInstance = new Room( x, y, roomType );
-		self.rooms.push(roomInstance);
 		self.money -= roomType.price;
 		x -= 1; y -= 1;
 
@@ -77,8 +63,7 @@ function Map( grid ) {
 					else grid[x+rx][ry+y] = new Corridor( roomInstance );
 				}
 
-		updateRooms();
-		return true;
+		return roomInstance;
 	};
 
 	this.update = function( delta ) {
@@ -89,13 +74,5 @@ function Map( grid ) {
 		// budget cooldown
 		if( self.cooldown > 0 ) this.cooldown -= delta;
 
-		// update waiting rooms
-		for( var i in self.rooms ) {
-			var result = self.rooms[i].update( delta );
-			if( result ) change = true;
-			if( result instanceof Victim ) ; // place Victim in waiting room
-		}
-
-		if( change ) updateRooms();
 	}
 }

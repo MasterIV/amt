@@ -1,9 +1,8 @@
 function Room( x, y, type ) {
 	this.posGrid = new V2( x, y );
 
-	this.posScreem = new V2( x*16+y*-16, x*8+y*8 );
-	this.offset = new V2( type.offset.x, type.offset.y );
-	this.getImage = function() { return g[type.image]; };
+	var posScreem = new V2( x*16+y*-16, x*8+y*8 );
+	var offset = new V2( type.offset.x, type.offset.y );
 
 	// Benachbarte Räume
 	this.neighbors = [];
@@ -41,6 +40,17 @@ function Room( x, y, type ) {
 		if( type.income ) this.income += type.income * customers;
 		if( type.upkeep ) this.income -= type.upkeep;
 	};
+
+	this.getZ = function() {
+		return posScreem.y;
+	}
+
+	this.draw = function( ctx, ofs ) {
+		var img = g[type.image];
+		var dx = ofs.x+posScreem.x-offset.x;
+		var dy = ofs.y+posScreem.y-offset.y;
+		ctx.drawImage( img, 0, 0, img.width, img.height, dx, dy,  img.width, img.height );
+	}
 
 	/**
 	 * Gibt true wenn eine person die behörde verlassen hat
