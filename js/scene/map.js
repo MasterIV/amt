@@ -13,7 +13,6 @@ function mapScene() {
 	entities.push( map );
 	entities.push( bg );
 
-
 	entities.push( new Victim(map,offset,viewport) );
 
 
@@ -54,7 +53,7 @@ function mapScene() {
 
 	this.click = function( mouse ) {
 		var pos = getCoords( mouse );
-
+		console.log(pos,mouse);
 		if( placeMe ) {
 			var room = map.placeRoom( placeMe, pos.x, pos.y );
 			if( room ) entities.push( room );

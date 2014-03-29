@@ -56,14 +56,26 @@ function Room( x, y, type ) {
 	 * Gibt true wenn eine person die behörde verlassen hat
 	 * Gibt eine person zurück wenn eine neue person in die behörde kommt
 	 */
-	this.update = function() {
+	this.update = function( delta ) {
 		if( this.anger ) {
-			// Warteraum
+			for(var victim in this.people) {
+				victim.annoy(delta * 0.001)
+			}
 			// Verärgerung
 		} else if( this.speed ) {
-			// Arbeitsraum
+			for(var victim in this.queue) {
+				// Arbeitsraum
+			}
 			// neue leute ankommen lassen
 			// warteschlange abarbeiten
 		}
 	};
+
+	this.addPeople = function(victim) {
+		this.people.push(victim);
+	}
+
+	this.addWaiter = function(victim) {
+		this.queue.push(victim);
+	}
 }
