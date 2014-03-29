@@ -14,12 +14,22 @@ var game = {
 	scene: null,
 	lastUpdate: 0,
 	debug: false,
-	zoom: 1,
+	zoom: 2,
 
 	display: null,
 	displayCtx: null,
 	buffer: null,
 	bufferCtx: null,
+
+	resize: function() {
+		this.display.width = window.innerWidth;
+		this.display.height = window.innerHeight;
+		this.buffer.width = this.display.width / this.zoom;
+		this.buffer.height = this.display.height / this.zoom;
+
+		if( this.scene.resize )
+			this.scene.resize( this.buffer.width, this.buffer.height );
+	},
 
 	init: function() {
 		this.display = document.getElementById('gameScreen');
@@ -27,13 +37,12 @@ var game = {
 
 		this.buffer = document.createElement('canvas');
 		this.bufferCtx = this.buffer.getContext('2d');
-		this.buffer.width = this.display.width;
-		this.buffer.height = this.display.height;
+
+		this.resize();
 
 		var self = this;
-		this.display.onclick = function(evt) { };
-		this.display.onmousemove = function(evt) {  };
 		setInterval( function() { self.updateFramerate(); }, 1000 );
+		window.onresize = function() { self.resize(); };
 
 		this.lastUpdate = Date.now();
 		this.loop();
@@ -65,6 +74,7 @@ var game = {
 	},
 
 	draw: function() {
+		this.buffer.width = this.buffer.width;
 		this.scene.draw( this.bufferCtx );
 
 		this.display.width = this.display.width;
@@ -75,9 +85,9 @@ var game = {
 
 		// fsps display
 		if( this.debug ) {
-			this.displayCtx.fillStyle = 'white';
+			this.displayCtx.fillStyle = 'black';
 			this.displayCtx.font = '10px monospace';
-			this.displayCtx.fillText( this.fps, 600, 460 );
+			this.displayCtx.fillText( this.fps, 10, 10 );
 		}
 	}
 }
