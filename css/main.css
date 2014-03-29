@@ -8,9 +8,10 @@ body, html {
 #achivements {
     width: 300px;
 
-    margin: 0 auto;
     position: absolute;
     bottom: 0;
+    left: 50%;
+    margin-left: -150px;
 }
 
 
