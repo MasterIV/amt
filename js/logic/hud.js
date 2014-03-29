@@ -10,17 +10,18 @@ function Hud( map, rooms, mapscene ) {
 	this.barfieldwidth = 94;
 	this.textoffsety = 13;
 	this.budgetoffsetx = 191;
-	this.constructionmenuheight = 100;
+	this.constructionmenuheight = 58;
+	this.constructionmenuwidth = 18;
 	this.barfixed = 20;
-	this.buttonsize = 20;
+	this.buttonsize = 18;
 
 	this.roomselector = null;
 
 	this.entities = [
-		new cButton(0,this.barfixed, this.buttonsize,this.buttonsize, "work", "img/HUD/cButton_h.png", this),
-		new cButton(0,this.barfixed*2, this.buttonsize,this.buttonsize, "wait", "img/HUD/cButton_h.png", this),
-		new cButton(0,this.barfixed*3, this.buttonsize,this.buttonsize, "other", "img/HUD/cButton_h.png", this),
-		new gButton(this.budgetoffsetx,1, 18,18, function() {}, "img/HUD/button_fetch_budget.png")
+		new cButton(0,this.barfixed, this.buttonsize,this.buttonsize, "work", "img/HUD/bworkpressed.png", this),
+		new cButton(0,this.barfixed*2, this.buttonsize,this.buttonsize, "wait", "img/HUD/bwaitpressed.png", this),
+		new cButton(0,this.barfixed*3, this.buttonsize,this.buttonsize, "other", "img/HUD/bentpressed.png", this),
+		new gButton(this.budgetoffsetx,1, this.buttonsize,this.buttonsize, function() {}, "img/HUD/button_fetch_budget.png")
 	];
 
 	this.getZ = function() {
@@ -52,7 +53,7 @@ function Hud( map, rooms, mapscene ) {
 		/* Left bar */
 
 		// Construction menu
-		ctx.drawImage(g['img/HUD/construction.png'], 0,this.barfixed, this.barfixed,this.constructionmenuheight);
+		ctx.drawImage(g['img/HUD/construction.png'], 0,this.barfixed, this.constructionmenuwidth,this.constructionmenuheight);
 
 		for( var i = 0; i < this.entities.length; i++ )
 			if( this.entities[i].draw ) this.entities[i].draw( ctx, ofs, viewport );
