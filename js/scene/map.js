@@ -6,6 +6,8 @@ function mapScene() {
 	var dragging = false;
 	var last;
 
+	var entities = [];
+
 	var map = new Map( levels[0].grid);
 	var offset = new V2( h*16, 31 );
 	var bg = new Background(map.grid, offset);
@@ -84,6 +86,13 @@ function mapScene() {
 			var dy = viewport.y+offset.y+r.posScreem.y-r.offset.y;
 			ctx.drawImage( img, 0, 0, img.width, img.height, dx, dy,  img.width, img.height );
 		}
+
+		/*
+		entities.sort(function (a, b) { return a.posScreem.y - b.posScreem.y })
+		for( var i = 0; i < this.entities.length; i++ )
+			if( this.entities[i].draw )
+				this.entities[i].draw( ctx, this.viewport );
+		*/
 
 		if( placeMe ) {
 			var pos = getCoords( mouse );
