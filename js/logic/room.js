@@ -1,5 +1,56 @@
 function Room( x, y, type ) {
 	this.x = x;
 	this.y = y;
+
+	// Benachbarte Räume
 	this.neighbors = [];
+	// Einkommen abzüglich unterhalt
+	this.income = 0;
+
+	// Werte für Arbeitszimmer
+	this.speed = 0;
+	this.worker = type.worker ? type.worker : 0;
+	this.queue = [];
+
+	// Werte für Warteräume
+	this.anger = 0;
+	this.capacity = type.capacity ? type.capacity : 0;
+	this.people = [];
+
+	// Beruhigende oder Arbeitsverlangsamende Faktoren
+	this.entertainment = type.entertainment ? type.entertainment : 1;
+	this.slow = type.slow ? type.slow : 1;
+
+	this.updateFactors = function() {
+		var customers = 0;
+		this.income = 0;
+
+		this.speed = type.speed ? type.speed : 0;
+		this.anger = type.anger ? type.anger : 0;
+
+		for( var i in this.neighbors ) {
+			var n = this.neighbors[i];
+			this.speed *= n.slow;
+			this.anger *= n.entertainment;
+			customers += n.worker + n.people.length;
+		}
+
+		if( type.income ) this.income += type.income * customers;
+		if( type.upkeep ) this.income -= type.upkeep;
+	};
+
+	/**
+	 * Gibt true wenn eine person die behörde verlassen hat
+	 * Gibt eine person zurück wenn eine neue person in die behörde kommt
+	 */
+	this.update = function() {
+		if( this.anger ) {
+			// Warteraum
+			// Verärgerung
+		} else if( this.speed ) {
+			// Arbeitsraum
+			// neue leute ankommen lassen
+			// warteschlange abarbeiten
+		}
+	};
 }

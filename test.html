@@ -5,7 +5,15 @@
 </head>
 <body>
 
-<div id="roomlist"><button onclick="placeMe = null">reset</button></div>
+<div id="roomlist">
+	<p>Money <span id="money"></span></p>
+	<p>Income <span id="income"></span></p>
+	<p>Budget <span id="budget"></span></p>
+	<p>People <span id="people"></span></p>
+	<p>Growth <span id="growth"></span></p>
+
+	<button onclick="placeMe = null">reset</button>
+</div>
 <canvas id="gameScreen"></canvas>
 
 
@@ -32,6 +40,7 @@
 
 </style>
 
+<script src="js/include/jquery-1.11.0.min.js"></script>
 <script src="js/logic/helper.js"></script>
 <script src="js/logic/room.js"></script>
 <script src="js/logic/corridor.js"></script>
@@ -114,6 +123,10 @@
 		}
 	}
 
+	function updateStats() {
+
+	}
+
 	function placeRoom() {
 		map.placeRoom( placeMe, mouse.x, mouse.y );
 		display(gameScreen, map.grid);
@@ -130,6 +143,25 @@
 
 	gameScreen.onmousemove = updateMouse;
 	gameScreen.onclick = placeRoom;
+
+	var lastUpdate = Date.now();
+
+	function loop() {
+		var now = Date.now();
+		var delta = now - lastUpdate;
+
+		if( delta < 250 ) {
+			map.update( delta );
+			updateStats();
+		}
+
+		lastUpdate = now;
+		requestAnimFrame( loop );
+	};
+
+	loop();
+
+
 
 
 
