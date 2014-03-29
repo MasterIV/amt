@@ -7,8 +7,8 @@ var rooms = [
 		name: "Arbeitsamt",
 		category: "work",
 
-		speed: 20,
-		demand: 20,
+		speed: 5,
+		demand: 5,
 		worker: 1,
 		fee: 50,
 
@@ -30,8 +30,8 @@ var rooms = [
 		name: "Einwohnermeldeamt",
 		category: "work",
 
-		speed: 20,
-		demand: 20,
+		speed: 4,
+		demand: 4,
 		worker: 1,
 		fee: 50,
 
@@ -53,8 +53,8 @@ var rooms = [
 		name: "Gewerbeamt",
 		category: "work",
 
-		speed: 20,
-		demand: 20,
+		speed: 2,
+		demand: 2,
 		worker: 1,
 		fee: 50,
 
@@ -80,7 +80,7 @@ var rooms = [
 		category: "work",
 
 		speed: 20,
-		demand: 20,
+		demand: 1,
 		worker: 1,
 		fee: 50,
 
@@ -111,29 +111,26 @@ var rooms = [
 		name: "Warteschlange",
 		category: "wait",
 
-		anger: 1,
-		capacity: 1,
+		anger: 10,
+		capacity: 4,
 
 		upkeep: 100,
 		price: 500,
 
 		image:'img/rooms/warteschlange.png',
-		offset: {x: 51, y: 32 },
+		offset: {x: 66, y: 32 },
 		shape: [
-			[ 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 2 ],
-			[ 2, 1, 2, 2, 2 ],
-			[ 2, 1, 2, 0, 0 ],
-			[ 2, 1, 2, 0, 0 ],
-			[ 2, 2, 2, 0, 0 ]
+			[ 2, 2, 2, 2, 2, 2 ],
+			[ 2, 1, 1, 1, 1, 2 ],
+			[ 2, 2, 2, 2, 2, 2 ]
 		]
 	},
 	{
 		name: "Stehplätze",
 		category: "wait",
 
-		anger: 1,
-		capacity: 1,
+		anger: 9,
+		capacity: 6,
 
 		upkeep: 100,
 		price: 500,
@@ -141,19 +138,18 @@ var rooms = [
 		image:'img/rooms/stehplaetze.png',
 		offset: {x: 51, y: 32 },
 		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
+			[ 2, 2, 2, 2, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 2, 2, 2, 2 ]
 		]
 	},
 	{
 		name: "Sitzplätze",
-		category: "wit",
+		category: "wait",
 
-		anger: 1,
-		capacity: 1,
+		anger: 7,
+		capacity: 6,
 
 		upkeep: 100,
 		price: 500,
@@ -172,8 +168,8 @@ var rooms = [
 		name: "Liegeplätze",
 		category: "wait",
 
-		anger: 1,
-		capacity: 1,
+		anger: 4,
+		capacity: 6,
 
 		upkeep: 100,
 		price: 500,
