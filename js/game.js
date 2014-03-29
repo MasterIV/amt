@@ -14,7 +14,7 @@ var game = {
 	scene: null,
 	lastUpdate: 0,
 	debug: false,
-	zoom: 1,
+	zoom: 4,
 
 	display: null,
 	displayCtx: null,
