@@ -75,14 +75,15 @@ function mapScene() {
 	this.draw = function( ctx ) {
 		ctx.drawImage( bg.canvas, viewport.x, viewport.y );
 
-		/* Z sorting
-		map.rooms.sort(function( a, b ) {
-
-		});
-
+		/* Z sorting */
+		map.rooms.sort(function( a, b ) { return a.posScreem.y - b.posScreem.y });
 		for( var i in map.rooms ) {
-
-		}*/
+			var r = map.rooms[i];
+			var img = r.getImage();
+			var dx = viewport.x+offset.x+r.posScreem.x-r.offset.x;
+			var dy = viewport.y+offset.y+r.posScreem.y-r.offset.y;
+			ctx.drawImage( img, 0, 0, img.width, img.height, dx, dy,  img.width, img.height );
+		}
 
 		if( placeMe ) {
 			var pos = getCoords( mouse );
@@ -91,8 +92,8 @@ function mapScene() {
 			for( var x = 0; x < placeMe.shape.length; x++ )
 				for( var y = 0; y < placeMe.shape[0].length; y++ )
 					if( placeMe.shape[x][y] ) {
-						var dx = offset.x+(x+pos.x)*16+(y+pos.y)*-16;
-						var dy = offset.y+(x+pos.x)*8+(y+pos.y)*8;
+						var dx = viewport.x+offset.x+(x+pos.x)*16+(y+pos.y)*-16;
+						var dy = viewport.y+offset.y+(x+pos.x)*8+(y+pos.y)*8;
 
 						if( typeof map.grid[x+pos.x] == 'undefined' || typeof map.grid[x+pos.x][y+pos.y] == 'undefined' ||
 							map.grid[x+pos.x][y+pos.y] == 1 || map.grid[x+pos.x][y+pos.y] instanceof Room )

@@ -21,6 +21,7 @@ var rooms = [
 		name: "Tv",
 		category: ["entertain", "slow"],
 		image:'img/raum_tv.png',
+		offset: {x: 50, y: 32 },
 
 		worker: 1,
 		upkeep: 100,
@@ -41,6 +42,7 @@ var rooms = [
 		name: "Snackbox",
 		category: ["entertain", "slow"],
 		image:'img/raum_snackbox.png',
+		offset: {x: 50, y: 32 },
 
 		entertainment: .8,
 		slow:.8,
@@ -56,6 +58,8 @@ var rooms = [
 		name: "Toilette",
 		category: ["wait"],
 		image:'img/raum_restroom.png',
+		offset: {x: 50, y: 32 },
+
 		upkeep: 0,
 		capacity: 0,
 
