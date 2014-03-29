@@ -12,3 +12,8 @@ body, html {
     position: absolute;
     bottom: 0;
 }
+
+
+#gameScreen {
+    position: relative;
+}
