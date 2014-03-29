@@ -5,11 +5,11 @@ function mapScene() {
 
 
 	var map = new Map( levels[0].grid );
-	var entities = map.getWalls();
 	var offset = new V2( map.grid[0].length*16, 31 );
 	var bg = new Background(map.grid, offset);
 	var viewport = { x: 50, y: 50, w: 0, h: 0 };
 
+	var entities = [];
 	entities.push( map );
 	entities.push( bg );
 
@@ -50,9 +50,12 @@ function mapScene() {
 
 	this.click = function( mouse ) {
 		var pos = getCoords( mouse );
+
 		if( placeMe ) {
 			var room = map.placeRoom( placeMe, pos.x, pos.y );
 			if( room ) entities.push( room );
+		} else if( map.roomAt( pos.x, pos.y ) instanceof Room ) {
+			// show room info
 		}
 	}
 
@@ -72,10 +75,30 @@ function mapScene() {
 		viewport.h = h;
 	}
 
+	function updateRooms() {
+		map.income = 0;
+		map.people = 0;
+
+		for( var i in entities )
+		if( entities[i] instanceof Room ) {
+				var r = entities[i];
+				r.updateFactors();
+				map.income += r.income;
+				map.people += r.people.length;
+			}
+	}
 
 	this.update = function( delta ) {
+		var changed = false;
+
 		for( var i = 0; i < entities.length; i++ )
-			if( entities[i].update ) entities[i].update( delta );
+			if( entities[i].update ) {
+				var result = entities[i].update( delta );
+				if( result ) changed = true;
+				if( result instanceof Victim ) ; // find waiting room
+			}
+
+		if( changed ) updateRooms();
 	}
 
 	this.draw = function( ctx ) {

@@ -13,9 +13,8 @@ function Background( grid, offset ) {
 			if( grid[x][y] == 0 ){
 				var dx = offset.x+x*16+y*-16;
 				var dy = offset.y+x*8+y*8;
-
-				if( x == 0 || grid[x-1][y] != 0 ) ctx.drawImage(g['img/wall_y.png'], 0, 0, 16, 39, dx-16, dy-31, 16, 39);
-				if( y == 0 || grid[x][y-1] != 0  ) ctx.drawImage(g['img/wall_x.png'], 0, 0, 16, 39, dx, dy-31, 16, 39);
+				if( x == 0 || grid[x-1][y] != 0 ) ctx.drawImage( g['img/wall_y.png'], 0, 0, 16, 39, dx-16, dy-31, 16, 39);
+				if( y == 0 || grid[x][y-1] != 0 ) ctx.drawImage( g['img/wall_x.png'], 0, 0, 16, 39, dx, dy-31, 16, 39);
 				ctx.drawImage(g['img/floor.png'], 0, 0, 32, 16, dx-16, dy, 32, 16);
 			}
 
