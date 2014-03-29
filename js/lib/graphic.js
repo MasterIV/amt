@@ -11,7 +11,10 @@ var g = {
 		'img/startScreen_menu.png',
 		'img/HUD/money.png',
 		'img/HUD/persons.png',
-		'img/HUD/top_ui_bg.png'
+		'img/HUD/top_ui_bg.png',
+		'img/HUD/construction.png',
+		'img/HUD/cButton_h.png',
+		'img/HUD/roomselector.png'
 	],
 
 	add: function( url ) {
