@@ -45,6 +45,7 @@
 <script src="js/logic/room.js"></script>
 <script src="js/logic/corridor.js"></script>
 <script src="js/logic/map.js"></script>
+<script src="js/logic/findPath.js"></script>
 
 <script src="data/rooms.js"></script>
 
@@ -52,6 +53,15 @@
 	var placeMe;
 	var size = 20;
 	var mouse = {x:0,y:0};
+
+    window.requestAnimFrame = (function(){
+        return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function( callback, element ){window.setTimeout(callback, 25);};
+    })();
 
 	function display(canvas, g) {
 		var ctx = canvas.getContext('2d');
@@ -159,9 +169,9 @@
 		requestAnimFrame( loop );
 	};
 
+
+
 	loop();
-
-
 
 
 
