@@ -1,18 +1,14 @@
 function mapScene() {
-	var w = levels[0].grid[0].length;
-	var h = levels[0].grid.length;
-
 	var placeMe;
 	var dragging = false;
 	var last;
 
 	var entities = [];
 
-	var map = new Map( levels[0].grid);
-	var offset = new V2( h*16, 31 );
+	var map = new Map( levels[0].grid );
+	var offset = new V2( map.grid[0].length*16, 31 );
 	var bg = new Background(map.grid, offset);
-	var viewport = { x: 0, y: 0, w: 0, h: 0 };
-
+	var viewport = { x: 50, y: 50, w: 0, h: 0 };
 
 	function roomlist(r) {
 		var list = document.getElementById('roomlist');
@@ -51,7 +47,10 @@ function mapScene() {
 
 	this.click = function( mouse ) {
 		var pos = getCoords( mouse );
-		if( placeMe ) map.placeRoom( placeMe, pos.x, pos.y );
+		if( placeMe ) {
+			var room = map.placeRoom( placeMe, pos.x, pos.y );
+			if( room ) entities.push( room );
+		}
 	}
 
 	this.mousedown = function( mouse ) { dragging = true; last = mouse.clone(); };
@@ -70,29 +69,20 @@ function mapScene() {
 		viewport.h = h;
 	}
 
-	this.update = function( delta ) {
 
+	this.update = function( delta ) {
+		for( var i = 0; i < entities.length; i++ )
+			if( entities[i].update ) entities[i].update( delta );
 	}
 
 	this.draw = function( ctx ) {
 		ctx.drawImage( bg.canvas, viewport.x, viewport.y );
 
 		/* Z sorting */
-		map.rooms.sort(function( a, b ) { return a.posScreem.y - b.posScreem.y });
-		for( var i in map.rooms ) {
-			var r = map.rooms[i];
-			var img = r.getImage();
-			var dx = viewport.x+offset.x+r.posScreem.x-r.offset.x;
-			var dy = viewport.y+offset.y+r.posScreem.y-r.offset.y;
-			ctx.drawImage( img, 0, 0, img.width, img.height, dx, dy,  img.width, img.height );
-		}
-
-		/*
-		entities.sort(function (a, b) { return a.posScreem.y - b.posScreem.y })
-		for( var i = 0; i < this.entities.length; i++ )
-			if( this.entities[i].draw )
-				this.entities[i].draw( ctx, this.viewport );
-		*/
+		var ofs = offset.sum( viewport );
+		entities.sort(function( a, b ) { return a.getZ() - b.getZ() });
+		for( var i = 0; i < entities.length; i++ )
+			if( entities[i].draw ) entities[i].draw( ctx, ofs );
 
 		if( placeMe ) {
 			var pos = getCoords( mouse );
