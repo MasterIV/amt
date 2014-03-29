@@ -4,6 +4,7 @@ function mapScene() {
 	var last;
 
 	var map = new Map( levels[0].grid );
+	var hud = new Hud( map );
 	var offset = new V2( map.grid[0].length*16, 31 );
 	var bg = new Background(map.grid, offset);
 	var viewport = { x: 50, y: 50, w: 0, h: 0 };
@@ -11,6 +12,7 @@ function mapScene() {
 	var entities = [];
 	entities.push( map );
 	entities.push( bg );
+	entities.push( hud );
 
 	function updateRooms() {
 		map.income = 0;
