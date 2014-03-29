@@ -13,6 +13,8 @@ function Victim(workRoom) {
 		this.y = 0;
 	}
 
+	this.img = g['img/testvictim.png'];
+
 	this.wait = function( room ) {
 		room.people.push( this );
 		waitRoom = room;
