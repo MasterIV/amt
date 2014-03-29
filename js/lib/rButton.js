@@ -24,6 +24,7 @@ function rButton( room, selector ) {
 	this.click = function ( mouse ) {
 		if (this.inArea( mouse )) {
 			this.selector.hud.mapscene.placeRoom( this.room );
+			this.selector.hud.closeRoomSelector();
 			return true;
 		}
 	}

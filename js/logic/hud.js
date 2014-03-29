@@ -9,6 +9,7 @@ function Hud( map, rooms, mapscene ) {
 	this.bariconwidth = 27;
 	this.barfieldwidth = 94;
 	this.textoffsety = 13;
+	this.budgetoffsetx = 191;
 	this.constructionmenuheight = 100;
 	this.barfixed = 20;
 	this.buttonsize = 20;
@@ -18,7 +19,8 @@ function Hud( map, rooms, mapscene ) {
 	this.entities = [
 		new cButton(0,this.barfixed, this.buttonsize,this.buttonsize, "work", "img/HUD/cButton_h.png", this),
 		new cButton(0,this.barfixed*2, this.buttonsize,this.buttonsize, "wait", "img/HUD/cButton_h.png", this),
-		new cButton(0,this.barfixed*3, this.buttonsize,this.buttonsize, "other", "img/HUD/cButton_h.png", this)
+		new cButton(0,this.barfixed*3, this.buttonsize,this.buttonsize, "other", "img/HUD/cButton_h.png", this),
+		new gButton(this.budgetoffsetx,1, 18,18, function() {}, "img/HUD/button_fetch_budget.png")
 	];
 
 	this.getZ = function() {
@@ -94,5 +96,16 @@ function Hud( map, rooms, mapscene ) {
 		}
 		this.roomselector = new RoomSelector( category, x, y, this );
 		this.entities.push(this.roomselector);
+	}
+
+	this.closeRoomSelector = function() {
+		if (this.roomselector) {
+			for (var i in this.entities)
+				if (this.entities[i] == this.roomselector) {
+					this.entities.splice(i, 1);
+					break;
+				}
+				this.roomselector = null;
+		}
 	}
 }

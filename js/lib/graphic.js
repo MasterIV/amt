@@ -14,6 +14,7 @@ var g = {
 		'img/HUD/top_ui_bg.png',
 		'img/HUD/construction.png',
 		'img/HUD/cButton_h.png',
+		'img/HUD/button_fetch_budget.png',
 		'img/HUD/roomselector.png'
 	],
 

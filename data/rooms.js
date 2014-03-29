@@ -4,41 +4,18 @@ var rooms = [
 	// -------------------------------------------------------------------------------------------------------
 
 	{
-		name: "Arbeitsamt",
-		category: "work",
-
-		speed: 5,
-		demand: 5,
-		worker: 1,
-		fee: 50,
-
-		upkeep: 100,
-		price: 500,
-
-		image:'img/rooms/arbeitsamt.png',
-		offset: {x: 98, y: 32 },
-		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 2, 2, 2, 2, 2, 2, 2 ]
-		]
-	},
-	{
 		name: "Einwohnermeldeamt",
 		category: "work",
 
-		speed: 4,
-		demand: 4,
-		worker: 1,
-		fee: 50,
+		speed: 1.05,
+		demand: 1,
+		worker: 2,
+		fee: 100,
 
 		upkeep: 100,
-		price: 500,
+		price: 2000,
 
-		image:'img/rooms/einwohnermeldeamt.png',
+		image:'img/rooms/Raum_einwohnermeldeamt.png',
 		offset: {x: 98, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2, 2 ],
@@ -50,18 +27,41 @@ var rooms = [
 		]
 	},
 	{
+		name: "Arbeitsamt",
+		category: "work",
+
+		speed: 5,
+		demand: 2.4,
+		worker: 3,
+		fee: 75,
+
+		upkeep: 150,
+		price: 4500,
+
+		image:'img/rooms/Raum_arbeitsamt.png',
+		offset: {x: 98, y: 32 },
+		shape: [
+			[ 2, 2, 2, 2, 2, 2, 2, 2 ],
+			[ 2, 1, 1, 1, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 1, 1, 1, 2 ],
+			[ 2, 2, 2, 2, 2, 2, 2, 2 ]
+		]
+	},
+	{
 		name: "Gewerbeamt",
 		category: "work",
 
-		speed: 2,
-		demand: 2,
-		worker: 1,
-		fee: 50,
+		speed: 4.725,
+		demand: 3.5,
+		worker: 4,
+		fee: 60,
 
-		upkeep: 100,
-		price: 500,
+		upkeep: 200,
+		price: 8500,
 
-		image:'img/rooms/gewerbeamt.png',
+		image:'img/rooms/Raum_gewerbeamt.png',
 		offset: {x: 98, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2, 2 ],
@@ -79,15 +79,15 @@ var rooms = [
 		name: "Finanzamt",
 		category: "work",
 
-		speed: 20,
-		demand: 1,
-		worker: 1,
+		speed: 7.5,
+		demand: 5,
+		worker: 5,
 		fee: 50,
 
-		upkeep: 100,
-		price: 500,
+		upkeep: 250,
+		price: 13000,
 
-		image:'img/rooms/finanzamt.png',
+		image:'img/rooms/Raum_finanzamt.png',
 		offset: {x: 98, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2, 2 ],
@@ -111,13 +111,13 @@ var rooms = [
 		name: "Warteschlange",
 		category: "wait",
 
-		anger: 10,
+		anger: 30,
 		capacity: 4,
 
-		upkeep: 100,
+		upkeep: 10,
 		price: 500,
 
-		image:'img/rooms/warteschlange.png',
+		image:'img/rooms/Raum_warteschlange.png',
 		offset: {x: 66, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2 ],
@@ -129,14 +129,14 @@ var rooms = [
 		name: "Stehplätze",
 		category: "wait",
 
-		anger: 9,
+		anger: 25,
 		capacity: 6,
 
-		upkeep: 100,
-		price: 500,
+		upkeep: 20,
+		price: 1000,
 
-		image:'img/rooms/stehplaetze.png',
-		offset: {x: 51, y: 32 },
+		image:'img/rooms/Raum_stehplaetze.png',
+		offset: {x: 48, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 2 ],
@@ -148,40 +148,41 @@ var rooms = [
 		name: "Sitzplätze",
 		category: "wait",
 
-		anger: 7,
+		anger: 20,
 		capacity: 6,
 
-		upkeep: 100,
-		price: 500,
+		upkeep: 30,
+		price: 2000,
 
 		image:'img/rooms/sitzplaetze.png',
 		offset: {x: 51, y: 32 },
 		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
+			[ 2, 2, 2, 2, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 1, 2, 2, 2 ],
+			[ 2, 1, 2, 0, 0 ],
+			[ 2, 1, 2, 0, 0 ],
+			[ 2, 2, 2, 0, 0 ]
 		]
 	},
 	{
 		name: "Liegeplätze",
 		category: "wait",
 
-		anger: 4,
+		anger: 10,
 		capacity: 6,
 
-		upkeep: 100,
-		price: 500,
+		upkeep: 60,
+		price: 3000,
 
 		image:'img/rooms/liegeplaetze.png',
 		offset: {x: 51, y: 32 },
 		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
+			[ 2, 2, 2, 2, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 2, 2, 2, 2 ]
 		]
 	},
 
@@ -190,108 +191,154 @@ var rooms = [
 	// -------------------------------------------------------------------------------------------------------
 
 	{
-		name: "Besenkammer",
+		name: "Mitarbeitertoiletten",
 		category: "other",
 
-		entertainment: 1,
+		entertainment: 0,
 		slow: 1,
-		income: 1,
+		income: 0,
 
-		upkeep: 100,
+		upkeep: 25,
 		price: 500,
 
-		image:'img/rooms/besenkammer.png',
+		image:'img/rooms/Raum_bathroom.png',
 		offset: {x: 51, y: 32 },
 		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
+			[ 2, 2, 2, 2, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 2, 2 ],
+			[ 2, 1, 1, 2, 0 ],
+			[ 2, 1, 1, 2, 0 ],
+			[ 2, 2, 2, 2, 0 ]
 		]
 	},
 	{
-		name: "Bordell",
+		name: "Raucherraum",
 		category: "other",
 
-		entertainment: 1,
+		entertainment: 0,
 		slow: 1,
-		income: 1,
+		income: 0,
 
-		upkeep: 100,
-		price: 500,
+		upkeep: 60,
+		price: 1200,
 
-		image:'img/rooms/bordell.png',
-		offset: {x: 51, y: 32 },
+		image:'img/rooms/raucherraum.png',
+		offset: {x: 68, y: 32 },
 		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
+			[ 2, 2, 2, 2, 2, 2 ],
+			[ 2, 1, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 2, 2, 2 ],
+			[ 2, 2, 2, 2, 0, 0 ]
 		]
 	},
 	{
 		name: "Cafeteria",
 		category: "other",
 
-		entertainment: 1,
+		entertainment: 0,
 		slow: 1,
 		income: 1,
 
-		upkeep: 100,
-		price: 500,
+		upkeep: 130,
+		price: 2000,
 
 		image:'img/rooms/cafeteria.png',
 		offset: {x: 51, y: 32 },
 		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
+			[ 2, 2, 2, 2, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 2, 2 ],
+			[ 2, 2, 2, 2, 0 ]
 		]
 	},
 	{
 		name: "Cantine",
 		category: "other",
 
-		entertainment: 1,
+		entertainment: 0,
 		slow: 1,
 		income: 1,
 
-		upkeep: 100,
-		price: 500,
+		upkeep: 210,
+		price: 3000,
 
 		image:'img/rooms/cantine.png',
-		offset: {x: 51, y: 32 },
+		offset: {x: 68, y: 32 },
 		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
+			[ 2, 2, 2, 2, 2, 2 ],
+			[ 2, 1, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 2, 2 ],
+			[ 2, 1, 1, 1, 2, 0 ],
+			[ 2, 1, 1, 1, 2, 0 ],
+			[ 2, 1, 1, 1, 2, 0 ],
+			[ 2, 2, 2, 2, 2, 0 ]
 		]
 	},
 	{
 		name: "Fitnessraum",
 		category: "other",
 
-		entertainment: 1,
+		entertainment: 0,
 		slow: 1,
-		income: 1,
+		income: 0,
 
-		upkeep: 100,
-		price: 500,
+		upkeep: 250,
+		price: 5000,
 
 		image:'img/rooms/fitnessraum.png',
+		offset: {x: 68, y: 32 },
+		shape: [
+			[ 2, 2, 2, 2, 2, 2 ],
+			[ 2, 1, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 1, 2 ],
+			[ 2, 2, 2, 2, 2, 2 ]
+		]
+	},
+	{
+		name: "Stromberg",
+		category: "other",
+
+		entertainment: 0,
+		slow: 1,
+		income: 0,
+
+		upkeep: 350,
+		price: 7000,
+
+		image:'img/rooms/strombergsbuero.png',
 		offset: {x: 51, y: 32 },
 		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
+			[ 2, 2, 2, 2, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 2, 2, 2, 2 ]
+		]
+	},
+	{
+		name: "Besenkammer",
+		category: "other",
+
+		entertainment: 0,
+		slow: 1,
+		income: 0,
+
+		upkeep: 10,
+		price: 500,
+
+		image:'img/rooms/Raum_besenkammer.png',
+		offset: {x: 33, y: 32 },
+		shape: [
+			[ 2, 2, 2, 2 ],
+			[ 2, 1, 1, 2 ],
+			[ 2, 1, 1, 2 ],
+			[ 2, 2, 2, 2 ]
 		]
 	},
 	{
@@ -299,98 +346,73 @@ var rooms = [
 		category: "other",
 
 		entertainment: 1,
-		slow: 1,
-		income: 1,
+		slow: 0,
+		income: 0,
 
 		upkeep: 100,
-		price: 500,
+		price: 1000,
 
 		image:'img/rooms/musikraum.png',
-		offset: {x: 51, y: 32 },
+		offset: {x: 33, y: 32 },
 		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
+			[ 2, 2, 2, 2 ],
+			[ 2, 1, 1, 2 ],
+			[ 2, 1, 1, 2 ],
+			[ 2, 2, 2, 2 ]
 		]
 	},
 	{
-		name: "Raucherraum",
+		name: "Clownszimmer",
 		category: "other",
 
 		entertainment: 1,
-		slow: 1,
-		income: 1,
+		slow: 0,
+		income: 0,
 
-		upkeep: 100,
-		price: 500,
+		upkeep: 250,
+		price: 1000,
 
-		image:'img/rooms/raucherraum.png',
-		offset: {x: 51, y: 32 },
+		image:'img/rooms/clowns.png',
+		offset: {x: 33, y: 32 },
 		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
+			[ 2, 2, 2 ],
+			[ 2, 1, 2 ],
+			[ 2, 2, 2 ]
 		]
 	},
 	{
-		name: "Toiletten",
+		name: "Snackautomaten",
 		category: "other",
 
 		entertainment: 1,
-		slow: 1,
+		slow: 0,
 		income: 1,
 
 		upkeep: 100,
-		price: 500,
-
-		image:'img/rooms/restroom.png',
-		offset: {x: 51, y: 32 },
-		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
-		]
-	},
-	{
-		name: "Snackbox",
-		category: "other",
-
-		entertainment: 1,
-		slow: 1,
-		income: 1,
-
-		upkeep: 100,
-		price: 500,
-
-		image:'img/rooms/snackbox.png',
-		offset: {x: 51, y: 32 },
-		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
-		]
-	},
-	{
-		name: "Snackraum",
-		category: "other",
-
-		entertainment: 1,
-		slow: 1,
-		income: 1,
-
-		upkeep: 100,
-		price: 500,
+		price: 2000,
 
 		image:'img/rooms/snackraum.png',
-		offset: {x: 51, y: 32 },
+		offset: {x: 20, y: 32 },
+		shape: [
+			[ 2, 2, 2 ],
+			[ 2, 1, 2 ],
+			[ 2, 1, 2 ],
+			[ 2, 2, 2 ]
+		]
+	},
+	{
+		name: "Fernsehraum",
+		category: "other",
+
+		entertainment: 1,
+		slow: 0,
+		income: 0,
+
+		upkeep: 200,
+		price: 3000,
+
+		image:'img/rooms/tv.png',
+		offset: {x: 83, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 1, 1, 2 ],
@@ -404,62 +426,43 @@ var rooms = [
 		category: "other",
 
 		entertainment: 1,
-		slow: 1,
+		slow: 0,
 		income: 1,
 
-		upkeep: 100,
-		price: 500,
+		upkeep: 350,
+		price: 5000,
 
 		image:'img/rooms/spielhoelle.png',
 		offset: {x: 51, y: 32 },
 		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
+			[ 2, 2, 2, 2, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 1, 2 ],
+			[ 2, 1, 1, 2, 2 ],
+			[ 2, 1, 1, 2, 0 ],
+			[ 2, 1, 1, 2, 0 ],
+			[ 2, 2, 2, 2, 0 ]
 		]
 	},
 	{
-		name: "Stromberg",
+		name: "Bordell",
 		category: "other",
 
 		entertainment: 1,
-		slow: 1,
+		slow: 0,
 		income: 1,
 
-		upkeep: 100,
-		price: 500,
+		upkeep: 500,
+		price: 8000,
 
-		image:'img/rooms/strombergsbuero.png',
-		offset: {x: 51, y: 32 },
+		image:'img/rooms/Raum_bordell.png',
+		offset: {x: 31, y: 32 },
 		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
-		]
-	},
-	{
-		name: "TV Raum",
-		category: "other",
-
-		entertainment: 1,
-		slow: 1,
-		income: 1,
-
-		upkeep: 100,
-		price: 500,
-
-		image:'img/rooms/tv.png',
-		offset: {x: 51, y: 32 },
-		shape: [
-			[ 2, 2, 2, 2, 2, 2, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 1, 1, 1, 2 ],
-			[ 2, 1, 1, 2, 2, 2, 2 ],
-			[ 2, 2, 2, 2, 0, 0, 0 ]
+			[ 2, 2, 2, 2 ],
+			[ 2, 1, 1, 2 ],
+			[ 2, 1, 1, 2 ],
+			[ 2, 1, 1, 2 ],
+			[ 2, 2, 2, 2 ]
 		]
 	}
 ];

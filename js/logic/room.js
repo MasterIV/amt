@@ -78,7 +78,7 @@ function Room( x, y, type, map ) {
 
 		if( this.anger ) {
 			for(var i in this.people)
-				if( this.people[i].annoy(delta)) {
+				if( this.people[i].annoy(delta * this.anger)) {
 					result = true;
 					this.people[i].leave();
 					achivements.track('AngryPeople',1);
