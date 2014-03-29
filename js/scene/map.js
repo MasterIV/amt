@@ -4,7 +4,7 @@ function mapScene() {
 	var last;
 
 	var map = new Map( levels[0].grid );
-	var hud = new Hud( map );
+	var hud = new Hud( map, rooms, this );
 	var offset = new V2( map.grid[0].length*16, 31 );
 	var bg = new Background(map.grid, offset);
 	var viewport = { x: 50, y: 50, w: 0, h: 0 };
@@ -39,6 +39,11 @@ function mapScene() {
 
 	this.click = function( mouse ) {
 		var pos = getCoords( mouse );
+
+		for (var i in entities)
+			if (entities[i].click)
+				if (entities[i].click( mouse ))
+					return;
 
 		if( placeMe ) {
 			var room = map.placeRoom( placeMe, pos.x, pos.y );
@@ -124,5 +129,9 @@ function mapScene() {
 						ctx.drawImage( g[img], 0, 0, 32, 16, dx-16, dy, 32, 16);
 					}
 		}
+	}
+
+	this.placeRoom = function ( room ) {
+		placeMe = room;
 	}
 }
