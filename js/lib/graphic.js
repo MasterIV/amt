@@ -2,7 +2,10 @@ var g = {
 	urls: [
 		'img/floor.png',
 		'img/wall_x.png',
-		'img/wall_y.png'
+		'img/wall_y.png',
+		'img/place_corridor.png',
+		'img/place_invalid.png',
+		'img/place_room.png'
 	],
 
 	add: function( url ) {
