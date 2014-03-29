@@ -3,7 +3,6 @@ function mapScene() {
 	var dragging = false;
 	var last;
 
-
 	var map = new Map( levels[0].grid );
 	var offset = new V2( map.grid[0].length*16, 31 );
 	var bg = new Background(map.grid, offset);
@@ -12,31 +11,6 @@ function mapScene() {
 	var entities = [];
 	entities.push( map );
 	entities.push( bg );
-
-	function roomlist(r) {
-		var list = document.getElementById('roomlist');
-		for( var i in r ) {
-			var ele = document.createElement('div');
-			var preview = document.createElement('img');
-			var caption = document.createElement('p');
-
-			caption.innerHTML = r[i].name;
-			preview.src = r[i].image;
-
-			(function(raum, ele) {
-				ele.onclick = function() {
-					placeMe = raum;
-					console.log( raum );
-				}
-			})(r[i], ele);
-
-			ele.appendChild(caption);
-			ele.appendChild(preview);
-			list.appendChild(ele);
-		}
-	}
-
-	roomlist(rooms);
 
 	function updateRooms() {
 		map.income = 0;
@@ -99,7 +73,15 @@ function mapScene() {
 			if( entities[i].update ) {
 				var result = entities[i].update( delta );
 				if( result ) changed = true;
-				if( result instanceof Victim ) ; // find waiting room
+
+				// find a waiting room for our new victim
+				if( result instanceof Victim )
+					for( var i in entities )
+						if( entities[i] instanceof Room )
+							if( entities[i].capacity > entities[i].people.length ) {
+								result.wait( entities[i] );
+								break;
+							}
 			}
 
 		if( changed ) updateRooms();
