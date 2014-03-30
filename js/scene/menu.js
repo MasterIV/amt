@@ -21,7 +21,7 @@ function menuScene() {
 	menuOptions.offsetX = $(window).width()/(2*game.zoom) - menuOptions.width/2;
 
 	this.makeButton(0, menuOptions.offsetX+menuOptions.width/2-48,100 +menuOptions.offsetY, 96, 23, function(){
-		game.scene = new mapScene();
+		game.scene = new mapScene(1);
 	});
 	this.makeButton(1, menuOptions.offsetX+menuOptions.width/2-48,130 +menuOptions.offsetY, 96, 23, function () {
 		game.scene = new achivementsScene();

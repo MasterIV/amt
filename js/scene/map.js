@@ -1,8 +1,8 @@
-function mapScene() {
+function mapScene(levelnum) {
 	var placeMe;
 	var dragging = false;
 	var last;
-	var levelNum = 0;
+	var levelNum = levelnum;
 	
 	
 	this.info = new RoomInfo();
