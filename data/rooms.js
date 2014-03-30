@@ -249,9 +249,8 @@ var rooms = [
 
 	{
 		name: "Mitarbeitertoiletten",
-		category: "other",
+		category: "slow",
 
-		entertainment: 0,
 		slow: 1.15,
 		income: 0,
 
@@ -274,9 +273,8 @@ var rooms = [
 	},
 	{
 		name: "Raucherraum",
-		category: "other",
+		category: "slow",
 
-		entertainment: 0,
 		slow: 1.1,
 		income: 0,
 
@@ -298,9 +296,8 @@ var rooms = [
 	},
 	{
 		name: "Cafeteria",
-		category: "other",
+		category: "slow",
 
-		entertainment: 0,
 		slow: 1.15,
 		income: 10,
 
@@ -321,9 +318,8 @@ var rooms = [
 	},
 	{
 		name: "Kantine",
-		category: "other",
+		category: "slow",
 
-		entertainment: 0,
 		slow: 1.35,
 		income: 20,
 
@@ -346,9 +342,8 @@ var rooms = [
 	},
 	{
 		name: "Fitnessraum",
-		category: "other",
+		category: "slow",
 
-		entertainment: 0,
 		slow: 1.55,
 		income: 0,
 
@@ -373,9 +368,8 @@ var rooms = [
 	},
 	{
 		name: "Stromberg",
-		category: "other",
+		category: "slow",
 
-		entertainment: 0,
 		slow: 1.25,
 		income: 0,
 
@@ -394,9 +388,8 @@ var rooms = [
 	},
 	{
 		name: "Besenkammer",
-		category: "other",
+		category: "slow",
 
-		entertainment: 0,
 		slow: 1.05,
 		income: 0,
 
@@ -416,7 +409,7 @@ var rooms = [
 	},
 	{
 		name: "Musikraum",
-		category: "other",
+		category: "entertain",
 
 		entertainment: 0.9,
 		income: 0,
@@ -437,7 +430,7 @@ var rooms = [
 	},
 	{
 		name: "Clownszimmer",
-		category: "other",
+		category: "entertain",
 
 		entertainment: 0.95,
 		income: 0,
@@ -457,7 +450,7 @@ var rooms = [
 	},
 	{
 		name: "Snackautomaten",
-		category: "other",
+		category: "entertain",
 
 		entertainment: 0.9,
 		income: 10,
@@ -476,7 +469,7 @@ var rooms = [
 	},
 	{
 		name: "Fernsehraum",
-		category: "other",
+		category: "entertain",
 
 		entertainment: 0.6,
 		income: 0,
@@ -498,7 +491,7 @@ var rooms = [
 	},
 	{
 		name: "Spielhölle",
-		category: "other",
+		category: "entertain",
 
 		entertainment: 0.5,
 		income: 20,
@@ -520,7 +513,7 @@ var rooms = [
 	},
 	{
 		name: "Bordell",
-		category: "other",
+		category: "entertain",
 
 		entertainment: 0.7,
 		income: 30,

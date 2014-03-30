@@ -4,7 +4,8 @@ function Hud( map, rooms, mapscene ) {
 	var categories = {
 		work: [],
 		wait: [],
-		other: []
+		entertain: [],
+		slow: []
 	};
 
 	for( var i in rooms ) {
@@ -28,7 +29,8 @@ function Hud( map, rooms, mapscene ) {
 		selector,
 		new SmallButton( 5, 0, this.barfixed, function() { selector.show( categories['work'] ); }),
 		new SmallButton( 4, 0, this.barfixed*2, function() { selector.show( categories['wait'] ); }),
-		new SmallButton( 6, 0, this.barfixed*3, function() { selector.show( categories['other'] ); }),
+		new SmallButton( 6, 0, this.barfixed*3, function() { selector.show( categories['entertain'] ); }),
+		new SmallButton( 7, 0, this.barfixed*4, function() { selector.show( categories['slow'] ); }),
 		claimer
 	];
 
