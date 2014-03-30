@@ -100,7 +100,7 @@ function Room( x, y, type, map ) {
 		if (this.capacity) {
 			var ox = (dx + ( -10 * this.capacity ) / 2 ) | 0;
 			for( var i = 0; i < this.capacity; i++ ) {
-				moodRect(ctx, ox+i*10, dy - 10, this.people[i] );
+				moodRect(ctx, ox+i*10, dy - 20, this.people[i] );
 			}
 		}
 	}

@@ -5,17 +5,23 @@ function RoomSelector( mapScene ) {
 
 	this.show = function( items ) {
 		entities = [];
-		lines = Math.ceil( items.length / 4 );
 
+		var itemOffset = 0;
 		for( var i in items ) (function(type) {
-			var dx = offset.x + ( i % 4 ) * 50;
-			var dy = offset.y + (( i / 4 ) | 0 ) * 50;
-			entities.push( new RoomButton( type, dx, dy, function() {
-				mapScene.info.close();
-				mapScene.placeRoom(type);
-				entities = [];
-			}, mapScene.info  ));
+			if (typeof type.notplaceable == 'undefined') {
+				var dx = offset.x + ( (i-itemOffset) % 4 ) * 50;
+				var dy = offset.y + (( (i-itemOffset) / 4 ) | 0 ) * 50;
+				entities.push( new RoomButton( type, dx, dy, function() {
+					mapScene.info.close();
+					mapScene.placeRoom(type);
+					entities = [];
+				}, mapScene.info  ));
+			} else {
+				itemOffset ++;
+			}
 		})(items[i]);
+		lines = Math.ceil( (items.length - itemOffset) / 4 );
+
 	}
 
 	this.draw = function( ctx ) {

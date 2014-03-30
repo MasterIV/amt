@@ -5,6 +5,7 @@ var rooms = [
 	{
 		name: "Einzelzimmer",
 		category: "work",
+		notplaceable:true,
 
 		speed: 1.00,
 		demand: 1,
@@ -142,6 +143,7 @@ var rooms = [
 	{
 		name: "Wartebank",
 		category: "wait",
+		notplaceable:true,
 
 		anger: 10,
 		capacity: 1,
@@ -150,10 +152,10 @@ var rooms = [
 		price: 100,
 
 		image:'img/rooms/Raum_Bank.png',
-		frames: 8,
-		framespeed: 30,
-		framelength: 82,
-		offset: {x: 66, y: 32 },
+		frames: 0,
+		framespeed: 0,
+		framelength: 0,
+		offset: {x: 11, y: 7 },
 		shape: [
 			[ 2, 2, 2 ],
 			[ 2, 1, 2 ],
