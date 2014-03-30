@@ -3,8 +3,9 @@ var levels = [
 		blueprints: [],
 		startrooms:[
 			{type:0,
-			x:10,
-			y:10}
+			pos:{x:10,
+				 y:10}
+			}
 		],
 		grid: [
 			[ 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

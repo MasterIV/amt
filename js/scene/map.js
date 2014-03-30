@@ -27,7 +27,7 @@ function mapScene() {
 	}
 	
 	for(var room in levels[levelNum].startrooms) {
-		placeRoom( levels[levelNum].startrooms[room].type, levels[levelNum].startrooms[room].pos)
+		placeRoom( rooms[levels[levelNum].startrooms[room].type], levels[levelNum].startrooms[room].pos)
 	}
 
 	entities.push({
