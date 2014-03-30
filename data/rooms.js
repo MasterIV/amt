@@ -43,7 +43,6 @@ var rooms = [
 		image:'img/rooms/Raum_arbeitsamt.png',
 		frames: 18,
 		framespeed: 30,
-		framelength: 162,
 		offset: {x: 98, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2, 2 ],

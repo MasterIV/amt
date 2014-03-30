@@ -1,9 +1,6 @@
 function Room( x, y, type, map ) {
 	var self = this;
 	this.posGrid = new V2( x, y );
-	this.type = type;
-	this.info = null;
-	this.kill = false;
 
 	this.posScreen = new V2( x*16+y*-16, x*8+y*8 );
 	this.posLeft = this.posScreen.y + ( type.shape[0].length-2 ) * 8;
@@ -12,8 +9,11 @@ function Room( x, y, type, map ) {
 	var offset = new V2( type.offset.x, type.offset.y );
 
 	// Animation
-	this.animationstep = 0;
-	this.animationdelta = 0;
+	var fcount = new framecounter( type.framespeed / 1000 );
+
+	this.type = type;
+	this.info = null;
+	this.kill = false;
 
 	// Benachbarte Räume
 	this.neighbors = [];
@@ -71,12 +71,14 @@ function Room( x, y, type, map ) {
 
 		var speedfactor = 0;
 		var angerfactor = 0;
+
 		for( var i in this.neighbors ) {
 			var n = this.neighbors[i];
 			speedfactor += n.slow;
 			angerfactor += n.entertainment;
 			customers += n.worker + n.people.length;
 		}
+
 		if(speedfactor) this.speed *= speedfactor;
 		if(angerfactor) this.anger = this.anger - (this.anger * angerfactor);
 
@@ -85,48 +87,34 @@ function Room( x, y, type, map ) {
 	};
 
 	this.destroy = function() {
-		this.kill = true;
-		map.money += this.type.price / 2;
+		map.money += type.price / 2;
+		map.remove( this );
 	}
 
 	this.draw = function( ctx, ofs, viewport ) {
 		var img = g[type.image];
-		var dx = viewport.x+ofs.x+this.posScreen.x-offset.x;
-		var dy = viewport.y+ofs.y+this.posScreen.y-offset.y;
-		var x = 0;
-		var y = 0;
+		var dx = viewport.x+ofs.x+this.posScreen.x;
+		var dy = viewport.y+ofs.y+this.posScreen.y;
+
+		var sx = 0;
 		var width = img.width;
 		var height = img.height;
 
-		if (this.type.frames) {
-			this.animationdelta++;
-			if (this.animationdelta > this.type.framespeed) {
-				this.animationdelta = 0;
-				this.animationstep++;
-				if (this.animationstep >= this.type.frames)
-					this.animationstep = 0;
-			}
-			width = this.type.framelength;
-			x = width * this.animationstep;
+		if (type.frames) {
+			width /= type.frames;
+			sx = width * ( fcount.frame % type.frames );
 		}
-		ctx.drawImage( img, x, y, width, height, dx, dy, width, height );
 
-		if (this.info)
-			this.info.draw(ctx, ofs, viewport, dx + width + 10, dy);
+		ctx.drawImage( img, sx, 0, width, height, dx-offset.x, dy-offset.y, width, height );
 
-		if (this.speed)
-			progressLayerRect(ctx, dx + offset.x - 25, dy - 10, 50, 5, this.work / this.speed, '#00f');
-		if (this.demand)
-			progressLayerRect(ctx, dx + offset.x - 25, dy - 3, 50, 5, this.gain / this.demand, '#f00');
-		if (this.capacity)
-			progressLayerRect(ctx, dx + offset.x - 25, dy - 10, 50, 5, this.people.length / this.capacity, '#00f');
-		// Show average anger level (not very informative..., maybe show biggest?)
-		if (this.anger) {
-			var anger = 0;
-			for (var i in this.people) {
-				anger += this.people[i].anger;
+		if (this.speed) progressLayerRect(ctx, dx - 25, dy - 10, 50, 5, this.work / this.speed, '#00f');
+		if (this.demand) progressLayerRect(ctx, dx - 25, dy - 3, 50, 5, this.gain / this.demand, '#f00');
+
+		if (this.capacity) {
+			var ox = (dx + ( -10 * this.capacity ) / 2 ) | 0;
+			for( var i = 0; i < this.capacity; i++ ) {
+				moodRect(ctx, ox+i*10, dy - 10, this.people[i] );
 			}
-			progressLayerRect(ctx, dx + offset.x - 25, dy - 3, 50, 5, (anger / this.people.length) / 100, '#f00');
 		}
 	}
 
@@ -137,9 +125,10 @@ function Room( x, y, type, map ) {
 	this.update = function( delta ) {
 		var result = false;
 
-		if (this.kill) {
-			result = true;
-		} else if( this.anger ) {
+		if( type.frames )
+			fcount.update( delta );
+
+		if( this.anger ) {
 			for(var i in this.people)
 				if( this.people[i].annoy(delta * this.anger)) {
 					result = true;
