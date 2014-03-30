@@ -35,20 +35,6 @@ function achivementsScene() {
 	});
 
 
-
-	this.entities.push(new iButton( game.buffer.width - 205 + 100 - 9, 100,18,12,function () {
-		if (this.start > 0)
-			this.start = this.start - 1;
-		console.log(654654);
-	}, 'img/HUD/arrow_up.png' ));
-
-	this.entities.push(new iButton( game.buffer.width - 205 + 100 - 9, 120,18,12,function () {
-		if (this.start > this.achivementList.length-8)
-			this.start = this.start + 1;
-		console.log(654654);
-
-	}, 'img/HUD/arrow_down.png' ));
-
 	this.draw = function( ctx ) {
 
 		this.drawBackground(ctx)
@@ -110,7 +96,7 @@ function achivementsScene() {
 
 	this.mousedown = function (mouse) {
 		for(var i = 0; i < this.entities.length; i++)
-			if (this.entities[i].inArea instanceof iButton)
+			if (!(this.entities[i] instanceof Achivement))
 			if(this.entities[i].inArea(mouse))
 				this.entities[i].callback();
 	};
