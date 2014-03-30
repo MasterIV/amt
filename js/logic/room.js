@@ -136,6 +136,7 @@ function Room( x, y, type, map ) {
 					this.queue.shift().leave();
 					this.sceneEntities.push(new Animationtext(type.fee+' $', this.posScreen, this.sceneEntities, null, 'black' ));
 					map.money += type.fee;
+					achivements.track('FinishedApplication',1);
 				}
 
 				this.work -= this.speed;
