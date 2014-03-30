@@ -82,6 +82,8 @@ function mapScene() {
 				if (entities[i].click( mouse ))
 					return;
 
+		if( dragging && !dragging.equal(mouse)) return;
+
 		if( placeMe ) {
 			var room = map.placeRoom( placeMe, pos.x, pos.y );
 			if( room ) {
@@ -101,8 +103,10 @@ function mapScene() {
 				if (entities[i].mousedown( mouse ))
 					return;
 
-		dragging = true; last = mouse.clone();
+		dragging = mouse.clone();
+		last = mouse.clone();
 	};
+
 	this.mouseup = function() { dragging = false; };
 
 	this.mousemove = function( mouse ) {

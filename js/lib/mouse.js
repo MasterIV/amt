@@ -5,6 +5,11 @@ mouse.init = function() {
 	var gameframe = document.getElementById('gameScreen');
 	var start = { x: 0, y: 0 };
 
+	gameframe.onclick = function( ev ) {
+		if( game.scene.click )
+			game.scene.click( self );
+	}
+
 	gameframe.onmousemove = function( ev ) {
 		self.x = ( ev.clientX - gameframe.offsetLeft ) / game.zoom | 0;
 		self.y = ( ev.clientY - gameframe.offsetTop ) / game.zoom | 0;
@@ -19,8 +24,6 @@ mouse.init = function() {
 	};
 
 	gameframe.onmouseup = function( ev ) {
-		if( self.equal( start ) && game.scene.click )
-			game.scene.click( self );
 		if( game.scene.mouseup )
 			game.scene.mouseup( self, start );
 	};
