@@ -10,6 +10,8 @@ function Corridor( room ) {
 	};
 
 	this.remove = function( r ) {
+		for( var i in this.rooms )
+			arrayRemove( this.rooms[i].neighbors, r );
 		arrayRemove( this.rooms, r );
 	};
 }
