@@ -1,9 +1,11 @@
-function Achivement(pMessage, pLimit) {
+function Achivement(pMessage, pLimit, icon) {
     this.message = pMessage;
     this.limit = pLimit;
     this.value = 0;
     this.finished = false;
 	this.show = 0;
+
+	this.icon = icon;
 
 	this.y = 27 + 20;
 
@@ -51,10 +53,20 @@ function Achivement(pMessage, pLimit) {
 
 		drawButton(ctx, x, y, 300);
 
+
+		ctx.drawImage(g[this.icon], 0, 0, 12, 18, game.buffer.width/2 + 130 , y+5, 12, 18);
+
 		ctx.fillStyle = 'rgb(0,0,0)';
-		ctx.fillText(this.message,
+
+		if (typeof i == 'undefined') {
+			ctx.fillText(this.message,
 			game.buffer.width/2 - 150 + this.message.length * 6/4,
 			y + 18);
+		} else {
+			ctx.fillText(this.message,
+				game.buffer.width/2 - 150 + 5,
+				y + 18);
+		}
 	}
 
 	this.update = function (delta) {

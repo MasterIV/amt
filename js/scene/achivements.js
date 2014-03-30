@@ -1,4 +1,5 @@
 function achivementsScene() {
+	var self = this;
 	game.zoom = 2;
 
 	this.start = 0;
@@ -13,6 +14,7 @@ function achivementsScene() {
 	}
 
 	this.achivementList = [];
+
 	this.entities = [];
 	for( var i in achivements) {
 		if (typeof achivements[i] == 'object') {
@@ -34,20 +36,20 @@ function achivementsScene() {
 		game.scene = new menuScene();
 	});
 
+	this.makeButton(6, menuOptions.offsetX+menuOptions.width/2-48 -96 - 10,260+menuOptions.offsetY, 96, 23, function(){
+		if (self.start > 0)
+			self.start = self.start - 1;
 
+		console.log(self.start);
+	});
 
-	this.entities.push(new iButton( game.buffer.width - 205 + 100 - 9, 100,18,12,function () {
-		if (this.start > 0)
-			this.start = this.start - 1;
-		console.log(654654);
-	}, 'img/HUD/arrow_up.png' ));
+	this.makeButton(5, menuOptions.offsetX+menuOptions.width/2-48 + 96 + 10,260+menuOptions.offsetY, 96, 23, function(){
+		if (self.start < self.achivementList.length)
+			self.start = self.start + 1;
 
-	this.entities.push(new iButton( game.buffer.width - 205 + 100 - 9, 120,18,12,function () {
-		if (this.start > this.achivementList.length-8)
-			this.start = this.start + 1;
-		console.log(654654);
+		console.log(self.start);
+	});
 
-	}, 'img/HUD/arrow_down.png' ));
 
 	this.draw = function( ctx ) {
 
@@ -63,7 +65,8 @@ function achivementsScene() {
 
 
 
-		for(var i = this.start;i<8;i++) {
+		var pageCount = 8;
+		for(var i = pageCount*this.start;i<pageCount*this.start;i++) {
 			this.achivementList[i].privateDraw(ctx, i)
 		}
 
@@ -110,7 +113,7 @@ function achivementsScene() {
 
 	this.mousedown = function (mouse) {
 		for(var i = 0; i < this.entities.length; i++)
-			if (this.entities[i].inArea instanceof iButton)
+			if (!(this.entities[i] instanceof Achivement))
 			if(this.entities[i].inArea(mouse))
 				this.entities[i].callback();
 	};

@@ -34,7 +34,10 @@ var g = {
 		'img/logo.png',
 		'img/menu_buttons_spritesheet.png',
 		'img/credits.png',
-		'img/Tutorial.png'
+		'img/Tutorial.png',
+		'img/icons/bronze.png',
+		'img/icons/silver.png',
+		'img/icons/gold.png'
 	],
 
 	add: function( url ) {
