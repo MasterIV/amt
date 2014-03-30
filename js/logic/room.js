@@ -121,6 +121,8 @@ function Room( x, y, type, map ) {
 		if( this.anger ) {
 			for(var i in this.people) {
 				this.people[i].waittime += delta;
+				achivements.check('VictimTime', this.people[i].waittime);
+
 				if( this.people[i].annoy(delta * this.anger)) {
 					result = true;
 					this.people[i].leave();
