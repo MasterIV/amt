@@ -55,13 +55,14 @@ function Room( x, y, type, map ) {
 
 	this.enable();
 
-	this.updateFactors = function() {
+	this.updateFactors = function( removed ) {
 		var customers = 0;
 		this.income = 0;
 
 		this.speed = type.speed ? type.speed : 0;
 		this.anger = type.anger ? type.anger : 0;
 
+		if (removed) arrayRemove( this.neighbors, removed );
 		for( var i in this.neighbors ) {
 			var n = this.neighbors[i];
 			this.speed *= n.slow;

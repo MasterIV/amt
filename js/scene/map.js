@@ -59,7 +59,7 @@ function mapScene() {
 	});
 	entities.push(this.rsnd);
 
-	function updateRooms() {
+	function updateRooms( removed ) {
 		map.income = 0;
 		map.people = 0;
 		map.demand = 0;
@@ -67,7 +67,7 @@ function mapScene() {
 		for( var i in entities )
 			if( entities[i] instanceof Room ) {
 				var r = entities[i];
-				r.updateFactors();
+				r.updateFactors( removed );
 				map.income += r.income;
 				map.people += r.people.length;
 				if(r.demand)  map.demand += 1 / r.demand;
@@ -92,7 +92,7 @@ function mapScene() {
 
 	this.remove = function( e ) {
 		arrayRemove( entities, e );
-		updateRooms();
+		updateRooms( e );
 	};
 
 	function placeRoom(pl, pos, disableSound) {
