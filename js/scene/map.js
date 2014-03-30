@@ -101,7 +101,7 @@ function mapScene() {
 				sound.play('snd/placeroom.mp3');
 			}
 		} else if( map.roomAt( pos.x, pos.y ) instanceof Room ) {
-			this.info.show( map.roomAt(pos.x, pos.y));
+			this.info.show( map.roomAt(pos.x, pos.y), true );
 		}
 	}
 
