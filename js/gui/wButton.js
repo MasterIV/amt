@@ -1,4 +1,5 @@
-function wButton( x, y, width, height, callback ) {
+function wButton(num, x, y, width, height, callback ) {
+	this.num = num;
 	this.callback = callback;
 	this.x = x;
 	this.y = y;
@@ -6,9 +7,7 @@ function wButton( x, y, width, height, callback ) {
 	this.height = height
 
 	this.draw = function( ctx ) {
-		if( this.inArea( mouse )) {
-			//ctx.drawImage(g["img/startScreen_menu_mousover.png"], this.x, this.y);
-		}
+		ctx.drawImage(g['img/menu_buttons_spritesheet.png'], 0, 23*this.num, 92, 23, this.x , this.y , 92, 23);
 	}
 
 	this.inArea = function (mouse) {
