@@ -1,18 +1,28 @@
-
-
-function menuScene() {
+function achivementsScene() {
 	game.zoom = 2;
+
+	this.start = 0;
 
 	mouse.init();
 
 	var menuOptions = {
-		width: 200,
+		width: 320,
 		height: 250,
 		offsetY: 30,
 		offsetX: 0
 	}
 
+	this.achivementList = [];
 	this.entities = [];
+	for( var i in achivements) {
+		if (typeof achivements[i] == 'object') {
+			for(var j =0;j<achivements[i].length;j++) {
+				this.entities.push(achivements[i][j]);
+				this.achivementList.push(achivements[i][j]);
+
+			}
+		}
+	}
 
 	this.makeButton = function(num,x,y,width,height,callback) {
 		this.entities.push(new wButton(num, x, y,width,height, callback));
@@ -20,52 +30,52 @@ function menuScene() {
 
 	menuOptions.offsetX = $(window).width()/(2*game.zoom) - menuOptions.width/2;
 
-	this.makeButton(0, menuOptions.offsetX+menuOptions.width/2-48,100 +menuOptions.offsetY, 96, 23, function(){
-		game.scene = new mapScene();
-	});
-	this.makeButton(1, menuOptions.offsetX+menuOptions.width/2-48,130 +menuOptions.offsetY, 96, 23, function () {
-		game.scene = new achivementsScene();
-	});
-	this.makeButton(2, menuOptions.offsetX+menuOptions.width/2-48,160 +menuOptions.offsetY, 96, 23, function () {
-		game.scene = new helpScene();
-	});
-	this.makeButton(3, menuOptions.offsetX+menuOptions.width/2-48,190 +menuOptions.offsetY, 96, 23, function () {
-		game.scene = new creditsScene();
+	this.makeButton(4, menuOptions.offsetX+menuOptions.width/2-48,260+menuOptions.offsetY, 96, 23, function(){
+		game.scene = new menuScene();
 	});
 
+
+
+	this.entities.push(new iButton( game.buffer.width - 205 + 100 - 9, 100,18,12,function () {
+		if (this.start > 0)
+			this.start = this.start - 1;
+		console.log(654654);
+	}, 'img/HUD/arrow_up.png' ));
+
+	this.entities.push(new iButton( game.buffer.width - 205 + 100 - 9, 120,18,12,function () {
+		if (this.start > this.achivementList.length-8)
+			this.start = this.start + 1;
+		console.log(654654);
+
+	}, 'img/HUD/arrow_down.png' ));
 
 	this.draw = function( ctx ) {
-		menuOptions.offsetX = game.buffer.width/2 - menuOptions.width/2;
 
 		this.drawBackground(ctx)
-		this.drawMenu(ctx);
-		for(var i = 0; i < this.entities.length; i++) {
-			if(this.entities[i].draw)
-				this.entities[i].draw(ctx);
-		}
-	};
-
-	this.drawMenu = function(ctx) {
 
 
+		menuOptions.offsetX = game.buffer.width/2 - menuOptions.width/2;
 
 		ctx.save();
 		ctx.globalAlpha = 0.5;
 		ctx.fillRect(menuOptions.offsetX,menuOptions.offsetY,menuOptions.width,menuOptions.height);
 		ctx.globalAlpha = 1;
 
-		ctx.drawImage(g['img/logo.png'], 0, 0, 110, 78, menuOptions.offsetX+menuOptions.width/2 - 55, 10 +menuOptions.offsetY, 110, 78);
 
-		//drawButton(ctx, 0, menuOptions.offsetX+menuOptions.width/2-48,100 +menuOptions.offsetY);
-		//drawButton(ctx, 1, menuOptions.offsetX+menuOptions.width/2-48,130 +menuOptions.offsetY);
-		//drawButton(ctx, 2, menuOptions.offsetX+menuOptions.width/2-48,160 +menuOptions.offsetY);
-		//drawButton(ctx, 3, menuOptions.offsetX+menuOptions.width/2-48,190 +menuOptions.offsetY);
 
+		for(var i = this.start;i<8;i++) {
+			this.achivementList[i].privateDraw(ctx, i)
+		}
 
 
 		ctx.restore();
 
-	}
+		for(var i = 0; i < this.entities.length; i++) {
+			if(this.entities[i].draw)
+				this.entities[i].draw(ctx);
+		}
+
+	};
 
 	this.drawBackground = function(ctx) {
 		for( var x = -1; x < $(window).width()/(32*game.zoom) ; x++ )
@@ -96,22 +106,11 @@ function menuScene() {
 			y = 26,
 			img = g[rooms[4]['image']];
 		ctx.drawImage(img, 0, 0, img.width, img.height, x*32, y*8, img.width, img.height);
-		 /*
-		var x = 10,
-			y = 29,
-			img = g[rooms[5]['image']];
-		ctx.drawImage(img, 0, 0, img.width, img.height, x*32, y*8, img.width, img.height);
-		 /*
-		var x = 10,
-			y = -4,
-			img = g[rooms[6]['image']];
-		ctx.drawImage(img, 0, 0, img.width, img.height, x*32, y*8, img.width, img.height);
-
-		*/
 	}
 
 	this.mousedown = function (mouse) {
 		for(var i = 0; i < this.entities.length; i++)
+			if (this.entities[i].inArea instanceof iButton)
 			if(this.entities[i].inArea(mouse))
 				this.entities[i].callback();
 	};

@@ -23,6 +23,7 @@
 	<script src="js/gui/button.js"></script>
 	<script src="js/gui/animationtext.js"></script>
 	<script src="js/gui/iconanimation.js"></script>
+	<script src="js/gui/dialog.js"></script>
 
 	<script src="js/logic/achivements.js"></script>
 	<script src="js/gui/drawings.js"></script>
@@ -49,6 +50,9 @@
 
 	<script src="js/scene/map.js"></script>
 	<script src="js/scene/menu.js"></script>
+	<script src="js/scene/achivements.js"></script>
+	<script src="js/scene/credits.js"></script>
+	<script src="js/scene/help.js"></script>
 
 	<script type="text/javascript">
 		$(function () {
@@ -59,7 +63,7 @@
 			}
 
 			g.load(function () {
-				game.scene = new mapScene();
+				game.scene = new menuScene();
 				game.debug = true;
 				mouse.init();
 				game.init();

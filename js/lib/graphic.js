@@ -29,7 +29,12 @@ var g = {
 		'img/HUD/arrow.png',
 		'img/HUD/arrow_up.png',
 		'img/HUD/arrow_down.png',
-		'img/buttons.png'
+		'img/buttons.png',
+		'img/bg_dark.png',
+		'img/logo.png',
+		'img/menu_buttons_spritesheet.png',
+		'img/credits.png',
+		'img/Tutorial.png'
 	],
 
 	add: function( url ) {
