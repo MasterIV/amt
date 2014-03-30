@@ -47,7 +47,7 @@ function Hud( map, rooms, mapscene ) {
 		ctx.font = game.gameFontBig;
 
 		// Numbers
-		ctx.fillText(map.money | 0, this.bariconwidth, this.textoffsety);
+		ctx.fillText((((map.money*100) | 0) / 100 ) | 0, this.bariconwidth, this.textoffsety);
 		ctx.fillText(map.budget | 0, this.barfieldwidth + this.bariconwidth, this.textoffsety);
 		ctx.fillText(map.income | 0, this.barfieldwidth*2 + this.bariconwidth*2, this.textoffsety);
 		ctx.fillText(map.people, this.barfieldwidth*3 + this.bariconwidth*2, this.textoffsety);
