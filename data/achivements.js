@@ -9,7 +9,7 @@ var achivements = {
 
 	RegistrationOffice:[new Achivement('Volkszählung',100)],
 	JobCenter:[new Achivement('Kommen Sie nächste Woche nochmal',100)],
-	FinishedApplication:[new Achivement('Ich AGs liegen im Trend',100)],
+	StrongEconomy:[new Achivement('Ich AGs liegen im Trend',100)],
 	FinanceOffice:[new Achivement('Schweizer Steuer CD beantragt',100)],
 
 	WaitingRoomQueue:[new Achivement('Schlange von Babel',100)],

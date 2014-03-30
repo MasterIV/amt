@@ -118,7 +118,8 @@ function Room( x, y, type, map ) {
 			fcount.update( delta );
 
 		if( this.anger ) {
-			for(var i in this.people)
+			for(var i in this.people) {
+				this.people[i].waittime += delta;
 				if( this.people[i].annoy(delta * this.anger)) {
 					result = true;
 					this.people[i].leave();
@@ -126,6 +127,7 @@ function Room( x, y, type, map ) {
 					map.money -= 250;
 					achivements.track('AngryPeople',1);
 				}
+			}
 		} else if( this.speed ) {
 			this.work += delta;
 			this.gain += delta;
@@ -136,7 +138,14 @@ function Room( x, y, type, map ) {
 					this.queue.shift().leave();
 					this.sceneEntities.push(new Animationtext(type.fee+' $', this.posScreen, this.sceneEntities, null, 'black' ));
 					map.money += type.fee;
+
 					achivements.track('FinishedApplication',1);
+					switch( type.name ) {
+						case "Einwohnermeldeamt": achivements.track('RegistrationOffice',1); break;
+						case "Arbeitsamt": achivements.track('JobCenter',1); break;
+						case "Gewerbeamt": achivements.track('StrongEconomy',1); break;
+						case "Finanzamt": achivements.track('FinanceOffice',1); break;
+					}
 				}
 
 				this.work -= this.speed;
