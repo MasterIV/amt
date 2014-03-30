@@ -14,7 +14,7 @@ var rooms = [
 		upkeep: 50,
 		price: 1000,
 
-		image:'img/rooms/Raum_starter.png',
+		image:'img/rooms/Raum_Starter.png',
 		frames: 14,
 		framespeed: 10,
 		offset: {x: 31, y: 32 },
@@ -54,8 +54,8 @@ var rooms = [
 		name: "Arbeitsamt",
 		category: "work",
 
-		speed: 5,
-		demand: 2.4,
+		speed: 2.4,
+		demand: 2,
 		worker: 3,
 		fee: 75,
 
@@ -392,8 +392,7 @@ var rooms = [
 		name: "Musikraum",
 		category: "other",
 
-		entertainment: 0.1,
-		slow: 1,
+		entertainment: 0.9,
 		income: 0,
 
 		upkeep: 100,
@@ -414,8 +413,7 @@ var rooms = [
 		name: "Clownszimmer",
 		category: "other",
 
-		entertainment: 0.05,
-		slow: 1,
+		entertainment: 0.95,
 		income: 0,
 
 		upkeep: 250,
@@ -435,11 +433,10 @@ var rooms = [
 		name: "Snackautomaten",
 		category: "other",
 
-		entertainment: 0.1,
-		slow: 1,
-		income: 1,
+		entertainment: 0.9,
+		income: 10,
 
-		upkeep: 100,
+		upkeep: 200,
 		price: 2000,
 
 		image:'img/rooms/Raum_snackraum.png',
@@ -455,8 +452,7 @@ var rooms = [
 		name: "Fernsehraum",
 		category: "other",
 
-		entertainment: 0.4,
-		slow: 1,
+		entertainment: 0.6,
 		income: 0,
 
 		upkeep: 200,
@@ -477,8 +473,7 @@ var rooms = [
 		category: "other",
 
 		entertainment: 0.5,
-		slow: 1,
-		income: 1,
+		income: 20,
 
 		upkeep: 350,
 		price: 5000,
@@ -499,9 +494,8 @@ var rooms = [
 		name: "Bordell",
 		category: "other",
 
-		entertainment: 0.3,
-		slow: 1,
-		income: 1,
+		entertainment: 0.7,
+		income: 30,
 
 		upkeep: 500,
 		price: 8000,
