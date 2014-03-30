@@ -65,7 +65,7 @@ var rooms = [
 
 		image:'img/rooms/Raum_arbeitsamt.png',
 		frames: 18,
-		framespeed: 30,
+		framespeed: 50,
 		offset: {x: 98, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2, 2 ],
@@ -172,7 +172,7 @@ var rooms = [
 
 		image:'img/rooms/Raum_warteschlange.png',
 		frames: 8,
-		framespeed: 30,
+		framespeed: 40,
 		framelength: 82,
 		offset: {x: 66, y: 32 },
 		shape: [
