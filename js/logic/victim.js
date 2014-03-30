@@ -6,6 +6,13 @@ function Victim( workRoom ) {
 	this.waittime = 0; // Ticks the victim waited
 
 	this.wait = function( room ) {
+		switch( room.name ) {
+			case "Warteschlange": achivements.track('WaitingRoomQueue',1); break;
+			case "Stehplätze": achivements.track('WaitingRoomStand',1); break;
+			case "Sitzplätze": achivements.track('WaitingRoomSit',1); break;
+			case "Liegeplätze": achivements.track('WaitingRoomLie',1); break;
+		}
+
 		room.people.push( this );
 		workRoom.queue.push( this );
 		waitRoom = room;

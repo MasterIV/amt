@@ -203,4 +203,6 @@ function mapScene() {
 	this.placeRoom = function ( room ) {
 		placeMe = room;
 	}
+
+	achivements.track('StartGame',1);
 }
