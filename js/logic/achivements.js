@@ -17,16 +17,17 @@ function Achivement(pMessage, pLimit, icon) {
         this.value = value;
 
         if (this.value >= this.limit && !this.finished) {
-
 	        this.show = achivementPopupShowTime;
             this.finished = true;
         }
     }
 
-	this.draw = function(ctx, i) {
+	this.draw = function(ctx, ofs, viewport, i) {
 		if (this.show > 0) {
 			this.privateDraw(ctx, i)
+			return true;
 		}
+		return false;
 		/*
 		var width = 200;
 		var x = game.buffer.width - 5 - width;
@@ -45,10 +46,10 @@ function Achivement(pMessage, pLimit, icon) {
 	this.privateDraw = function(ctx, i) {
 		if (typeof i == 'undefined') {
 			var x = game.buffer.width/2 - 150,
-				y = game.buffer.height - this.y ;
+				y = game.buffer.height - this.y;
 		} else {
 			var x = game.buffer.width/2 - 150,
-				y = 34 + i * 30;
+				y = game.buffer.height - (this.y * (i+1));
 		}
 
 		drawButton(ctx, x, y, 300);

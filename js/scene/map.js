@@ -206,8 +206,17 @@ function mapScene() {
 			return 0;
 		});
 
-		for( var i = 0; i < entities.length; i++ )
-			if( entities[i].draw ) entities[i].draw( ctx, offset, viewport );
+		var achievements = 0;
+		for( var i = 0; i < entities.length; i++ ) {
+			if( entities[i].draw ) {
+				if ( entities[i] instanceof Achivement) {
+					if (entities[i].draw( ctx, offset, viewport, achievements ))
+						achievements++;
+				} else {
+					entities[i].draw( ctx, offset, viewport );
+				}
+			}
+		}
 	}
 
 	this.placeRoom = function ( room ) {
