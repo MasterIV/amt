@@ -28,7 +28,8 @@ var g = {
 		'img/HUD/Achievements_bg_top.png',
 		'img/HUD/arrow.png',
 		'img/HUD/arrow_up.png',
-		'img/HUD/arrow_down.png'
+		'img/HUD/arrow_down.png',
+		'img/buttons.png'
 	],
 
 	add: function( url ) {
