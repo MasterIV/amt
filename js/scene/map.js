@@ -158,9 +158,9 @@ function mapScene() {
 		var changed = false;
 
 		if( map.money < -5000 ) {
-			entities.push(new Dialog('You loose!'), function() {
+			entities.push(new Dialog('You loose!', function() {
 				game.scene = new menuScene();
-			});
+			}));
 		}
 
 		// Eins zeiteinheit ist game.tick
@@ -212,6 +212,10 @@ function mapScene() {
 
 	this.placeRoom = function ( room ) {
 		placeMe = room;
+	}
+	
+	this.cheat = function( m ) {
+		map.money = m;
 	}
 
 	achivements.track('StartGame',1);
