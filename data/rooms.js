@@ -5,7 +5,7 @@ var rooms = [
 	{
 		name: "Einzelzimmer",
 		category: "work",
-		notplaceable:true,
+		notplaceable: true,
 
 		speed: 1.00,
 		demand: 1,
@@ -159,7 +159,9 @@ var rooms = [
 		framelength: 0,
 		offset: {x: 11, y: 7 },
 		shape: [
-			[ 1 ]
+			[ 2, 2, 2 ],
+			[ 2, 1, 2 ],
+			[ 2, 2, 2 ]
 		]
 	},
 	{

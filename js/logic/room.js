@@ -120,6 +120,8 @@ function Room( x, y, type, map ) {
 				if( this.people[i].annoy(delta * this.anger)) {
 					result = true;
 					this.people[i].leave();
+					this.sceneEntities.push(new Animationtext('-250 $', this.posScreen, this.sceneEntities, null, 'red' ));
+					map.money -= 250;
 					achivements.track('AngryPeople',1);
 				}
 		} else if( this.speed ) {
@@ -130,7 +132,7 @@ function Room( x, y, type, map ) {
 				// warteschlange abarbeiten
 				if( this.queue.length ) {
 					this.queue.shift().leave();
-					this.sceneEntities.push(new Animationtext(type.fee+' $', this.posScreen, this.sceneEntities));
+					this.sceneEntities.push(new Animationtext(type.fee+' $', this.posScreen, this.sceneEntities, null, 'black' ));
 					map.money += type.fee;
 				}
 

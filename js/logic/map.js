@@ -31,9 +31,11 @@ function Map( grid ) {
 				if( roomType.shape[rx][ry] == 1 )
 					grid[x+rx][ry+y] = 0;
 				else if( roomType.shape[rx][ry] == 2 ) {
-					grid[x+rx][ry+y].remove( roomInstance );
-					if( grid[x+rx][ry+y].rooms.length < 1 )
-						grid[x+rx][ry+y] = 0;
+					if( grid[x+rx][ry+y] ) {
+						grid[x+rx][ry+y].remove( roomInstance );
+						if( grid[x+rx][ry+y].rooms.length < 1 )
+							grid[x+rx][ry+y] = 0;
+					}
 				}
 	}
 
