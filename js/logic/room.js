@@ -40,7 +40,7 @@ function Room( x, y, type, map ) {
 	this.enable = function() {
 		this.enabled = true;
 		this.entertainment = type.entertainment ? type.entertainment : 0;
-		this.slow = type.slow ? type.slow : 1;
+		this.slow = type.slow ? type.slow : 0;
 	}
 
 	this.disable = function() {
