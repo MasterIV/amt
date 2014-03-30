@@ -88,13 +88,12 @@ function mapScene() {
 		arrayRemove( entities, e );
 	};
 
-	function placeRoom(placeMe, pos) {
-		var room = map.placeRoom(placeMe, pos.x, pos.y);
+	function placeRoom(pl, pos) {
+		var room = map.placeRoom(pl, pos.x, pos.y);
 		if (room) {
 			room.setSceneEntities(entities);
 			entities.push(room);
 			updateRooms();
-			placeMe = null;
 			sound.play('snd/placeroom.mp3');
 		}
 	}
@@ -111,6 +110,7 @@ function mapScene() {
 
 		if( placeMe ) {
 			placeRoom(placeMe, pos);
+			placeMe = null;
 		} else if( map.roomAt( pos.x, pos.y ) instanceof Room ) {
 			this.info.show( map.roomAt(pos.x, pos.y), true );
 		}

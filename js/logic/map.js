@@ -23,15 +23,15 @@ function Map( grid ) {
 	}
 
 	this.remove = function( roomInstance, roomType ) {
-		var x = roomInstance.posGrid.x;
-		var y = roomInstance.posGrid.y;
+		var x = roomInstance.posGrid.x-1;
+		var y = roomInstance.posGrid.y-1;
 
 		for( var rx = 0; rx < roomType.shape.length; rx++ )
 			for( var ry = 0; ry < roomType.shape[0].length; ry++ )
 				if( roomType.shape[rx][ry] == 1 )
 					grid[x+rx][ry+y] = 0;
 				else if( roomType.shape[rx][ry] == 2 ) {
-					grid[x+rx][ry+y].add( remove );
+					grid[x+rx][ry+y].remove( roomInstance );
 					if( grid[x+rx][ry+y].rooms.length < 1 )
 						grid[x+rx][ry+y] = 0;
 				}
