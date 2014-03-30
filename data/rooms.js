@@ -65,7 +65,7 @@ var rooms = [
 
 		image:'img/rooms/Raum_arbeitsamt.png',
 		frames: 18,
-		framespeed: 50,
+		framespeed: 70,
 		offset: {x: 98, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2, 2 ],
@@ -92,6 +92,8 @@ var rooms = [
 
 		image:'img/rooms/Raum_gewerbeamt.png',
 		offset: {x: 98, y: 32 },
+		frames: 8,
+		framespeed: 50,
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 1, 1, 1, 2 ],
@@ -172,8 +174,7 @@ var rooms = [
 
 		image:'img/rooms/Raum_warteschlange.png',
 		frames: 8,
-		framespeed: 40,
-		framelength: 82,
+		framespeed: 70,
 		offset: {x: 66, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2 ],
@@ -284,6 +285,8 @@ var rooms = [
 
 		image:'img/rooms/Raum_raucherraum.png',
 		offset: {x: 68, y: 32 },
+		frames: 5,
+		framespeed: 50,
 		shape: [
 			[ 2, 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 1, 2 ],
@@ -354,6 +357,8 @@ var rooms = [
 
 		image:'img/rooms/Raum_fitnessraum.png',
 		offset: {x: 68, y: 32 },
+		frames: 4,
+		framespeed: 50,
 		shape: [
 			[ 2, 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 1, 2 ],
@@ -479,8 +484,10 @@ var rooms = [
 		upkeep: 200,
 		price: 3000,
 
-		image:'img/rooms/Raum_TV.png',
+		image:'img/rooms/tv_spreadsheet.png',
 		offset: {x: 83, y: 32 },
+		frames: 22,
+		framespeed: 40,
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 1, 1, 2 ],
