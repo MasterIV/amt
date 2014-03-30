@@ -2,9 +2,11 @@ function mapScene() {
 	var placeMe;
 	var dragging = false;
 	var last;
-
+	var levelNum = 0;
+	
+	
 	this.info = new RoomInfo();
-	var map = new Map( levels[0].grid );
+	var map = new Map( levels[levelNum].grid );
 	var hud = new Hud( map, rooms, this );
 	var offset = new V2( map.grid[0].length*16, 31 );
 	var bg = new Background(map.grid, offset);
@@ -22,6 +24,10 @@ function mapScene() {
 				entities.push(achivements[i][j]);
 			}
 		}
+	}
+	
+	for(var room in levels[levelNum].startrooms) {
+		placeRoom( levels[levelNum].startrooms[room].type, levels[levelNum].startrooms[room].pos)
 	}
 
 	entities.push({
@@ -82,6 +88,17 @@ function mapScene() {
 		arrayRemove( entities, e );
 	};
 
+	function placeRoom(placeMe, pos) {
+		var room = map.placeRoom(placeMe, pos.x, pos.y);
+		if (room) {
+			room.setSceneEntities(entities);
+			entities.push(room);
+			updateRooms();
+			placeMe = null;
+			sound.play('snd/placeroom.mp3');
+		}
+	}
+
 	this.click = function( mouse ) {
 		var pos = getCoords( mouse );
 
@@ -93,14 +110,7 @@ function mapScene() {
 		if( dragging && !dragging.equal(mouse)) return;
 
 		if( placeMe ) {
-			var room = map.placeRoom( placeMe, pos.x, pos.y );
-			if( room ) {
-				room.setSceneEntities(entities);
-				entities.push( room );
-				updateRooms();
-				placeMe = null;
-				sound.play('snd/placeroom.mp3');
-			}
+			placeRoom(placeMe, pos);
 		} else if( map.roomAt( pos.x, pos.y ) instanceof Room ) {
 			this.info.show( map.roomAt(pos.x, pos.y), true );
 		}
