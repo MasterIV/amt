@@ -10,6 +10,6 @@ function Corridor( room ) {
 	};
 
 	this.remove = function( r ) {
-
+		arrayRemove( this.rooms, r );
 	};
 }

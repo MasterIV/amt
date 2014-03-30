@@ -7,6 +7,7 @@ function mapScene() {
 	var hud = new Hud( map, rooms, this );
 	var offset = new V2( map.grid[0].length*16, 31 );
 	var bg = new Background(map.grid, offset);
+	var info = new RoomInfo();
 	var viewport = { x: 50, y: 50, w: 0, h: 0 };
 
 	var entities = [];
@@ -15,9 +16,37 @@ function mapScene() {
 	entities.push( hud );
 
 
+	entities.push({
+		getZ : function() {
+			return 99990;
+		},
+
+		draw: function( ctx ) {
+			if( placeMe ) {
+				var pos = getCoords( mouse );
+				pos.x -= 1; pos.y -= 1;
+
+				for( var x = 0; x < placeMe.shape.length; x++ )
+					for( var y = 0; y < placeMe.shape[0].length; y++ )
+						if( placeMe.shape[x][y] ) {
+							var dx = viewport.x+offset.x+(x+pos.x)*16+(y+pos.y)*-16;
+							var dy = viewport.y+offset.y+(x+pos.x)*8+(y+pos.y)*8;
+
+							if( typeof map.grid[x+pos.x] == 'undefined' || typeof map.grid[x+pos.x][y+pos.y] == 'undefined' ||
+								map.grid[x+pos.x][y+pos.y] == 1 || map.grid[x+pos.x][y+pos.y] instanceof Room )
+								var img =  'img/place_invalid.png';
+							else var img = placeMe.shape[x][y] == 1 ? 'img/place_room.png' : 'img/place_corridor.png';
+
+							ctx.drawImage( g[img], 0, 0, 32, 16, dx-16, dy, 32, 16);
+						}
+			}
+		}
+	});
+
 	function updateRooms() {
 		map.income = 0;
 		map.people = 0;
+		map.demand = 0;
 
 		for( var i in entities )
 			if( entities[i] instanceof Room ) {
@@ -25,7 +54,10 @@ function mapScene() {
 				r.updateFactors();
 				map.income += r.income;
 				map.people += r.people.length;
+				if(r.demand)  map.demand += 1 / r.demand;
 			}
+
+		map.budget = 1000 + map.people * 1000;
 	}
 
 	function getCoords( point ) {
@@ -38,9 +70,9 @@ function mapScene() {
 		return new V2( mx, my );
 	}
 
-	function getNormalCoords( point ) {
-		return new V2( point.x*16+point.y*-16 -16, point.x*8+point.y*8);
-	}
+	this.remove = function( e ) {
+		arrayRemove( entities, e );
+	};
 
 	this.click = function( mouse ) {
 		var pos = getCoords( mouse );
@@ -59,7 +91,7 @@ function mapScene() {
 				sound.play('snd/placeroom.mp3');
 			}
 		} else if( map.roomAt( pos.x, pos.y ) instanceof Room ) {
-			map.roomAt(pos.x, pos.y).showInfo();
+			info.show( map.roomAt(pos.x, pos.y));
 		}
 	}
 
@@ -93,7 +125,6 @@ function mapScene() {
 
 	this.update = function( delta ) {
 		var changed = false;
-		var toKill = new Array();
 
 		// Eins zeiteinheit ist game.tick
 		delta /= 1000 * game.tick;
@@ -102,7 +133,6 @@ function mapScene() {
 			if( entities[i].update ) {
 				var result = entities[i].update( delta );
 				if( result ) changed = true;
-				if (entities[i].kill) toKill.push(entities[i]);
 
 				// find a waiting room for our new victim
 				if( result instanceof Victim )
@@ -113,17 +143,6 @@ function mapScene() {
 								break;
 							}
 			}
-		for (var i in toKill) {
-			arrayRemove(entities, toKill[i]);
-		}
-
-		for( var i in achivements) {
-			if (typeof achivements[i] == 'object') {
-				for(var j =0;j<achivements[i].length;j++) {
-					achivements[i][j].update( delta);
-				}
-			}
-		}
 
 		if( changed ) updateRooms();
 	}
@@ -142,43 +161,11 @@ function mapScene() {
 			return 0;
 		});
 
-
 		for( var i = 0; i < entities.length; i++ )
 			if( entities[i].draw ) entities[i].draw( ctx, offset, viewport );
-
-		if( placeMe ) {
-			var pos = getCoords( mouse );
-			pos.x -= 1; pos.y -= 1;
-
-			for( var x = 0; x < placeMe.shape.length; x++ )
-				for( var y = 0; y < placeMe.shape[0].length; y++ )
-					if( placeMe.shape[x][y] ) {
-						var dx = viewport.x+offset.x+(x+pos.x)*16+(y+pos.y)*-16;
-						var dy = viewport.y+offset.y+(x+pos.x)*8+(y+pos.y)*8;
-
-						if( typeof map.grid[x+pos.x] == 'undefined' || typeof map.grid[x+pos.x][y+pos.y] == 'undefined' ||
-							map.grid[x+pos.x][y+pos.y] == 1 || map.grid[x+pos.x][y+pos.y] instanceof Room )
-							var img =  'img/place_invalid.png';
-						else var img = placeMe.shape[x][y] == 1 ? 'img/place_room.png' : 'img/place_corridor.png';
-
-						ctx.drawImage( g[img], 0, 0, 32, 16, dx-16, dy, 32, 16);
-					}
-		}
-
-		for( var i in achivements) {
-			if (typeof achivements[i] == 'object') {
-				for(var j =0;j<achivements[i].length;j++) {
-					achivements[i][j].draw( ctx );
-				}
-			}
-		}
 	}
 
 	this.placeRoom = function ( room ) {
 		placeMe = room;
-	}
-
-	this.destroyEntity = function ( entity ) {
-		entities.arrayRemove(entitiy);
 	}
 }
