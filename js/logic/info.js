@@ -54,13 +54,14 @@ function RoomInfo() {
 
 	this.click = function( mouse ) {
 		if( room && buttons ) {
-			return close.click( mouse );
+			return close.click( mouse ) || demolish.click( mouse );
 		}
 	}
 
 	this.update = function(delta) {
 		if( room && buttons ) {
 			close.update( delta );
+			demolish.update( delta );
 		}
 	}
 
