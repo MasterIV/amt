@@ -2,8 +2,30 @@ var rooms = [
 	// -------------------------------------------------------------------------------------------------------
 	// Amtszimmer
 	// -------------------------------------------------------------------------------------------------------
-
 	{
+		name: "Einzelzimmer",
+		category: "work",
+
+		speed: 1.00,
+		demand: 1,
+		worker: 1,
+		fee: 100,
+
+		upkeep: 50,
+		price: 1000,
+
+		image:'img/rooms/Raum_starter.png',
+		frames: 14,
+		framespeed: 10,
+		offset: {x: 31, y: 32 },
+		shape: [
+			[ 2, 2, 2, 2 ],
+			[ 2, 1, 1, 2 ],
+			[ 2, 1, 1, 2 ],
+			[ 2, 2, 2, 2 ]
+		]
+	}
+	,{
 		name: "Einwohnermeldeamt",
 		category: "work",
 

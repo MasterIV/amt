@@ -95,6 +95,7 @@ function mapScene() {
 		if( placeMe ) {
 			var room = map.placeRoom( placeMe, pos.x, pos.y );
 			if( room ) {
+				room.setSceneEntities(entities);
 				entities.push( room );
 				updateRooms();
 				placeMe = null;
