@@ -47,6 +47,9 @@ var game = {
 
 		this.resize();
 
+		backgroundmusic.init();
+
+
 		var self = this;
 		setInterval( function() { self.updateFramerate(); }, 1000 );
 		window.onresize = function() { self.resize(); };

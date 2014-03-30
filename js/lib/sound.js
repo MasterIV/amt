@@ -1,7 +1,7 @@
 var sound = {
 	sampels: ['snd/placeroom.mp3'],
 
-	play: function( file ) {
+	play: function( file, endCallback ) {
 		var self = this;
 
 		if( !this.sampels[file] )
@@ -13,7 +13,10 @@ var sound = {
 			return sound;
 		} else {
 			var sound = new Audio( file );
-			sound.onended = function() { self.sampels[file].push( this ); };
+			sound.onended = function() {
+				self.sampels[file].push( this );
+				if (typeof endCallback == 'function') endCallback();
+			};
 			sound.play();
 			return sound;
 		}
