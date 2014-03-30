@@ -1,5 +1,6 @@
 function Button() {
 	this.hover = false;
+	this.disabled = false;
 }
 
 Button.prototype.update = function() {
