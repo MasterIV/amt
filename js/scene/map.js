@@ -117,6 +117,14 @@ function mapScene() {
 			arrayRemove(entities, toKill[i]);
 		}
 
+		for( var i in achivements) {
+			if (typeof achivements[i] == 'object') {
+				for(var j =0;j<achivements[i].length;j++) {
+					achivements[i][j].update( delta);
+				}
+			}
+		}
+
 		if( changed ) updateRooms();
 	}
 
@@ -133,6 +141,7 @@ function mapScene() {
 
 			return 0;
 		});
+
 
 		for( var i = 0; i < entities.length; i++ )
 			if( entities[i].draw ) entities[i].draw( ctx, offset, viewport );
@@ -154,6 +163,14 @@ function mapScene() {
 
 						ctx.drawImage( g[img], 0, 0, 32, 16, dx-16, dy, 32, 16);
 					}
+		}
+
+		for( var i in achivements) {
+			if (typeof achivements[i] == 'object') {
+				for(var j =0;j<achivements[i].length;j++) {
+					achivements[i][j].draw( ctx );
+				}
+			}
 		}
 	}
 
