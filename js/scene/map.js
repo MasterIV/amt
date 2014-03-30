@@ -56,9 +56,10 @@ function mapScene() {
 				entities.push( room );
 				updateRooms();
 				placeMe = null;
+				sound.play('snd/placeroom.mp3');
 			}
 		} else if( map.roomAt( pos.x, pos.y ) instanceof Room ) {
-			// show room info
+			map.roomAt(pos.x, pos.y).showInfo();
 		}
 	}
 
@@ -77,7 +78,12 @@ function mapScene() {
 			viewport.x += mouse.x - last.x;
 			viewport.y += mouse.y - last.y;
 			last = mouse.clone();
+			return;
 		}
+
+		for (var i in entities)
+			if (entities[i].mousemove)
+				entities[i].mousemove( mouse );
 	}
 
 	this.resize = function( w, h ) {
@@ -87,14 +93,16 @@ function mapScene() {
 
 	this.update = function( delta ) {
 		var changed = false;
+		var toKill = new Array();
 
-		// Eins zeiteinheit ist 10 sekunden ?
-		delta /= 1000 * 10;
+		// Eins zeiteinheit ist game.tick
+		delta /= 1000 * game.tick;
 
 		for( var i = 0; i < entities.length; i++ )
 			if( entities[i].update ) {
 				var result = entities[i].update( delta );
 				if( result ) changed = true;
+				if (entities[i].kill) toKill.push(entities[i]);
 
 				// find a waiting room for our new victim
 				if( result instanceof Victim )
@@ -105,6 +113,9 @@ function mapScene() {
 								break;
 							}
 			}
+		for (var i in toKill) {
+			arrayRemove(entities, toKill[i]);
+		}
 
 		if( changed ) updateRooms();
 	}
@@ -148,5 +159,9 @@ function mapScene() {
 
 	this.placeRoom = function ( room ) {
 		placeMe = room;
+	}
+
+	this.destroyEntity = function ( entity ) {
+		entities.arrayRemove(entitiy);
 	}
 }

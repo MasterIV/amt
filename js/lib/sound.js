@@ -1,5 +1,5 @@
 var sound = {
-	sampels: [],
+	sampels: ['snd/placeroom.mp3'],
 
 	play: function( file ) {
 		var self = this;
@@ -17,5 +17,9 @@ var sound = {
 			sound.play();
 			return sound;
 		}
+	},
+
+	add: function( url ) {
+		this.sampels.push( url );
 	}
 }

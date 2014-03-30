@@ -2,9 +2,12 @@ function rButton( room, selector ) {
 	this.room = room;
 	this.selector = selector;
 	this.size = 20;
+	this.mousein = false;
 
 	this.draw = function( ctx, ofs, viewport ) {
 		ctx.drawImage(g[this.room.image], this.x, this.y, this.size, this.size);
+
+		if (this.mousein) this.selector.hovername = this.room.name + "   $ " + this.room.price;
 	}
 
 	this.position = function (x, y) {
@@ -26,6 +29,14 @@ function rButton( room, selector ) {
 			this.selector.hud.mapscene.placeRoom( this.room );
 			this.selector.hud.closeRoomSelector();
 			return true;
+		}
+	}
+
+	this.mousemove = function ( mouse ) {
+		if (this.inArea( mouse )) {
+			this.mousein = true;
+		} else {
+			this.mousein = false;
 		}
 	}
 }

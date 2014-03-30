@@ -14,10 +14,15 @@ var g = {
 		'img/HUD/top_ui_bg.png',
 		'img/HUD/construction.png',
 		'img/HUD/button_fetch_budget.png',
+		'img/HUD/button_destroy_normal.png',
+		'img/HUD/button_destroy_pressed.png',
 		'img/HUD/bworkpressed.png',
 		'img/HUD/bwaitpressed.png',
 		'img/HUD/bentpressed.png',
-		'img/HUD/roomselector.png'
+		'img/HUD/roomselector.png',
+		'img/HUD/bubble_top.png',
+		'img/HUD/bubble_middle.png',
+		'img/HUD/bubble_bottom.png'
 	],
 
 	add: function( url ) {

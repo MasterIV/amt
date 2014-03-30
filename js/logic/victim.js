@@ -3,6 +3,7 @@ function Victim( workRoom ) {
 
 	this.anger = 0;
 	this.angerLimit = 100;
+	this.waittime = 0; // Ticks the victim waited
 
 	this.wait = function( room ) {
 		room.people.push( this );

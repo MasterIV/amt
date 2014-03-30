@@ -10,6 +10,7 @@ window.requestAnimFrame = (function(){
 var game = {
 	frames: 0,
 	fps: 25,
+	tick: 10,
 
 	scene: null,
 	lastUpdate: 0,
@@ -21,7 +22,8 @@ var game = {
 	buffer: null,
 	bufferCtx: null,
 
-	gameFont: "12px Fixedsys",
+	gameFontBig: "11px monospace",
+	gameFontSmall: "10px monospace",
 	gameFontColor: "white",
 
 	resize: function() {
@@ -41,7 +43,7 @@ var game = {
 		this.buffer = document.createElement('canvas');
 		this.bufferCtx = this.buffer.getContext('2d');
 
-		this.display.font = this.gameFont;
+		this.displayCtx.font = this.gameFontBig;
 
 		this.resize();
 

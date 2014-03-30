@@ -30,6 +30,7 @@
 	<script src="js/logic/victim.js"></script>
 	<script src="js/logic/extrapeople.js"></script>
 	<script src="js/logic/hud.js"></script>
+	<script src="js/logic/roominfo.js"></script>
 
 	<script src="js/gui/background.js"></script>
 
@@ -45,8 +46,10 @@
 
 	<script type="text/javascript">
 		$(function () {
-			for( var i in rooms )
-				g.add( rooms[i].image );
+			for( var i in rooms ) {
+				g.add(rooms[i].image);
+				if(rooms[i].clicksound) sound.add(rooms[i].clicksound)
+			}
 
 			g.load(function () {
 				game.scene = new mapScene();

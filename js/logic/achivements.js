@@ -12,7 +12,7 @@ function Achivement(pMessage, pLimit) {
 	this.check = function(value) {
         this.value = value;
 
-        console.log(this.value,this.limit);
+      //  console.log(this.value,this.limit);
         if (this.value >= this.limit && !this.finished) {
             this.finished = true;
             popupAchivementMessage(this);

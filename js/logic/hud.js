@@ -42,13 +42,17 @@ function Hud( map, rooms, mapscene ) {
 		// Right border
 		ctx.drawImage(g['img/HUD/top_ui_bg.png'], this.moneybarwidth + this.personsbarwidth,0, game.buffer.width - (this.moneybarwidth + this.personsbarwidth),this.barfixed);
 
+		ctx.save();
+		ctx.scale(1,1);
 		ctx.fillStyle = game.gameFontColor;
+		ctx.font = game.gameFontBig;
 		// Money
 		ctx.fillText(this.map.money | 0, this.bariconwidth, this.textoffsety);
 		// Income
 		ctx.fillText(this.map.income | 0, this.barfieldwidth*2 + this.bariconwidth*2, this.textoffsety);
 		// Persons
 		ctx.fillText(this.map.people, this.barfieldwidth*3 + this.bariconwidth*2, this.textoffsety);
+		ctx.restore();
 
 		/* Left bar */
 
@@ -73,6 +77,12 @@ function Hud( map, rooms, mapscene ) {
 			if (this.entities[i].mousedown)
 				if (this.entities[i].mousedown( mouse ))
 					return true;
+	}
+
+	this.mousemove = function( mouse ) {
+		for (var i in this.entities)
+			if (this.entities[i].mousemove)
+				this.entities[i].mousemove( mouse );
 	}
 
 
