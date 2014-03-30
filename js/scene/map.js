@@ -6,7 +6,7 @@ function mapScene() {
 	
 	
 	this.info = new RoomInfo();
-	var map = new Map( levels[levelNum].grid );
+	var map = new Map( levels[levelNum].grid, 5000 );
 	var hud = new Hud( map, rooms, this );
 	var offset = new V2( map.grid[0].length*16, 31 );
 	var bg = new Background(map.grid, offset);
@@ -82,6 +82,10 @@ function mapScene() {
 		var my = ((y / 8 - (x / 16)) / 2 ) | 0;
 
 		return new V2( mx, my );
+	}
+
+	this.getMoney = function() {
+		return map.money;
 	}
 
 	this.remove = function( e ) {

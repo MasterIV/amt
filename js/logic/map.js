@@ -1,9 +1,9 @@
-function Map( grid ) {
+function Map( grid, money ) {
 	var self = this;
 	this.grid = grid;
 
 	// Globale werte
-	this.money = 500000;
+	this.money = money;
 	this.income = 0;
 	this.people = 0;
 	this.demand = 0;

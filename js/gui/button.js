@@ -57,7 +57,12 @@ RoomButton.prototype.draw = function( ctx ) {
 	ctx.fillStyle = '#CCC';
 	if( this.hover ) ctx.fillRect( this.x, this.y, 50, 50 );
 	if( this.type.frames) width /= this.type.frames;
+
+	if( this.type.price > game.scene.getMoney())
+		ctx.globalAlpha = .3;
+
 	ctx.drawImage( img, 0, 0, width, height, this.x+2, this.y+2, 46, 46 );
+	ctx.globalAlpha = 1;
 }
 
 RoomButton.prototype.update = function() {
