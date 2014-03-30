@@ -378,6 +378,8 @@ var rooms = [
 		price: 1000,
 
 		image:'img/rooms/Raum_musikraum.png',
+		frames: 5,
+		framespeed: 10,
 		offset: {x: 33, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2 ],
@@ -400,8 +402,6 @@ var rooms = [
 		image:'img/rooms/clowns_spreadsheet.png',
 		frames: 14,
 		framespeed: 10,
-		framelength: 50,
-
 		offset: {x: 16, y: 32 },
 		shape: [
 			[ 2, 2, 2 ],
@@ -487,8 +487,6 @@ var rooms = [
 		image:'img/rooms/cindy_spreadsheet.png',
 		frames: 12,
 		framespeed: 10,
-		framelength: 78,
-
 		offset: {x: 31, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2 ],
