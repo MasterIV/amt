@@ -317,7 +317,7 @@ var rooms = [
 		clicksound: 'snd/Cafeteria.mp3'
 	},
 	{
-		name: "Cantine",
+		name: "Kantine",
 		category: "other",
 
 		entertainment: 0,
@@ -442,7 +442,7 @@ var rooms = [
 
 		image:'img/rooms/clowns_spreadsheet.png',
 		frames: 14,
-		framespeed: 10,
+		framespeed: 50,
 		offset: {x: 16, y: 32 },
 		shape: [
 			[ 2, 2, 2 ],
