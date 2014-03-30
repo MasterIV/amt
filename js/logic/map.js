@@ -9,7 +9,7 @@ function Map( grid ) {
 	this.demand = 0;
 
 	this.budget = 1000;
-	this.cooldown = 5;
+	this.cooldown = 1;
 
 	this.claim = function() {
 		if( this.cooldown <= 0 && this.money < this.budget ) {

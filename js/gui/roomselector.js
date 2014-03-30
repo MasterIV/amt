@@ -11,9 +11,10 @@ function RoomSelector( mapScene ) {
 			var dx = offset.x + ( i % 4 ) * 50;
 			var dy = offset.y + (( i / 4 ) | 0 ) * 50;
 			entities.push( new RoomButton( type, dx, dy, function() {
+				mapScene.info.close();
 				mapScene.placeRoom(type);
 				entities = [];
-			} ));
+			}, mapScene.info  ));
 		})(items[i]);
 	}
 

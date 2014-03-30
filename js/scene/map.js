@@ -3,17 +3,18 @@ function mapScene() {
 	var dragging = false;
 	var last;
 
+	this.info = new RoomInfo();
 	var map = new Map( levels[0].grid );
 	var hud = new Hud( map, rooms, this );
 	var offset = new V2( map.grid[0].length*16, 31 );
 	var bg = new Background(map.grid, offset);
-	var info = new RoomInfo();
 	var viewport = { x: 50, y: 50, w: 0, h: 0 };
 
 	var entities = [];
 	entities.push( map );
 	entities.push( bg );
 	entities.push( hud );
+	entities.push( this.info );
 
 	for( var i in achivements) {
 		if (typeof achivements[i] == 'object') {
@@ -101,7 +102,7 @@ function mapScene() {
 				sound.play('snd/placeroom.mp3');
 			}
 		} else if( map.roomAt( pos.x, pos.y ) instanceof Room ) {
-			info.show( map.roomAt(pos.x, pos.y));
+			this.info.show( map.roomAt(pos.x, pos.y));
 		}
 	}
 
