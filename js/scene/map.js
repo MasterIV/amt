@@ -6,6 +6,7 @@ function mapScene() {
 	
 	
 	this.info = new RoomInfo();
+	this.rsnd = new RandomSounds();
 	var map = new Map( levels[levelNum].grid, 5000 );
 	var hud = new Hud( map, rooms, this );
 	var offset = new V2( map.grid[0].length*16, 31 );
@@ -56,6 +57,7 @@ function mapScene() {
 			}
 		}
 	});
+	entities.push(this.rsnd);
 
 	function updateRooms() {
 		map.income = 0;
@@ -90,6 +92,7 @@ function mapScene() {
 
 	this.remove = function( e ) {
 		arrayRemove( entities, e );
+		updateRooms();
 	};
 
 	function placeRoom(pl, pos, disableSound) {
@@ -117,6 +120,7 @@ function mapScene() {
 			placeMe = null;
 		} else if( map.roomAt( pos.x, pos.y ) instanceof Room ) {
 			this.info.show( map.roomAt(pos.x, pos.y), true );
+			this.rsnd.chance = 0;
 		}
 	}
 
