@@ -34,3 +34,10 @@ function moodRect(ctx, x, y, person) {
 
 	ctx.restore();
 }
+
+function diagbox( ctx, x, y, w, h ) {
+	ctx.strokeStyle = '#63727d'
+	ctx.strokeRect( x, y, w, h );
+	ctx.fillStyle = '#b9d5ea';
+	ctx.fillRect( x, y, w, h );
+}

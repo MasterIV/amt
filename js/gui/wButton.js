@@ -1,4 +1,4 @@
-function wButton( x, y,width,height, callback ) {
+function wButton( x, y, width, height, callback ) {
 	this.callback = callback;
 	this.x = x;
 	this.y = y;

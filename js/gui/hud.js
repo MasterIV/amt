@@ -9,10 +9,11 @@ function Hud( map, rooms, mapscene ) {
 
 	for( var i in rooms ) {
 		var r = rooms[i];
-		categories[r.type] = r;
+		categories[r.category].push( r );
 	}
 
-	this.rooms = rooms;
+	var selector = new RoomSelector(mapscene);
+
 	this.mapscene = mapscene;
 
 	this.moneybarwidth = 307;
@@ -26,9 +27,8 @@ function Hud( map, rooms, mapscene ) {
 	this.barfixed = 20;
 	this.buttonsize = 18;
 
-	this.roomselector = null;
-
 	this.entities = [
+		selector,
 		new cButton(0,this.barfixed, this.buttonsize,this.buttonsize, "work", "img/HUD/bworkpressed.png", this),
 		new cButton(0,this.barfixed*2, this.buttonsize,this.buttonsize, "wait", "img/HUD/bwaitpressed.png", this),
 		new cButton(0,this.barfixed*3, this.buttonsize,this.buttonsize, "other", "img/HUD/bentpressed.png", this),
@@ -89,38 +89,17 @@ function Hud( map, rooms, mapscene ) {
 				this.entities[i].mousemove( mouse );
 	}
 
+	this.update = function( delta ) {
+		for (var i in this.entities)
+			if (this.entities[i].update)
+				this.entities[i].update( delta );
+	}
 
 	this.toggleRoomSelector = function( category, x, y ) {
-		if (this.roomselector) {
-			if (this.roomselector.y == y) {
-				for (var i in this.entities)
-					if (this.entities[i] == this.roomselector) {
-						this.entities.splice(i, 1);
-						break;
-					}
-				this.roomselector = null;
-				return;
-			} else {
-				for (var i in this.entities)
-					if (this.entities[i] == this.roomselector) {
-						this.entities.splice(i, 1);
-						break;
-					}
-				this.roomselector = null;
-			}
-		}
-		this.roomselector = new RoomSelector( category, x, y, this );
-		this.entities.push(this.roomselector);
+		selector.show( categories[category] );
 	}
 
 	this.closeRoomSelector = function() {
-		if (this.roomselector) {
-			for (var i in this.entities)
-				if (this.entities[i] == this.roomselector) {
-					this.entities.splice(i, 1);
-					break;
-				}
-				this.roomselector = null;
-		}
+		selection = null;
 	}
 }
