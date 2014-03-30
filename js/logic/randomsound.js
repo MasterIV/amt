@@ -8,7 +8,7 @@ function RandomSounds() {
 		'snd/random/Kleiner_timmi_hall.mp3',
 		'snd/random/Langweilig_hall.mp3',
 		'snd/random/Neu in der Stadt_hall.mp3',
-		'snd/random/Snackautomaten Quitting_hall.mp3',
+		'snd/random/Snackautomaten Quittung_hall.mp3',
 		'snd/random/Software Update_hall.mp3',
 		'snd/random/Sozialempfänger_hall.mp3',
 		'snd/random/Sudokuspiel_hall.mp3',
@@ -37,7 +37,7 @@ function RandomSounds() {
 
 		if (this.chance < 1.5) return;
 
-		if (this.chance > (Math.random() * 1200)) {
+		if (this.chance > (Math.random() * 7000)) {
 			var snd = Math.floor( Math.random() * soundlist.length );
 			sound.play(soundlist[snd]);
 			this.chance = 0;
