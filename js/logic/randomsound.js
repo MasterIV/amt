@@ -1,5 +1,6 @@
-var sound = {
-	sampels: ['snd/placeroom.mp3',
+function RandomSounds() {
+	var self = this;
+	var soundlist = [
 		'snd/random/Beschwerde_hall.mp3',
 		'snd/random/Besenkammerspuren_hall.mp3',
 		'snd/random/Betriebsausflug_hall.mp3',
@@ -17,30 +18,30 @@ var sound = {
 		'snd/random/A38.mp3',
 		'snd/random/Bon mit Bon.mp3',
 		'snd/random/Gesang.mp3',
-		'snd/random/Hoeness.mp3'],
+		'snd/random/Hoeness.mp3'
+	];
 
-	play: function( file, endCallback ) {
-		var self = this;
+	this.chance = 0;
 
-		if( !this.sampels[file] )
-			this.sampels[file] = [];
+	this.draw = function( ) {
 
-		if( this.sampels[file].length ) {
-			var sound = this.sampels[file].pop();
-			sound.play();
-			return sound;
-		} else {
-			var sound = new Audio( file );
-			sound.onended = function() {
-				self.sampels[file].push( this );
-				if (typeof endCallback == 'function') endCallback();
-			};
-			sound.play();
-			return sound;
-		}
-	},
-
-	add: function( url ) {
-		this.sampels.push( url );
 	}
+
+	this.getZ = function( ) {
+		return 0;
+	}
+
+	this.update = function(delta) {
+		this.chance += delta;
+		//console.log(this.chance, (Math.random() * 100));
+
+		if (this.chance < 1.5) return;
+
+		if (this.chance > (Math.random() * 1500)) {
+			var snd = Math.floor( Math.random() * soundlist.length );
+			sound.play(soundlist[snd]);
+			this.chance = 0;
+		}
+	}
+
 }
