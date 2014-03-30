@@ -17,7 +17,7 @@ var rooms = [
 
 		image:'img/rooms/Raum_Starter.png',
 		frames: 14,
-		framespeed: 10,
+		framespeed: 100,
 		offset: {x: 31, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2 ],
@@ -157,9 +157,7 @@ var rooms = [
 		framelength: 0,
 		offset: {x: 11, y: 7 },
 		shape: [
-			[ 2, 2, 2 ],
-			[ 2, 1, 2 ],
-			[ 2, 2, 2 ]
+			[ 1 ]
 		]
 	},
 	{

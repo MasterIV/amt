@@ -7,8 +7,8 @@ var levels = [
 				 y:10}
 			},
 			{type:5,
-			pos:{x:13,
-				 y:10}
+			pos:{x:10,
+				 y:12}
 			}
 		],
 		grid: [
