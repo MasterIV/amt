@@ -11,10 +11,6 @@ function Room( x, y, type, map ) {
 	// Animation
 	var fcount = new framecounter( type.framespeed / 1000 );
 
-	this.type = type;
-	this.info = null;
-	this.kill = false;
-
 	// Benachbarte Räume
 	this.neighbors = [];
 	// Einkommen abzüglich unterhalt
@@ -49,25 +45,12 @@ function Room( x, y, type, map ) {
 
 	this.enable();
 
-	this.showInfo = function() {
-		this.info = new RoomInfo( this );
-		if (this.type.clicksound)
-			sound.play(this.type.clicksound);
-	};
-
-	this.click = function( mouse ) {
-		if (this.info) {
-			if (!this.info.click(mouse))
-				this.info = null;
-		}
-	};
-
 	this.updateFactors = function() {
 		var customers = 0;
 		this.income = 0;
 
-		this.speed = this.type.speed ? 1 / this.type.speed : 0;
-		this.anger = this.type.anger ? this.type.anger : 0;
+		this.speed = type.speed ? 1 / type.speed : 0;
+		this.anger = type.anger ? type.anger : 0;
 
 		var speedfactor = 0;
 		var angerfactor = 0;
@@ -82,13 +65,14 @@ function Room( x, y, type, map ) {
 		if(speedfactor) this.speed *= speedfactor;
 		if(angerfactor) this.anger = this.anger - (this.anger * angerfactor);
 
-		if( this.type.income ) this.income += this.type.income * customers;
-		if( this.type.upkeep ) this.income -= this.type.upkeep;
+		if( type.income ) this.income += type.income * customers;
+		if( type.upkeep ) this.income -= type.upkeep;
 	};
 
 	this.destroy = function() {
 		map.money += type.price / 2;
-		map.remove( this );
+		map.remove( this, type );
+		game.scene.remove( this );
 	}
 
 	this.draw = function( ctx, ofs, viewport ) {
@@ -143,7 +127,7 @@ function Room( x, y, type, map ) {
 				// warteschlange abarbeiten
 				if( this.queue.length ) {
 					this.queue.shift().leave();
-					map.money += this.type.fee;
+					map.money += type.fee;
 				}
 
 				this.work -= this.speed;

@@ -6,10 +6,35 @@ function Map( grid ) {
 	this.money = 5000;
 	this.income = 0;
 	this.people = 0;
-	this.cooldown = 0;
+	this.demand = 0;
+
+	this.budget = 1000;
+	this.cooldown = 5;
+
+	this.claim = function() {
+		if( this.cooldown <= 0 && this.money < this.budget ) {
+			this.money = this.budget;
+			this.cooldown = 5;
+		}
+	}
 
 	this.roomAt = function( x, y ) {
 		return self.grid[x][y];
+	}
+
+	this.remove = function( roomInstance, roomType ) {
+		var x = roomInstance.posGrid.x;
+		var y = roomInstance.posGrid.y;
+
+		for( var rx = 0; rx < roomType.shape.length; rx++ )
+			for( var ry = 0; ry < roomType.shape[0].length; ry++ )
+				if( roomType.shape[rx][ry] == 1 )
+					grid[x+rx][ry+y] = 0;
+				else if( roomType.shape[rx][ry] == 2 ) {
+					grid[x+rx][ry+y].add( remove );
+					if( grid[x+rx][ry+y].rooms.length < 1 )
+						grid[x+rx][ry+y] = 0;
+				}
 	}
 
 	/**

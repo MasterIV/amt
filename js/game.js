@@ -10,7 +10,7 @@ window.requestAnimFrame = (function(){
 var game = {
 	frames: 0,
 	fps: 25,
-	tick: 10,
+	tick: 6,
 
 	scene: null,
 	lastUpdate: 0,
