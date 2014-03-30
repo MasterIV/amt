@@ -66,7 +66,10 @@ function achivementsScene() {
 
 
 		var pageCount = 8;
-		for(var i = pageCount*this.start;i<pageCount*this.start;i++) {
+		var startIndex = (pageCount*(this.start-2) <= 0)?0:pageCount*(this.start-2);
+		var endIndex = ((pageCount*(this.start-1)) >= this.achivementList.length)?this.achivementList.length:this.achivementList.length;
+		console.log(startIndex,endIndex);
+		for(var i = startIndex;i<endIndex;i++) {
 			this.achivementList[i].privateDraw(ctx, i)
 		}
 
