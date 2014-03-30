@@ -27,7 +27,7 @@ function Room( x, y, type, map ) {
 
 	// Werte für Arbeitszimmer
 	this.speed = 0;
-	this.demand = type.demand ? 1 / type.demand : 0;
+	this.demand = type.demand ? type.demand : 0;
 	this.worker = type.worker ? type.worker : 0;
 	this.queue = [];
 
@@ -42,8 +42,8 @@ function Room( x, y, type, map ) {
 	// Beruhigende oder Arbeitsverlangsamende Faktoren
 	this.enable = function() {
 		this.enabled = true;
-		this.entertainment = type.entertainment ? type.entertainment : 0;
-		this.slow = type.slow ? type.slow : 0;
+		this.entertainment = type.entertainment ? type.entertainment : 1;
+		this.slow = type.slow ? type.slow : 1;
 	}
 
 	this.disable = function() {
@@ -58,21 +58,15 @@ function Room( x, y, type, map ) {
 		var customers = 0;
 		this.income = 0;
 
-		this.speed = type.speed ? 1 / type.speed : 0;
+		this.speed = type.speed ? type.speed : 0;
 		this.anger = type.anger ? type.anger : 0;
-
-		var speedfactor = 0;
-		var angerfactor = 0;
 
 		for( var i in this.neighbors ) {
 			var n = this.neighbors[i];
-			speedfactor += n.slow;
-			angerfactor += n.entertainment;
+			this.speed *= n.slow;
+			this.anger *= n.entertainment;
 			customers += n.worker + n.people.length;
 		}
-
-		if(speedfactor) this.speed *= speedfactor;
-		if(angerfactor) this.anger = this.anger - (this.anger * angerfactor);
 
 		if( type.income ) this.income += type.income * customers;
 		if( type.upkeep ) this.income -= type.upkeep;
@@ -100,8 +94,8 @@ function Room( x, y, type, map ) {
 
 		ctx.drawImage( img, sx, 0, width, height, dx-offset.x, dy-offset.y, width, height );
 
-		if (this.speed) progressLayerRect(ctx, dx - 25, dy - 10, 50, 5, this.work / this.speed, '#00f');
-		if (this.demand) progressLayerRect(ctx, dx - 25, dy - 3, 50, 5, this.gain / this.demand, '#f00');
+		if (this.speed) progressLayerRect(ctx, dx - 25, dy - 40, 50, 5, this.work / this.speed, '#00f');
+		if (this.demand) progressLayerRect(ctx, dx - 25, dy - 33, 50, 5, this.gain / this.demand, '#f00');
 
 		if (this.capacity) {
 			var ox = (dx + ( -10 * this.capacity ) / 2 ) | 0;

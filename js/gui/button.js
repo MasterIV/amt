@@ -64,6 +64,6 @@ RoomButton.prototype.update = function() {
 	if( this.hover =
 		mouse.x > this.x && mouse.x < (this.x + this.width) &&
 			mouse.y > this.y && mouse.y < (this.y + this.height)) {
-		this.info.show( this.dummy );
+		this.info.show( this.dummy, false );
 	}
 }

@@ -3,7 +3,7 @@ function Map( grid ) {
 	this.grid = grid;
 
 	// Globale werte
-	this.money = 5000;
+	this.money = 500000;
 	this.income = 0;
 	this.people = 0;
 	this.demand = 0;

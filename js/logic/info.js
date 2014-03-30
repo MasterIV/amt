@@ -1,10 +1,16 @@
 function RoomInfo() {
+	var self = this;
 	var offset = new V2( 245, 30 );
 	var room;
 	var lines;
+	var buttons = false;
 
-	this.show = function( r ) {
+	var close = new SmallButton(2, offset.x+180, offset.y, function() { self.close(); });
+	var demolish = new SmallButton(0, offset.x+180, offset.y+25, function() { room.destroy(); self.close(); });
+
+	this.show = function( r, b ) {
 		room = r;
+		buttons = b;
 
 		lines = [
 			r.name,
@@ -32,12 +38,29 @@ function RoomInfo() {
 
 	this.draw = function( ctx ) {
 		if( room ) {
-			diagbox( ctx, offset.x-5, offset.y-5, 210, 170 );
+			diagbox( ctx, offset.x-5, offset.y-5, 210, 190 );
 			ctx.fillStyle = game.gameFontColor;
 			ctx.font = game.gameFontBig;
 
 			for( var i in lines )
 				ctx.fillText( lines[i], offset.x, offset.y+i*20+ 10 );
+
+			if( buttons ) {
+				close.draw( ctx );
+				demolish.draw( ctx );
+			}
+		}
+	}
+
+	this.click = function( mouse ) {
+		if( room && buttons ) {
+			return close.click( mouse );
+		}
+	}
+
+	this.update = function(delta) {
+		if( room && buttons ) {
+			close.update( delta );
 		}
 	}
 

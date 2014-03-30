@@ -106,7 +106,7 @@ function mapScene() {
 		if( placeMe ) {
 			placeRoom(placeMe, pos);
 		} else if( map.roomAt( pos.x, pos.y ) instanceof Room ) {
-			this.info.show( map.roomAt(pos.x, pos.y));
+			this.info.show( map.roomAt(pos.x, pos.y), true );
 		}
 	}
 
