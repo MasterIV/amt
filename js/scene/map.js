@@ -158,6 +158,7 @@ function mapScene() {
 
 		for( var i = 0; i < entities.length; i++ )
 			if( entities[i].update ) {
+				entities[i].hl = false;
 				var result = entities[i].update( delta );
 				if( result ) changed = true;
 
@@ -170,6 +171,13 @@ function mapScene() {
 								break;
 							}
 			}
+
+		var pos = getCoords( mouse );
+		var hover = map.roomAt( pos.x, pos.y );
+
+		if( hover )
+			for( var j in hover.neighbors )
+				hover.neighbors[j].hl = true;
 
 		if( changed ) updateRooms();
 	}

@@ -15,7 +15,6 @@ function Animationtext( text , posv2, sceneEntities, icon, color ){
 		delta = delta * 10000;
 		if (this.icon ) this.icon.update(delta);
 		this.anitime = this.anitime + delta;
-		console.log(delta);
 		if (this.anitime > this.duration) 	arrayRemove(this.sceneEntities, this);
 	}
 

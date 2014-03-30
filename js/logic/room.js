@@ -92,7 +92,9 @@ function Room( x, y, type, map ) {
 			sx = width * ( fcount.frame % type.frames );
 		}
 
+		if( this.hl ) ctx.globalAlpha = .6;
 		ctx.drawImage( img, sx, 0, width, height, dx-offset.x, dy-offset.y, width, height );
+		if( this.hl ) ctx.globalAlpha = 1;
 
 		if (this.speed) progressLayerRect(ctx, dx - 25, dy - 40, 50, 5, this.work / this.speed, '#00f');
 		if (this.demand) progressLayerRect(ctx, dx - 25, dy - 33, 50, 5, this.gain / this.demand, '#f00');

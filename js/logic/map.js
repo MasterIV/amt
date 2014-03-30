@@ -19,7 +19,8 @@ function Map( grid, money ) {
 	}
 
 	this.roomAt = function( x, y ) {
-		return self.grid[x][y];
+		if( self.grid[x] && self.grid[x][y] )
+			return self.grid[x][y];
 	}
 
 	this.remove = function( roomInstance, roomType ) {
