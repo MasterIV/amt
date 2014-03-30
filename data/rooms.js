@@ -14,7 +14,7 @@ var rooms = [
 		upkeep: 50,
 		price: 1000,
 
-		image:'img/rooms/Raum_starter.png',
+		image:'img/rooms/Raum_Starter.png',
 		frames: 14,
 		framespeed: 10,
 		offset: {x: 31, y: 32 },
