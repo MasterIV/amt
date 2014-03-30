@@ -5,7 +5,10 @@ function rButton( room, selector ) {
 	this.mousein = false;
 
 	this.draw = function( ctx, ofs, viewport ) {
-		ctx.drawImage(g[this.room.image], this.x, this.y, this.size, this.size);
+		if (this.room.icon)
+			ctx.drawImage(g[this.room.icon], this.x, this.y, this.size, this.size);
+		else
+			ctx.drawImage(g[this.room.image], this.x, this.y, this.size, this.size);
 
 		if (this.mousein) this.selector.hovername = this.room.name + "   $ " + this.room.price;
 	}

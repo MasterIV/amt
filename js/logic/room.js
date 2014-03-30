@@ -24,6 +24,7 @@ function Room( x, y, type, map ) {
 	this.price = type.price;
 	this.upkeep = type.upkeep;
 	this.baseIncome = type.income ? type.income : 0;
+	this.clicksound = type.clicksound;
 
 	// Werte für Arbeitszimmer
 	this.speed = 0;
