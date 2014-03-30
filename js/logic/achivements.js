@@ -21,17 +21,9 @@ function Achivement(pMessage, pLimit) {
         }
     }
 
-	this.draw = function(ctx) {
+	this.draw = function(ctx, i) {
 		if (this.show > 0) {
-			var x = game.buffer.width/2 - 150,
-				y = game.buffer.height - this.y;
-
-			drawButton(ctx, x, y, 300);
-
-			ctx.fillStyle = 'rgb(0,0,0)';
-			ctx.fillText(this.message,
-				game.buffer.width/2 - 150 + this.message.length * 6/4,
-				game.buffer.height - this.y + 18);
+			this.privateDraw(ctx, i)
 		}
 		/*
 		var width = 200;
@@ -46,6 +38,23 @@ function Achivement(pMessage, pLimit) {
 			return false;
 		}
 		*/
+	}
+
+	this.privateDraw = function(ctx, i) {
+		if (typeof i == 'undefined') {
+			var x = game.buffer.width/2 - 150,
+				y = game.buffer.height - this.y ;
+		} else {
+			var x = game.buffer.width/2 - 150,
+				y = 34 + i * 30;
+		}
+
+		drawButton(ctx, x, y, 300);
+
+		ctx.fillStyle = 'rgb(0,0,0)';
+		ctx.fillText(this.message,
+			game.buffer.width/2 - 150 + this.message.length * 6/4,
+			y + 18);
 	}
 
 	this.update = function (delta) {
@@ -65,29 +74,4 @@ function drawButton(ctx, x, y, width) {
 }
 
 
-function drawAchivementList( ctx ) {
-	drawButton(ctx, game.buffer.width - 205, 60 - 31, 200)
-	ctx.drawImage( g['img/HUD/arrow_up.png'], 0, 0, 18, 12, game.buffer.width - 205 + 100 - 9, 60 - 22, 18, 12 );
 
-	var achivementList = [];
-	for( var i in achivements) {
-		if (typeof achivements[i] == 'object') {
-			for(var j =0;j<achivements[i].length;j++) {
-				achivementList.push(achivements[i][j]);
-			}
-		}
-	}
-
-	var start = 0, stop =0;
-	for(var i = start;i<achivementList.length;i++) {
-		if (!achivementList[i].draw(ctx,i)) {
-			stop = i;
-			break;
-		}
-	}
-
-	var y = 29 + 30 + 30 * (stop);
-
-	drawButton(ctx, game.buffer.width - 205, y, 200);
-	ctx.drawImage( g['img/HUD/arrow_down.png'], 0, 0, 18, 12, game.buffer.width - 205 + 100 - 9, y + 9, 18, 12 );
-}

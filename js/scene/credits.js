@@ -1,12 +1,12 @@
 
 
-function menuScene() {
+function creditsScene() {
 	game.zoom = 2;
 
 	mouse.init();
 
 	var menuOptions = {
-		width: 200,
+		width: 270,
 		height: 250,
 		offsetY: 30,
 		offsetX: 0
@@ -20,25 +20,16 @@ function menuScene() {
 
 	menuOptions.offsetX = $(window).width()/(2*game.zoom) - menuOptions.width/2;
 
-	this.makeButton(0, menuOptions.offsetX+menuOptions.width/2-48,100 +menuOptions.offsetY, 96, 23, function(){
-		game.scene = new mapScene();
+	this.makeButton(4, menuOptions.offsetX+menuOptions.width/2-48,200 +menuOptions.offsetY, 96, 23, function(){
+		game.scene = new menuScene();
 	});
-	this.makeButton(1, menuOptions.offsetX+menuOptions.width/2-48,130 +menuOptions.offsetY, 96, 23, function () {
-		game.scene = new achivementsScene();
-	});
-	this.makeButton(2, menuOptions.offsetX+menuOptions.width/2-48,160 +menuOptions.offsetY, 96, 23, function () {
-		game.scene = new helpScene();
-	});
-	this.makeButton(3, menuOptions.offsetX+menuOptions.width/2-48,190 +menuOptions.offsetY, 96, 23, function () {
-		game.scene = new creditsScene();
-	});
-
 
 	this.draw = function( ctx ) {
 		menuOptions.offsetX = game.buffer.width/2 - menuOptions.width/2;
 
 		this.drawBackground(ctx)
 		this.drawMenu(ctx);
+
 		for(var i = 0; i < this.entities.length; i++) {
 			if(this.entities[i].draw)
 				this.entities[i].draw(ctx);
@@ -54,13 +45,10 @@ function menuScene() {
 		ctx.fillRect(menuOptions.offsetX,menuOptions.offsetY,menuOptions.width,menuOptions.height);
 		ctx.globalAlpha = 1;
 
-		ctx.drawImage(g['img/logo.png'], 0, 0, 110, 78, menuOptions.offsetX+menuOptions.width/2 - 55, 10 +menuOptions.offsetY, 110, 78);
+		ctx.drawImage(g['img/logo.png'], 0, 0, 110, 40, menuOptions.offsetX+menuOptions.width/2 - 55, 10 +menuOptions.offsetY, 110, 40);
 
-		//drawButton(ctx, 0, menuOptions.offsetX+menuOptions.width/2-48,100 +menuOptions.offsetY);
-		//drawButton(ctx, 1, menuOptions.offsetX+menuOptions.width/2-48,130 +menuOptions.offsetY);
-		//drawButton(ctx, 2, menuOptions.offsetX+menuOptions.width/2-48,160 +menuOptions.offsetY);
-		//drawButton(ctx, 3, menuOptions.offsetX+menuOptions.width/2-48,190 +menuOptions.offsetY);
 
+		ctx.drawImage(g['img/credits.png'], 0, 0, 250, 141, menuOptions.offsetX+menuOptions.width/2 - 250/2, 38 +menuOptions.offsetY, 250, 141);
 
 
 		ctx.restore();
