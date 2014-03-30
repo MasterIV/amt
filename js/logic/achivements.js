@@ -53,7 +53,8 @@ function Achivement(pMessage, pLimit, icon) {
 
 		drawButton(ctx, x, y, 300);
 
-		ctx.drawImage(g[this.icon], 0, 0, 12, 18, game.buffer.width/2 + 130 , y, 12, 18);
+
+		ctx.drawImage(g[this.icon], 0, 0, 12, 18, game.buffer.width/2 + 130 , y+5, 12, 18);
 
 		ctx.fillStyle = 'rgb(0,0,0)';
 
@@ -63,7 +64,7 @@ function Achivement(pMessage, pLimit, icon) {
 			y + 18);
 		} else {
 			ctx.fillText(this.message,
-				game.buffer.width/2 - 150,
+				game.buffer.width/2 - 150 + 5,
 				y + 18);
 		}
 	}
