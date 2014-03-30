@@ -2,6 +2,9 @@ function Room( x, y, type, map ) {
 	var self = this;
 	this.posGrid = new V2( x, y );
 
+	this.x = x;
+	this.y = y;
+
 	this.posScreen = new V2( x*16+y*-16, x*8+y*8 );
 	this.posLeft = this.posScreen.y + ( type.shape[0].length-2 ) * 8;
 	this.posRight = this.posScreen.y + ( type.shape.length-2 ) * 8;
@@ -127,6 +130,7 @@ function Room( x, y, type, map ) {
 				// warteschlange abarbeiten
 				if( this.queue.length ) {
 					this.queue.shift().leave();
+					this.sceneEntities.push(new Animationtext(type.fee+' $', this.posScreen, this.sceneEntities));
 					map.money += type.fee;
 				}
 
@@ -143,6 +147,10 @@ function Room( x, y, type, map ) {
 
 		return result;
 	};
+
+	this.setSceneEntities = function( pScene ) {
+		this.sceneEntities = pScene;
+	}
 
 	this.getZ = function() {
 		return this.posScreen.y;
