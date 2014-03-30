@@ -1,5 +1,4 @@
 var achivementPopupShowTime = 3000;
-var achivementFadeTime = 1000;
 var achivements = {
     StartGame:[new Achivement('Einwohner registrierung',10)],
 
