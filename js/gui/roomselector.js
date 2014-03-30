@@ -44,7 +44,9 @@ function RoomSelector( mapScene ) {
 				if (entities[i].click( mouse ))
 					return true;
 
-		mapScene.info.close();
-		entities = [];
+		if (entities.length) {
+			mapScene.info.close();
+			entities = [];
+		}
 	}
 }
