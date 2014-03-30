@@ -16,6 +16,12 @@ function Room( x, y, type, map ) {
 	// Einkommen abzüglich unterhalt
 	this.income = 0;
 
+	// Werte für die infobox
+	this.name = type.name;
+	this.price = type.price;
+	this.upkeep = type.upkeep;
+	this.baseIncome = type.income ? type.income : 0;
+
 	// Werte für Arbeitszimmer
 	this.speed = 0;
 	this.demand = type.demand ? 1 / type.demand : 0;

@@ -35,7 +35,7 @@ SmallButton.prototype.draw = function( ctx ) {
 	ctx.drawImage( g['img/buttons.png'], sx, this.sy, this.width, this.height, this.x, this.y, this.width, this.height );
 }
 
-function RoomButton( type, x, y, callback ) {
+function RoomButton( type, x, y, callback, info ) {
 	this.callback = callback;
 	this.x = x;
 	this.y = y;
@@ -43,6 +43,9 @@ function RoomButton( type, x, y, callback ) {
 	this.width = 50;
 	this.height = 50;
 	this.type = type;
+
+	this.info = info;
+	this.dummy = new Room(0,0, type, null);
 }
 
 RoomButton.prototype = new Button();
@@ -55,4 +58,12 @@ RoomButton.prototype.draw = function( ctx ) {
 	if( this.hover ) ctx.fillRect( this.x, this.y, 50, 50 );
 	if( this.type.frames) width /= this.type.frames;
 	ctx.drawImage( img, 0, 0, width, height, this.x+2, this.y+2, 46, 46 );
+}
+
+RoomButton.prototype.update = function() {
+	if( this.hover =
+		mouse.x > this.x && mouse.x < (this.x + this.width) &&
+			mouse.y > this.y && mouse.y < (this.y + this.height)) {
+		this.info.show( this.dummy );
+	}
 }
