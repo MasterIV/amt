@@ -39,15 +39,11 @@ function achivementsScene() {
 	this.makeButton(6, menuOptions.offsetX+menuOptions.width/2-48 -96 - 10,260+menuOptions.offsetY, 96, 23, function(){
 		if (self.start > 0)
 			self.start = self.start - 1;
-
-		console.log(self.start);
 	});
 
 	this.makeButton(5, menuOptions.offsetX+menuOptions.width/2-48 + 96 + 10,260+menuOptions.offsetY, 96, 23, function(){
-		if (self.start < self.achivementList.length)
+		if (self.start < 1)
 			self.start = self.start + 1;
-
-		console.log(self.start);
 	});
 
 
@@ -66,11 +62,12 @@ function achivementsScene() {
 
 
 		var pageCount = 8;
-		var startIndex = (pageCount*(this.start-2) <= 0)?0:pageCount*(this.start-2);
-		var endIndex = ((pageCount*(this.start-1)) >= this.achivementList.length)?this.achivementList.length:(pageCount*(this.start-1));
-		console.log(startIndex,endIndex);
+		var startIndex = self.start * pageCount;
+		var endIndex = startIndex + pageCount;
+		if (endIndex >= this.achivementList.length) endIndex = this.achivementList.length;
+
 		for(var i = startIndex;i<endIndex;i++) {
-			this.achivementList[i].privateDraw(ctx, i)
+			this.achivementList[i].privateDraw(ctx, i - startIndex)
 		}
 
 
