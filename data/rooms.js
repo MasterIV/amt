@@ -33,7 +33,7 @@ var rooms = [
 		speed: 1.05,
 		demand: 1,
 		worker: 2,
-		fee: 100,
+		fee: 120,
 
 		upkeep: 100,
 		price: 2000,
@@ -58,10 +58,10 @@ var rooms = [
 		speed: 2.4,
 		demand: 2,
 		worker: 3,
-		fee: 75,
+		fee: 90,
 
 		upkeep: 150,
-		price: 4500,
+		price: 5000,
 
 		image:'img/rooms/Raum_arbeitsamt.png',
 		frames: 18,
@@ -85,10 +85,10 @@ var rooms = [
 		speed: 4.725,
 		demand: 3.5,
 		worker: 4,
-		fee: 60,
+		fee: 70,
 
 		upkeep: 200,
-		price: 8500,
+		price: 12000,
 
 		image:'img/rooms/Raum_gewerbeamt.png',
 		offset: {x: 98, y: 32 },
@@ -115,10 +115,10 @@ var rooms = [
 		speed: 7.5,
 		demand: 5,
 		worker: 5,
-		fee: 50,
+		fee: 60,
 
 		upkeep: 250,
-		price: 13000,
+		price: 30000,
 
 		image:'img/rooms/Raum_finanzamt.png',
 		offset: {x: 98, y: 32 },
@@ -192,7 +192,7 @@ var rooms = [
 		capacity: 6,
 
 		upkeep: 20,
-		price: 1000,
+		price: 2000,
 
 		image:'img/rooms/Raum_stehplaetze.png',
 		offset: {x: 48, y: 32 },
@@ -211,7 +211,7 @@ var rooms = [
 		capacity: 6,
 
 		upkeep: 30,
-		price: 2000,
+		price: 5000,
 
 		image:'img/rooms/Raum_sitzplaetze.png',
 		offset: {x: 51, y: 32 },
@@ -231,8 +231,8 @@ var rooms = [
 		anger: 10,
 		capacity: 6,
 
-		upkeep: 60,
-		price: 3000,
+		upkeep: 40,
+		price: 15000,
 
 		image:'img/rooms/Raum_liegeplaetze.png',
 		offset: {x: 51, y: 32 },
@@ -280,8 +280,8 @@ var rooms = [
 		slow: 1.1,
 		income: 0,
 
-		upkeep: 60,
-		price: 1200,
+		upkeep: 40,
+		price: 2000,
 
 		image:'img/rooms/Raum_raucherraum.png',
 		offset: {x: 68, y: 32 },
@@ -303,8 +303,8 @@ var rooms = [
 		slow: 1.15,
 		income: 10,
 
-		upkeep: 130,
-		price: 2000,
+		upkeep: 100,
+		price: 5000,
 
 		image:'img/rooms/Raum_cafeteria.png',
 		offset: {x: 51, y: 32 },
@@ -325,8 +325,8 @@ var rooms = [
 		slow: 1.35,
 		income: 20,
 
-		upkeep: 210,
-		price: 3000,
+		upkeep: 140,
+		price: 8000,
 
 		image:'img/rooms/Raum_cantine.png',
 		offset: {x: 68, y: 32 },
@@ -349,8 +349,8 @@ var rooms = [
 		slow: 1.55,
 		income: 0,
 
-		upkeep: 250,
-		price: 5000,
+		upkeep: 120,
+		price: 12000,
 
 		image:'img/rooms/Raum_fitnessraum.png',
 		offset: {x: 68, y: 32 },
@@ -375,8 +375,8 @@ var rooms = [
 		slow: 1.25,
 		income: 0,
 
-		upkeep: 350,
-		price: 7000,
+		upkeep: 200,
+		price: 20000,
 
 		image:'img/rooms/Raum_strombergsbuero.png',
 		offset: {x: 51, y: 32 },
@@ -395,7 +395,7 @@ var rooms = [
 		slow: 1.05,
 		income: 0,
 
-		upkeep: 10,
+		upkeep: 25,
 		price: 500,
 
 		image:'img/rooms/Raum_besenkammer.png',
@@ -434,11 +434,11 @@ var rooms = [
 		name: "Clownszimmer",
 		category: "entertain",
 
-		entertainment: 0.95,
+		entertainment: 0.90,
 		income: 0,
 
-		upkeep: 250,
-		price: 1000,
+		upkeep: 300,
+		price: 5000,
 
 		image:'img/rooms/clowns_spreadsheet.png',
 		frames: 14,
@@ -476,8 +476,8 @@ var rooms = [
 		entertainment: 0.6,
 		income: 0,
 
-		upkeep: 200,
-		price: 3000,
+		upkeep: 125,
+		price: 4000,
 
 		image:'img/rooms/tv_spreadsheet.png',
 		offset: {x: 83, y: 32 },
@@ -498,8 +498,8 @@ var rooms = [
 		entertainment: 0.5,
 		income: 20,
 
-		upkeep: 350,
-		price: 5000,
+		upkeep: 200,
+		price: 12000,
 
 		image:'img/rooms/Raum_spielhoelle.png',
 		offset: {x: 51, y: 32 },
@@ -520,8 +520,8 @@ var rooms = [
 		entertainment: 0.7,
 		income: 30,
 
-		upkeep: 500,
-		price: 8000,
+		upkeep: 350,
+		price: 30000,
 
 		image:'img/rooms/cindy_spreadsheet.png',
 		frames: 12,
