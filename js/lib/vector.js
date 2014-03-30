@@ -87,5 +87,6 @@ function rad_to_deg( rad ) {
 }
 
 function arrayRemove( arr, element ) {
-	arr.splice( arr.indexOf( element ), 1 );
+	var pos = arr.indexOf( element );
+	if( pos >= 0 ) arr.splice( pos, 1 );
 }
