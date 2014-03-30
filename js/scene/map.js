@@ -2,9 +2,11 @@ function mapScene() {
 	var placeMe;
 	var dragging = false;
 	var last;
-
+	var levelNum = 0;
+	
+	
 	this.info = new RoomInfo();
-	var map = new Map( levels[0].grid );
+	var map = new Map( levels[levelNum].grid );
 	var hud = new Hud( map, rooms, this );
 	var offset = new V2( map.grid[0].length*16, 31 );
 	var bg = new Background(map.grid, offset);
@@ -22,6 +24,10 @@ function mapScene() {
 				entities.push(achivements[i][j]);
 			}
 		}
+	}
+	
+	for(var room in levels[levelNum].startrooms) {
+		placeRoom( levels[levelNum].startrooms[room].type, levels[levelNum].startrooms[room].pos)
 	}
 
 	entities.push({
