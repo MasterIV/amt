@@ -24,12 +24,22 @@ function RoomSelector( category, x, y, hud ) {
 			this.entities[i].position( this.x + this.padding + (this.iconmargin + this.roomsize) * (i % this.linelength),
 					                   this.y + this.padding + this.roomsize * Math.floor(i / this.linelength) );
 			this.entities[i].draw( ctx, ofs, viewport );
-
-			ctx.save();
-			ctx.scale(0.7,0.7);
-			ctx.font = game.gameFontSmall;
-			ctx.fillText(this.hovername, this.padding, this.y + 100);
-			ctx.restore();
+		}
+		for (var i in this.entities) {
+			if (this.entities[i].inArea(mouse)) {
+				ctx.save();
+				ctx.scale(0.8,0.8);
+				ctx.font = game.gameFontSmall;
+				ctx.fillStyle = 'rgb(100,100,100)';
+				ctx.fillRect(this.x + this.padding + (this.iconmargin + this.roomsize) * (i % this.linelength) -5,
+							this.y + this.padding + this.roomsize * Math.floor(i / this.linelength) + 50 - 15,
+							6 * this.hovername.length + 10, 20);
+				ctx.fillStyle = 'rgb(255,255,255)';
+				ctx.fillText(this.hovername,
+					this.x + this.padding + (this.iconmargin + this.roomsize) * (i % this.linelength),
+					this.y + this.padding + this.roomsize * Math.floor(i / this.linelength) + 50);
+				ctx.restore();
+			}
 		}
 	}
 
