@@ -15,6 +15,13 @@ function mapScene() {
 	entities.push( bg );
 	entities.push( hud );
 
+	for( var i in achivements) {
+		if (typeof achivements[i] == 'object') {
+			for(var j =0;j<achivements[i].length;j++) {
+				entities.push(achivements[i][j]);
+			}
+		}
+	}
 
 	entities.push({
 		getZ : function() {

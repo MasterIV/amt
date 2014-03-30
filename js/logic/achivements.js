@@ -21,37 +21,40 @@ function Achivement(pMessage, pLimit) {
         }
     }
 
-	this.draw = function(ctx, side) {
-		if (typeof side == 'undefined') {
-			if (this.show > 0) {
-				ctx.drawImage( g['img/HUD/Achievements_bg_bottom.png'], 0, 0, this.message.length * 6 + 30, 2, game.buffer.width/2 - 150, game.buffer.height - this.y, this.message.length * 6 + 30, 2 );
-				ctx.drawImage( g['img/HUD/Achievements_bg_bottom.png'], 0, 0, this.message.length * 6 + 30, 2, game.buffer.width/2 - 150, game.buffer.height - this.y, this.message.length * 6 + 30, 25 );
-				ctx.drawImage( g['img/HUD/Achievements_bg_bottom.png'], 0, 0, this.message.length * 6 + 30, 2, game.buffer.width/2 - 150, game.buffer.height - this.y, this.message.length * 6 + 30, 2 );
+	this.draw = function(ctx) {
+		if (this.show > 0) {
+			var x = game.buffer.width/2 - 150,
+				y = game.buffer.height - this.y;
 
-				ctx.fillStyle = 'rgb(0,0,0)';
-				ctx.fillText(this.message,
-					game.buffer.width/2 - 150 + this.message.length * 6/4,
-					game.buffer.height - this.y + 15);
-			}
-		} else {
-			var width = 200;
-			var x = game.buffer.width - 5 - width;
-			var y = 29 + 30 + 30 * side;
-			if (y < game.buffer.height - 29*2) {
-				drawButton(ctx, x, y, width)
+			drawButton(ctx, x, y, 300);
 
-				ctx.fillStyle = 'rgb(0,0,0)';
-				ctx.fillText(this.message,x+10,y+18);
-			} else {
-				return false;
-			}
+			ctx.fillStyle = 'rgb(0,0,0)';
+			ctx.fillText(this.message,
+				game.buffer.width/2 - 150 + this.message.length * 6/4,
+				game.buffer.height - this.y + 18);
 		}
-		return true;
+		/*
+		var width = 200;
+		var x = game.buffer.width - 5 - width;
+		var y = 29 + 30 + 30 * side;
+		if (y < game.buffer.height - 29*2) {
+			drawButton(ctx, x, y, width)
+
+			ctx.fillStyle = 'rgb(0,0,0)';
+			ctx.fillText(this.message,x+10,y+18);
+		} else {
+			return false;
+		}
+		*/
 	}
 
 	this.update = function (delta) {
 		if (this.show > 0)
 			this.show = this.show - delta*10000;
+	}
+
+	this.getZ = function() {
+		return 9999;
 	}
 }
 
