@@ -22,7 +22,10 @@ var g = {
 		'img/HUD/roomselector.png',
 		'img/HUD/bubble_top.png',
 		'img/HUD/bubble_middle.png',
-		'img/HUD/bubble_bottom.png'
+		'img/HUD/bubble_bottom.png',
+		'img/HUD/Achievements_bg_bottom.png',
+		'img/HUD/Achievements_bg_middle.png',
+		'img/HUD/Achievements_bg_top.png',
 	],
 
 	add: function( url ) {
