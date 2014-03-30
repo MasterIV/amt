@@ -1,38 +1,68 @@
+
+
 function menuScene() {
 	game.zoom = 2;
 
 	mouse.init();
 
-	this.entities = [
-		new wButton(404, 270,100,50, function(){
-			console.log('play');
-			game.scene = new mapScene();
-			game.init();
-		}),
-		new wButton(404, 316,100,50, function(){
-			console.log('score');
-		}),
-		new wButton(404, 362,100,50, function(){
-			console.log('Help');
+	var menuOptions = {
+		width: 200,
+		height: 250,
+		offsetY: 30,
+		offsetX: 0
+	}
 
-		}),
-		new wButton(404, 407,100,50, function(){
-			console.log('credits');
-		}),
-		new wButton(404, 453,100,50, function(){
-			window.close();
-		})
-	]
+	this.entities = [];
+
+	this.makeButton = function(num,x,y,width,height,callback) {
+		this.entities.push(new wButton(num, x, y,width,height, callback));
+	}
+
+	menuOptions.offsetX = $(window).width()/(2*game.zoom) - menuOptions.width/2;
+
+	this.makeButton(0, menuOptions.offsetX+menuOptions.width/2-48,100 +menuOptions.offsetY, 96, 23, function(){
+		game.scene = new mapScene();
+		game.init();
+	});
+	this.makeButton(1, menuOptions.offsetX+menuOptions.width/2-48,130 +menuOptions.offsetY, 96, 23);
+	this.makeButton(2, menuOptions.offsetX+menuOptions.width/2-48,160 +menuOptions.offsetY, 96, 23);
+	this.makeButton(3, menuOptions.offsetX+menuOptions.width/2-48,190 +menuOptions.offsetY, 96, 23, function () {
+		window.close();
+	});
+
 
 	this.draw = function( ctx ) {
+		menuOptions.offsetX = game.buffer.width/2 - menuOptions.width/2;
 
 		this.drawBackground(ctx)
-
+		this.drawMenu(ctx);
 		for(var i = 0; i < this.entities.length; i++) {
 			if(this.entities[i].draw)
 				this.entities[i].draw(ctx);
 		}
 	};
+
+	this.drawMenu = function(ctx) {
+
+
+
+		ctx.save();
+		ctx.globalAlpha = 0.5;
+		ctx.fillRect(menuOptions.offsetX,menuOptions.offsetY,menuOptions.width,menuOptions.height);
+		ctx.globalAlpha = 1;
+
+		ctx.drawImage(g['img/logo.png'], 0, 0, 110, 78, menuOptions.offsetX+menuOptions.width/2 - 55, 10 +menuOptions.offsetY, 110, 78);
+
+		//drawButton(ctx, 0, menuOptions.offsetX+menuOptions.width/2-48,100 +menuOptions.offsetY);
+		//drawButton(ctx, 1, menuOptions.offsetX+menuOptions.width/2-48,130 +menuOptions.offsetY);
+		//drawButton(ctx, 2, menuOptions.offsetX+menuOptions.width/2-48,160 +menuOptions.offsetY);
+		//drawButton(ctx, 3, menuOptions.offsetX+menuOptions.width/2-48,190 +menuOptions.offsetY);
+
+
+
+		ctx.restore();
+
+	}
 
 	this.drawBackground = function(ctx) {
 		for( var x = -1; x < $(window).width()/(32*game.zoom) ; x++ )

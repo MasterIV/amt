@@ -27,7 +27,7 @@ function mapScene() {
 	}
 	
 	for(var room in levels[levelNum].startrooms) {
-		placeRoom( rooms[levels[levelNum].startrooms[room].type], levels[levelNum].startrooms[room].pos)
+		placeRoom( rooms[levels[levelNum].startrooms[room].type], levels[levelNum].startrooms[room].pos, true);
 	}
 
 	entities.push({
@@ -88,13 +88,13 @@ function mapScene() {
 		arrayRemove( entities, e );
 	};
 
-	function placeRoom(pl, pos) {
+	function placeRoom(pl, pos, disableSound) {
 		var room = map.placeRoom(pl, pos.x, pos.y);
 		if (room) {
 			room.setSceneEntities(entities);
 			entities.push(room);
 			updateRooms();
-			sound.play('snd/placeroom.mp3');
+			if (typeof disableSound == 'undefined') sound.play('snd/placeroom.mp3');
 		}
 	}
 
