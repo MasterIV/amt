@@ -1,9 +1,9 @@
-function Map( grid ) {
+function Map( grid, money ) {
 	var self = this;
 	this.grid = grid;
 
 	// Globale werte
-	this.money = 500000;
+	this.money = money;
 	this.income = 0;
 	this.people = 0;
 	this.demand = 0;
@@ -19,7 +19,8 @@ function Map( grid ) {
 	}
 
 	this.roomAt = function( x, y ) {
-		return self.grid[x][y];
+		if( self.grid[x] && self.grid[x][y] )
+			return self.grid[x][y];
 	}
 
 	this.remove = function( roomInstance, roomType ) {

@@ -6,7 +6,7 @@ function mapScene() {
 	
 	
 	this.info = new RoomInfo();
-	var map = new Map( levels[levelNum].grid );
+	var map = new Map( levels[levelNum].grid, 5000 );
 	var hud = new Hud( map, rooms, this );
 	var offset = new V2( map.grid[0].length*16, 31 );
 	var bg = new Background(map.grid, offset);
@@ -84,6 +84,10 @@ function mapScene() {
 		return new V2( mx, my );
 	}
 
+	this.getMoney = function() {
+		return map.money;
+	}
+
 	this.remove = function( e ) {
 		arrayRemove( entities, e );
 	};
@@ -154,6 +158,7 @@ function mapScene() {
 
 		for( var i = 0; i < entities.length; i++ )
 			if( entities[i].update ) {
+				entities[i].hl = false;
 				var result = entities[i].update( delta );
 				if( result ) changed = true;
 
@@ -166,6 +171,13 @@ function mapScene() {
 								break;
 							}
 			}
+
+		var pos = getCoords( mouse );
+		var hover = map.roomAt( pos.x, pos.y );
+
+		if( hover )
+			for( var j in hover.neighbors )
+				hover.neighbors[j].hl = true;
 
 		if( changed ) updateRooms();
 	}
@@ -191,4 +203,6 @@ function mapScene() {
 	this.placeRoom = function ( room ) {
 		placeMe = room;
 	}
+
+	achivements.track('StartGame',1);
 }

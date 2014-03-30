@@ -88,8 +88,4 @@ function Hud( map, rooms, mapscene ) {
 			if (this.entities[i].update)
 				this.entities[i].update( delta );
 	}
-
-	this.closeRoomSelector = function() {
-		selection = null;
-	}
 }

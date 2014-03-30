@@ -41,7 +41,7 @@ function RoomButton( type, x, y, callback, info ) {
 	this.y = y;
 
 	this.width = 50;
-	this.height = 50;
+	this.height = 52;
 	this.type = type;
 
 	this.info = info;
@@ -51,13 +51,19 @@ function RoomButton( type, x, y, callback, info ) {
 RoomButton.prototype = new Button();
 RoomButton.prototype.draw = function( ctx ) {
 	var img = g[this.type.image];
+	if (this.type.icon) img = g[this.type.icon];
 	var width = img.width;
 	var height = img.height;
 
 	ctx.fillStyle = '#CCC';
-	if( this.hover ) ctx.fillRect( this.x, this.y, 50, 50 );
-	if( this.type.frames) width /= this.type.frames;
-	ctx.drawImage( img, 0, 0, width, height, this.x+2, this.y+2, 46, 46 );
+	if( this.hover ) ctx.fillRect( this.x, this.y, 50, 52 );
+	if( this.type.frames && !this.type.icon ) width /= this.type.frames;
+
+	if( this.type.price > game.scene.getMoney())
+		ctx.globalAlpha = .3;
+
+	ctx.drawImage( img, 0, 0, width, height, this.x, this.y, 50, 52 );
+	ctx.globalAlpha = 1;
 }
 
 RoomButton.prototype.update = function() {

@@ -24,6 +24,7 @@ function Room( x, y, type, map ) {
 	this.price = type.price;
 	this.upkeep = type.upkeep;
 	this.baseIncome = type.income ? type.income : 0;
+	this.clicksound = type.clicksound;
 
 	// Werte für Arbeitszimmer
 	this.speed = 0;
@@ -92,7 +93,9 @@ function Room( x, y, type, map ) {
 			sx = width * ( fcount.frame % type.frames );
 		}
 
+		if( this.hl ) ctx.globalAlpha = .6;
 		ctx.drawImage( img, sx, 0, width, height, dx-offset.x, dy-offset.y, width, height );
+		if( this.hl ) ctx.globalAlpha = 1;
 
 		if (this.speed) progressLayerRect(ctx, dx - 25, dy - 40, 50, 5, this.work / this.speed, '#00f');
 		if (this.demand) progressLayerRect(ctx, dx - 25, dy - 33, 50, 5, this.gain / this.demand, '#f00');
@@ -116,7 +119,10 @@ function Room( x, y, type, map ) {
 			fcount.update( delta );
 
 		if( this.anger ) {
-			for(var i in this.people)
+			for(var i in this.people) {
+				this.people[i].waittime += delta;
+				achivements.check('VictimTime', this.people[i].waittime);
+
 				if( this.people[i].annoy(delta * this.anger)) {
 					result = true;
 					this.people[i].leave();
@@ -124,6 +130,7 @@ function Room( x, y, type, map ) {
 					map.money -= 250;
 					achivements.track('AngryPeople',1);
 				}
+			}
 		} else if( this.speed ) {
 			this.work += delta;
 			this.gain += delta;
@@ -134,6 +141,14 @@ function Room( x, y, type, map ) {
 					this.queue.shift().leave();
 					this.sceneEntities.push(new Animationtext(type.fee+' $', this.posScreen, this.sceneEntities, null, 'black' ));
 					map.money += type.fee;
+
+					achivements.track('FinishedApplication',1);
+					switch( type.name ) {
+						case "Einwohnermeldeamt": achivements.track('RegistrationOffice',1); break;
+						case "Arbeitsamt": achivements.track('JobCenter',1); break;
+						case "Gewerbeamt": achivements.track('StrongEconomy',1); break;
+						case "Finanzamt": achivements.track('FinanceOffice',1); break;
+					}
 				}
 
 				this.work -= this.speed;

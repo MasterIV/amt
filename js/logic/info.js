@@ -30,6 +30,8 @@ function RoomInfo() {
 		if(r.slow) lines.push('Mitarbeiterablenkung: '+ r.slow);
 		if(r.baseIncome) lines.push('Einkommen pro Person: '+ r.baseIncome);
 		if(r.income) lines.push('Gesamteinkommen: '+ r.income);
+
+		if(b && r.clicksound) sound.play(r.clicksound)
 	}
 
 	this.close = function() {
