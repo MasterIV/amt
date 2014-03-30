@@ -35,13 +35,13 @@ var achivements = {
 }
 
 achivements.track = function (achivement, increaseValue) {
-	for (var i =0;i<achivements[achivement].length;i++) {
-		achivements[achivement][i].track(increaseValue);
-	}
+	if( achivements[achivement] )
+		for (var i =0;i<achivements[achivement].length;i++)
+			achivements[achivement][i].track(increaseValue);
 }
 
 achivements.check = function (achivement, value) {
-	for (var i =0;i<achivements[achivement].length;i++) {
-		achivements[achivement][i].check(value);
-	}
+	if( achivements[achivement] )
+		for (var i =0;i<achivements[achivement].length;i++)
+			achivements[achivement][i].check(value);
 }

@@ -37,7 +37,7 @@ function RandomSounds() {
 
 		if (this.chance < 1.5) return;
 
-		if (this.chance > (Math.random() * 1500)) {
+		if (this.chance > (Math.random() * 1200)) {
 			var snd = Math.floor( Math.random() * soundlist.length );
 			sound.play(soundlist[snd]);
 			this.chance = 0;

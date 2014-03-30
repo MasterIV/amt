@@ -157,6 +157,12 @@ function mapScene() {
 	this.update = function( delta ) {
 		var changed = false;
 
+		if( map.money < -5000 ) {
+			entities.push(new Dialog('You loose!'), function() {
+				game.scene = new menuScene();
+			});
+		}
+
 		// Eins zeiteinheit ist game.tick
 		delta /= 1000 * game.tick;
 

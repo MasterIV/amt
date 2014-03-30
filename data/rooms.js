@@ -41,6 +41,8 @@ var rooms = [
 		image:'img/rooms/Raum_einwohnermeldeamt.png',
 		icon:'img/icons/Einwohnermeldeamt.png',
 		offset: {x: 98, y: 32 },
+		frames: 9,
+		framespeed: 50,
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 1, 1, 1, 2 ],
@@ -247,8 +249,10 @@ var rooms = [
 		upkeep: 40,
 		price: 15000,
 
-		image:'img/rooms/Raum_liegeplaetze.png',
+		image:'img/rooms/liegeraum.png',
 		icon:'img/icons/Liegeraum.png',
+		frames: 12,
+		framespeed: 50,
 		offset: {x: 51, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2 ],
@@ -278,6 +282,8 @@ var rooms = [
 		image:'img/rooms/Raum_bathroom.png',
 		icon:'img/icons/Klo.png',
 		offset: {x: 51, y: 32 },
+		frames: 3,
+		framespeed: 150,
 		shape: [
 			[ 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 2 ],
@@ -324,9 +330,11 @@ var rooms = [
 		upkeep: 100,
 		price: 5000,
 
-		image:'img/rooms/Raum_cafeteria.png',
+		image:'img/rooms/cafeteria_spreadsheet.png',
 		icon:'img/icons/Cafe.png',
 		offset: {x: 51, y: 32 },
+		frames: 11,
+		framespeed: 50,
 		shape: [
 			[ 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 2 ],
@@ -347,9 +355,11 @@ var rooms = [
 		upkeep: 140,
 		price: 8000,
 
-		image:'img/rooms/Raum_cantine.png',
+		image:'img/rooms/cantine_spreadsheet.png',
 		icon:'img/icons/Kantine.png',
 		offset: {x: 68, y: 32 },
+		frames: 14,
+		framespeed: 50,
 		shape: [
 			[ 2, 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 1, 2 ],
@@ -423,6 +433,8 @@ var rooms = [
 		image:'img/rooms/Raum_besenkammer.png',
 		icon:'img/icons/Besenkammer.png',
 		offset: {x: 33, y: 32 },
+		frames: 10,
+		framespeed: 50,
 		shape: [
 			[ 2, 2, 2, 2 ],
 			[ 2, 1, 1, 2 ],
@@ -489,9 +501,11 @@ var rooms = [
 		upkeep: 200,
 		price: 2000,
 
-		image:'img/rooms/Raum_snackraum.png',
+		image:'img/rooms/snackraum_spreadsheet.png',
 		icon:'img/icons/Snackraum.png',
 		offset: {x: 20, y: 32 },
+		frames: 5,
+		framespeed: 50,
 		shape: [
 			[ 2, 2, 2 ],
 			[ 2, 1, 2 ],
@@ -536,9 +550,11 @@ var rooms = [
 		upkeep: 200,
 		price: 12000,
 
-		image:'img/rooms/Raum_spielhoelle.png',
+		image:'img/rooms/spielhoelle_spreadsheet.png',
 		icon:'img/icons/Spielhoelle.png',
 		offset: {x: 51, y: 32 },
+		frames: 4,
+		framespeed: 40,
 		shape: [
 			[ 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 2 ],
@@ -564,7 +580,7 @@ var rooms = [
 		image:'img/rooms/cindy_spreadsheet.png',
 		icon:'img/icons/Puff.png',
 		frames: 12,
-		framespeed: 10,
+		framespeed: 50,
 		offset: {x: 31, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2 ],
