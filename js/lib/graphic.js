@@ -29,6 +29,8 @@ var g = {
 		'img/HUD/arrow.png',
 		'img/HUD/arrow_up.png',
 		'img/HUD/arrow_down.png',
+		'img/HUD/progress_speed.png',
+		'img/HUD/progress_demand.png',
 		'img/buttons.png',
 		'img/bg_dark.png',
 		'img/logo.png',

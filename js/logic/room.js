@@ -98,8 +98,8 @@ function Room( x, y, type, map ) {
 		ctx.drawImage( img, sx, 0, width, height, dx-offset.x, dy-offset.y, width, height );
 		if( this.hl ) ctx.globalAlpha = 1;
 
-		if (this.speed) progressLayerRect(ctx, dx - 25, dy - 40, 50, 5, this.work / this.speed, '#00f');
-		if (this.demand) progressLayerRect(ctx, dx - 25, dy - 33, 50, 5, this.gain / this.demand, '#f00');
+		if (this.speed) progressLayerRect(ctx, dx - 25, dy - 40, 50, 5, this.work / this.speed, '#00f', 'img/HUD/progress_speed.png');
+		if (this.demand) progressLayerRect(ctx, dx - 25, dy - 33, 50, 5, this.gain / this.demand, '#f00', 'img/HUD/progress_demand.png');
 
 		if (this.capacity) {
 			var ox = (dx + ( -10 * this.capacity ) / 2 ) | 0;

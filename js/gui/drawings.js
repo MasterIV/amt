@@ -1,4 +1,4 @@
-function progressLayerRect(ctx, x, y, width, height,progress, innerColor) {
+function progressLayerRect(ctx, x, y, width, height,progress, innerColor, icon) {
 	ctx.save();
 	// Define the shadows
 	ctx.shadowOffsetX = 2;
@@ -13,6 +13,9 @@ function progressLayerRect(ctx, x, y, width, height,progress, innerColor) {
 	ctx.fillStyle = innerColor;
 	ctx.fillRect( x+1, y+1, (width-2) * progress, height-2);
 	ctx.restore();
+	
+	if ( icon )
+		ctx.drawImage(g[icon], x-6, y, 5,5);
 }
 
 function moodRect(ctx, x, y, person) {
