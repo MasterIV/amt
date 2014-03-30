@@ -26,6 +26,9 @@ var g = {
 		'img/HUD/Achievements_bg_bottom.png',
 		'img/HUD/Achievements_bg_middle.png',
 		'img/HUD/Achievements_bg_top.png',
+		'img/HUD/arrow.png',
+		'img/HUD/arrow_up.png',
+		'img/HUD/arrow_down.png'
 	],
 
 	add: function( url ) {
