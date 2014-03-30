@@ -168,7 +168,7 @@ var rooms = [
 		upkeep: 30,
 		price: 2000,
 
-		image:'img/rooms/sitzplaetze.png',
+		image:'img/rooms/Raum_sitzplaetze.png',
 		offset: {x: 51, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2 ],
@@ -189,7 +189,7 @@ var rooms = [
 		upkeep: 60,
 		price: 3000,
 
-		image:'img/rooms/liegeplaetze.png',
+		image:'img/rooms/Raum_liegeplaetze.png',
 		offset: {x: 51, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2 ],
@@ -240,7 +240,7 @@ var rooms = [
 		upkeep: 60,
 		price: 1200,
 
-		image:'img/rooms/raucherraum.png',
+		image:'img/rooms/Raum_raucherraum.png',
 		offset: {x: 68, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2 ],
@@ -262,7 +262,7 @@ var rooms = [
 		upkeep: 130,
 		price: 2000,
 
-		image:'img/rooms/cafeteria.png',
+		image:'img/rooms/Raum_cafeteria.png',
 		offset: {x: 51, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2 ],
@@ -285,7 +285,7 @@ var rooms = [
 		upkeep: 210,
 		price: 3000,
 
-		image:'img/rooms/cantine.png',
+		image:'img/rooms/Raum_cantine.png',
 		offset: {x: 68, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2 ],
@@ -310,7 +310,7 @@ var rooms = [
 		upkeep: 250,
 		price: 5000,
 
-		image:'img/rooms/fitnessraum.png',
+		image:'img/rooms/Raum_fitnessraum.png',
 		offset: {x: 68, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2 ],
@@ -335,7 +335,7 @@ var rooms = [
 		upkeep: 350,
 		price: 7000,
 
-		image:'img/rooms/strombergsbuero.png',
+		image:'img/rooms/Raum_strombergsbuero.png',
 		offset: {x: 51, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2 ],
@@ -378,7 +378,7 @@ var rooms = [
 		upkeep: 100,
 		price: 1000,
 
-		image:'img/rooms/musikraum.png',
+		image:'img/rooms/Raum_musikraum.png',
 		offset: {x: 33, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2 ],
@@ -398,8 +398,12 @@ var rooms = [
 		upkeep: 250,
 		price: 1000,
 
-		image:'img/rooms/clowns.png',
-		offset: {x: 33, y: 32 },
+		image:'img/rooms/clowns_spreadsheet.png',
+		frames: 14,
+		framespeed: 10,
+		framelength: 50,
+
+		offset: {x: 16, y: 32 },
 		shape: [
 			[ 2, 2, 2 ],
 			[ 2, 1, 2 ],
@@ -417,7 +421,7 @@ var rooms = [
 		upkeep: 100,
 		price: 2000,
 
-		image:'img/rooms/snackraum.png',
+		image:'img/rooms/Raum_snackraum.png',
 		offset: {x: 20, y: 32 },
 		shape: [
 			[ 2, 2, 2 ],
@@ -437,7 +441,7 @@ var rooms = [
 		upkeep: 200,
 		price: 3000,
 
-		image:'img/rooms/tv.png',
+		image:'img/rooms/Raum_TV.png',
 		offset: {x: 83, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2 ],
@@ -458,7 +462,7 @@ var rooms = [
 		upkeep: 350,
 		price: 5000,
 
-		image:'img/rooms/spielhoelle.png',
+		image:'img/rooms/Raum_spielhoelle.png',
 		offset: {x: 51, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2 ],
@@ -481,10 +485,11 @@ var rooms = [
 		upkeep: 500,
 		price: 8000,
 
-		image:'img/rooms/Raum_bordell.png',
+		image:'img/rooms/cindy_spreadsheet.png',
 		frames: 12,
 		framespeed: 10,
 		framelength: 78,
+
 		offset: {x: 31, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2 ],
