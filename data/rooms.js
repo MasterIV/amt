@@ -140,6 +140,27 @@ var rooms = [
 	// -------------------------------------------------------------------------------------------------------
 
 	{
+		name: "Wartebank",
+		category: "wait",
+
+		anger: 10,
+		capacity: 1,
+
+		upkeep: 10,
+		price: 100,
+
+		image:'img/rooms/Raum_Bank.png',
+		frames: 8,
+		framespeed: 30,
+		framelength: 82,
+		offset: {x: 66, y: 32 },
+		shape: [
+			[ 2, 2, 2 ],
+			[ 2, 1, 2 ],
+			[ 2, 2, 2 ]
+		]
+	},
+	{
 		name: "Warteschlange",
 		category: "wait",
 
