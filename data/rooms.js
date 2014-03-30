@@ -5,7 +5,7 @@ var rooms = [
 	{
 		name: "Einzelzimmer",
 		category: "work",
-		notplaceable:true,
+		notplaceable: true,
 
 		speed: 1.00,
 		demand: 1,
@@ -65,7 +65,7 @@ var rooms = [
 
 		image:'img/rooms/Raum_arbeitsamt.png',
 		frames: 18,
-		framespeed: 50,
+		framespeed: 70,
 		offset: {x: 98, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2, 2 ],
@@ -92,6 +92,8 @@ var rooms = [
 
 		image:'img/rooms/Raum_gewerbeamt.png',
 		offset: {x: 98, y: 32 },
+		frames: 8,
+		framespeed: 50,
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 1, 1, 1, 2 ],
@@ -157,7 +159,9 @@ var rooms = [
 		framelength: 0,
 		offset: {x: 11, y: 7 },
 		shape: [
-			[ 1 ]
+			[ 2, 2, 2 ],
+			[ 2, 1, 2 ],
+			[ 2, 2, 2 ]
 		]
 	},
 	{
@@ -172,8 +176,7 @@ var rooms = [
 
 		image:'img/rooms/Raum_warteschlange.png',
 		frames: 8,
-		framespeed: 40,
-		framelength: 82,
+		framespeed: 70,
 		offset: {x: 66, y: 32 },
 		shape: [
 			[ 2, 2, 2, 2, 2, 2 ],
@@ -248,9 +251,8 @@ var rooms = [
 
 	{
 		name: "Mitarbeitertoiletten",
-		category: "other",
+		category: "slow",
 
-		entertainment: 0,
 		slow: 1.15,
 		income: 0,
 
@@ -273,9 +275,8 @@ var rooms = [
 	},
 	{
 		name: "Raucherraum",
-		category: "other",
+		category: "slow",
 
-		entertainment: 0,
 		slow: 1.1,
 		income: 0,
 
@@ -284,6 +285,8 @@ var rooms = [
 
 		image:'img/rooms/Raum_raucherraum.png',
 		offset: {x: 68, y: 32 },
+		frames: 5,
+		framespeed: 50,
 		shape: [
 			[ 2, 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 1, 2 ],
@@ -295,9 +298,8 @@ var rooms = [
 	},
 	{
 		name: "Cafeteria",
-		category: "other",
+		category: "slow",
 
-		entertainment: 0,
 		slow: 1.15,
 		income: 10,
 
@@ -318,9 +320,8 @@ var rooms = [
 	},
 	{
 		name: "Kantine",
-		category: "other",
+		category: "slow",
 
-		entertainment: 0,
 		slow: 1.35,
 		income: 20,
 
@@ -343,9 +344,8 @@ var rooms = [
 	},
 	{
 		name: "Fitnessraum",
-		category: "other",
+		category: "slow",
 
-		entertainment: 0,
 		slow: 1.55,
 		income: 0,
 
@@ -354,6 +354,8 @@ var rooms = [
 
 		image:'img/rooms/Raum_fitnessraum.png',
 		offset: {x: 68, y: 32 },
+		frames: 4,
+		framespeed: 50,
 		shape: [
 			[ 2, 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 1, 2 ],
@@ -368,9 +370,8 @@ var rooms = [
 	},
 	{
 		name: "Stromberg",
-		category: "other",
+		category: "slow",
 
-		entertainment: 0,
 		slow: 1.25,
 		income: 0,
 
@@ -389,9 +390,8 @@ var rooms = [
 	},
 	{
 		name: "Besenkammer",
-		category: "other",
+		category: "slow",
 
-		entertainment: 0,
 		slow: 1.05,
 		income: 0,
 
@@ -411,7 +411,7 @@ var rooms = [
 	},
 	{
 		name: "Musikraum",
-		category: "other",
+		category: "entertain",
 
 		entertainment: 0.9,
 		income: 0,
@@ -432,7 +432,7 @@ var rooms = [
 	},
 	{
 		name: "Clownszimmer",
-		category: "other",
+		category: "entertain",
 
 		entertainment: 0.95,
 		income: 0,
@@ -452,7 +452,7 @@ var rooms = [
 	},
 	{
 		name: "Snackautomaten",
-		category: "other",
+		category: "entertain",
 
 		entertainment: 0.9,
 		income: 10,
@@ -471,7 +471,7 @@ var rooms = [
 	},
 	{
 		name: "Fernsehraum",
-		category: "other",
+		category: "entertain",
 
 		entertainment: 0.6,
 		income: 0,
@@ -479,8 +479,10 @@ var rooms = [
 		upkeep: 200,
 		price: 3000,
 
-		image:'img/rooms/Raum_TV.png',
+		image:'img/rooms/tv_spreadsheet.png',
 		offset: {x: 83, y: 32 },
+		frames: 22,
+		framespeed: 40,
 		shape: [
 			[ 2, 2, 2, 2, 2, 2, 2 ],
 			[ 2, 1, 1, 1, 1, 1, 2 ],
@@ -491,7 +493,7 @@ var rooms = [
 	},
 	{
 		name: "Spielhölle",
-		category: "other",
+		category: "entertain",
 
 		entertainment: 0.5,
 		income: 20,
@@ -513,7 +515,7 @@ var rooms = [
 	},
 	{
 		name: "Bordell",
-		category: "other",
+		category: "entertain",
 
 		entertainment: 0.7,
 		income: 30,

@@ -1,4 +1,4 @@
-function Animationtext( text , posv2, sceneEntities, icon){
+function Animationtext( text , posv2, sceneEntities, icon, color ){
 	this.text = text;
 	this.duration = 1300; // millisecs
 	this.anitime = 0;
@@ -26,7 +26,7 @@ function Animationtext( text , posv2, sceneEntities, icon){
 		var x = viewport.x+ofs.x+this.x;
 		var y = viewport.y+ofs.y+this.y - 30 - 10 * Math.sin( Math.PI*2*(this.anitime)/(this.duration));
 
-		ctx.fillStyle = "rgb(0,0,0)";
+		ctx.fillStyle = color;
 		ctx.fillText(this.text, x, y);
 	}
 
