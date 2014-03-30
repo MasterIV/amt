@@ -90,6 +90,7 @@ function mapScene() {
 
 	this.remove = function( e ) {
 		arrayRemove( entities, e );
+		updateRooms();
 	};
 
 	function placeRoom(pl, pos, disableSound) {
