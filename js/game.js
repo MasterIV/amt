@@ -13,6 +13,7 @@ var game = {
 	tick: 6,
 
 	scene: null,
+	scenes: [],
 	lastUpdate: 0,
 	debug: false,
 	zoom: 2,
@@ -32,8 +33,10 @@ var game = {
 		this.buffer.width = ( this.display.width / this.zoom ) | 0;
 		this.buffer.height = ( this.display.height / this.zoom ) | 0;
 
-		if( this.scene.resize )
-			this.scene.resize( this.buffer.width, this.buffer.height );
+		for( var i in this.scenes )
+			if( this.scenes[i].resize )
+				this.scenes[i].resize( this.buffer.width, this.buffer.height );
+		bg.resize(this.buffer.width, this.buffer.height);
 	},
 
 	init: function() {
@@ -43,14 +46,9 @@ var game = {
 		this.buffer = document.createElement('canvas');
 		this.bufferCtx = this.buffer.getContext('2d');
 
-		this.displayCtx.font = this.gameFontBig;
-
 		this.resize();
-
-		backgroundmusic.init();
-
-
 		var self = this;
+
 		setInterval( function() { self.updateFramerate(); }, 1000 );
 		window.onresize = function() { self.resize(); };
 
