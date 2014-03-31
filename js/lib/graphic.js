@@ -7,8 +7,6 @@ var g = {
 		'img/place_invalid.png',
 		'img/place_room.png',
 		'img/testvictim.png',
-		'img/startScreen_background.png',
-		'img/startScreen_menu.png',
 		'img/HUD/money.png',
 		'img/HUD/persons.png',
 		'img/HUD/top_ui_bg.png',
