@@ -30,6 +30,9 @@ var game = {
 	resize: function() {
 		this.display.width = window.innerWidth;
 		this.display.height = window.innerHeight;
+
+		this.zoom = ( this.display.width / 500 ) | 0;
+
 		this.buffer.width = ( this.display.width / this.zoom ) | 0;
 		this.buffer.height = ( this.display.height / this.zoom ) | 0;
 

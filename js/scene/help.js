@@ -7,7 +7,6 @@ function helpScene() {
 		offsetX: 0
 	}
 
-
 	this.makeButton = function(num,x,y,width,height,callback) {
 		this.entities.push(new wButton(num, x, y,width,height, callback));
 	}
