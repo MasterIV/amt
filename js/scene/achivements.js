@@ -22,15 +22,15 @@ function achivementsScene() {
 		}
 	}
 
-	this.makeButton(4, 0,260+this.menuOptions .offsetY, 96, 23, function(){
+	this.makeButton(4, 0, 260+this.menuOptions .offsetY, 96, 23, function(){
 		game.scene = game.scenes.menu;
 	});
 
-	this.makeButton(6, 0,260+this.menuOptions .offsetY, 96, 23, function(){
+	this.makeButton(6, -120, 260+this.menuOptions .offsetY, 96, 23, function(){
 		if (self.start > 0) self.start = self.start - 1;
 	});
 
-	this.makeButton(5, 0,260+this.menuOptions.offsetY, 96, 23, function(){
+	this.makeButton(5, 120, 260+this.menuOptions.offsetY, 96, 23, function(){
 		if (self.start < 1) self.start = self.start + 1;
 	});
 
